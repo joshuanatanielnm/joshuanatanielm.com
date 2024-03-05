@@ -14,11 +14,13 @@ export const technologySchema = collection({
         isRequired: false,
       },
     }),
-    name: fields.text({
-      label: "Technology name",
-      validation: {
-        length: {
-          min: 1,
+    name: fields.slug({
+      name: {
+        label: "Technology name",
+        validation: {
+          length: {
+            min: 1,
+          },
         },
       },
     }),
