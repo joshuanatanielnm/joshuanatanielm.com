@@ -3,7 +3,7 @@ import { collection, fields } from "@keystatic/core";
 export const experienceSchema = collection({
   label: "Experiences",
   slugField: "jobTitle",
-  path: "content/articles/*",
+  path: "content/experiences/*",
   schema: {
     jobTitle: fields.slug({
       name: {
@@ -16,14 +16,22 @@ export const experienceSchema = collection({
         },
       },
     }),
-    description: fields.text({
-      label: "Description",
-      description: "The description of the position",
+    companyName: fields.text({
+      label: "Company Name",
+      description: "The name of the company",
       validation: {
         length: {
           min: 1,
         },
       },
+    }),
+    companyLogo: fields.image({
+      label: "Company Logo",
+      description: "The logo of the company",
+    }),
+    description: fields.text({
+      label: "Description",
+      description: "The description of the position",
     }),
     startDate: fields.date({
       label: "Start Date",
@@ -66,19 +74,14 @@ export const experienceSchema = collection({
       }
     ),
     techStack: fields.array(
-      fields.text({
+      fields.relationship({
+        label: "Tech Stack",
+        collection: "technologies",
+      }),
+      {
         label: "Technology Name",
-      })
-    ),
-    projects: fields.array(
-      fields.object({
-        projectName: fields.text({
-          label: "Project Name",
-        }),
-        projectUrl: fields.url({
-          label: "Project Url",
-        }),
-      })
+        itemLabel: (props: any) => props.value,
+      }
     ),
   },
 });
