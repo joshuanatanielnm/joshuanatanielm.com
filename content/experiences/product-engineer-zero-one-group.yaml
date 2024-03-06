@@ -1,0 +1,17 @@
+jobTitle: Product Engineer
+companyName: Zero One Group
+startDate: '2021-04-16'
+endDate: '2022-10-06'
+draft: false
+redirect:
+  discriminant: true
+  value:
+    url: https://zero-one-group.com/
+techStack:
+  - chakra-ui
+  - next-js
+  - typescript
+  - react-query
+  - map-box
+  - nivo
+  - fastify

@@ -1,0 +1,19 @@
+jobTitle: Frontend Developer
+companyName: Elogram
+startDate: '2023-08-01'
+endDate: '2024-02-04'
+draft: false
+redirect:
+  discriminant: true
+  value:
+    url: https://elogram.xyz/
+techStack:
+  - typescript
+  - react-query
+  - react-native
+  - segment
+  - zustand
+  - mixpanel
+  - jest
+  - react-native-reanimated
+  - expo

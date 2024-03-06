@@ -1,0 +1,17 @@
+jobTitle: Frontend Developer
+companyName: Strangelove Crypto
+startDate: '2022-10-16'
+endDate: '2023-07-06'
+draft: false
+redirect:
+  discriminant: true
+  value:
+    url: https://strange.love/
+techStack:
+  - next-js
+  - typescript
+  - react-query
+  - ethers
+  - cosmjs
+  - chakra-ui
+  - wagmi
