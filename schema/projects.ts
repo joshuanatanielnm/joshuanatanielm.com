@@ -25,9 +25,17 @@ export const projectSchema = singleton({
             },
           },
         }),
-        description: fields.text({
+        description: fields.document({
           label: "Description",
           description: "The description of the project",
+          formatting: true,
+          dividers: true,
+          links: true,
+          images: {
+            directory: "public/assets/projects",
+            publicPath: "/assets/projects",
+          },
+          layouts: [[1], [1, 1], [1, 2], [2, 1]],
         }),
         subtitle: fields.text({
           label: "Subtitle",

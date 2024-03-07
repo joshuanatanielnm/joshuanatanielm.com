@@ -12,15 +12,24 @@ export const aboutSchema = singleton({
       label: "Cover",
       directory: "public/assets/about",
       publicPath: "/assets/about",
-      validation: {
-        isRequired: true,
-      },
     }),
     content: fields.document({
       label: "Content",
       dividers: true,
       formatting: true,
       links: true,
+      images: {
+        directory: "public/assets/about",
+        publicPath: "/assets/about",
+      },
+      layouts: [[1], [1, 1], [1, 2], [2, 1]],
+    }),
+    professionalSummary: fields.text({
+      label: "Professional Summary",
+      multiline: true,
+      validation: {
+        length: { min: 1 },
+      },
     }),
   },
   previewUrl: `${process.env.APP_URL}/about`,
