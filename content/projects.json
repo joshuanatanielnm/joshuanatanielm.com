@@ -1,0 +1,128 @@
+{
+  "entries": [
+    {
+      "name": "Elogram",
+      "subtitle": "Social Media Application designed to keep you close to those who matter most.",
+      "techStack": [
+        "react-native",
+        "react-native-reanimated",
+        "react-query",
+        "segment",
+        "mixpanel",
+        "zustand",
+        "expo"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://apps.apple.com/us/app/elogram/id6443715617",
+          "label": "Website"
+        }
+      }
+    },
+    {
+      "name": "Sommelier DeFi Application",
+      "subtitle": "Sommelier is a decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
+      "techStack": [
+        "next-js",
+        "chakra-ui",
+        "wagmi",
+        "ethers",
+        "sanity-headless-cms",
+        "zustand",
+        "react-query"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://github.com/PeggyJV/sommelier-strangelove",
+          "label": "GitHub"
+        }
+      }
+    },
+    {
+      "name": "SurabayaJS",
+      "subtitle": "SurabayaJS Community website, SurabayaJS is a user group based in Surabaya, Indonesia",
+      "techStack": [
+        "chakra-ui",
+        "next-js",
+        "contentful-headless-cms"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://github.com/surabayajs/surabayajs.org",
+          "label": "GitHub"
+        }
+      }
+    },
+    {
+      "name": "Sommelier Marketing Site",
+      "subtitle": "Marketing site for Sommelier",
+      "techStack": [
+        "chakra-ui",
+        "next-js",
+        "react-query"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://www.sommelier.finance/",
+          "label": "Website"
+        }
+      }
+    },
+    {
+      "name": "Sync Chain Dashboard",
+      "subtitle": "Dashboard for Registration and Listings for Sync Chain",
+      "techStack": [
+        "cosmjs",
+        "next-js",
+        "telescope",
+        "cosmos-kit",
+        "radix-ui"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": false
+      }
+    },
+    {
+      "name": "Voyager API Portal",
+      "subtitle": "Manage user RPC API subscription, and view API status",
+      "techStack": [
+        "chakra-ui",
+        "next-js",
+        "react-query",
+        "zustand",
+        "apigee-api-management"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": false
+      }
+    },
+    {
+      "name": "Bloomberg Global Coal Countdown",
+      "subtitle": "Data visualization site for tracking coal around the world",
+      "techStack": [
+        "nivo",
+        "next-js",
+        "map-box",
+        "chakra-ui"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://bloombergcoalcountdown.com/",
+          "label": "Website"
+        }
+      }
+    }
+  ]
+}

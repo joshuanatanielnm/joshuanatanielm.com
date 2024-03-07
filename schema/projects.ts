@@ -28,11 +28,6 @@ export const projectSchema = singleton({
         description: fields.text({
           label: "Description",
           description: "The description of the project",
-          validation: {
-            length: {
-              min: 1,
-            },
-          },
         }),
         subtitle: fields.text({
           label: "Subtitle",
@@ -43,6 +38,26 @@ export const projectSchema = singleton({
             },
           },
         }),
+        techStack: fields.array(
+          fields.relationship({
+            label: "Tech Stack",
+            collection: "technologies",
+          }),
+          {
+            label: "Technology Name",
+            itemLabel: (props: any) => props.value,
+          }
+        ),
+        tags: fields.array(
+          fields.relationship({
+            label: "Project Tags",
+            collection: "tags",
+          }),
+          {
+            label: "Tag",
+            itemLabel: (props: any) => props.value,
+          }
+        ),
         link: fields.conditional(
           fields.checkbox({
             label: "Include project link",

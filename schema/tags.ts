@@ -1,9 +1,9 @@
 import { collection, fields } from "@keystatic/core";
 
-export const projectTagSchema = collection({
-  label: "Project Tags",
+export const tagSchema = collection({
+  label: "Tags",
   slugField: "tagName",
-  path: "content/projects/tags/*",
+  path: "content/tags/*",
   schema: {
     tagName: fields.slug({
       name: {
