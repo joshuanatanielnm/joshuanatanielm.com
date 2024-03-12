@@ -1,5 +1,10 @@
 jobTitle: Frontend Developer
 companyName: Strangelove Crypto
+companyLogo: /images/companyLogos/frontend-developer-strangelove/companyLogo.jpeg
+shortDescription: >-
+  Developed various complex web3 applications in the Cosmos and Ethereum
+  ecosystems, working closely with the Sommelier team to maintain, update the
+  UI, handle Strategy launches, and integrate smart contracts.
 startDate: '2022-10-16'
 endDate: '2023-07-06'
 draft: false

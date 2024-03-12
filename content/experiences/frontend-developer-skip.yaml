@@ -1,0 +1,19 @@
+jobTitle: Frontend Developer
+companyName: Skip Protocol
+companyLogo: /images/companyLogos/frontend-developer-skip/companyLogo.jpeg
+shortDescription: >-
+  Short-term contract to deliver a sync-chain dashboard MVP, including listings
+  and wallet connections.
+startDate: '2023-10-01'
+endDate: '2023-10-31'
+draft: false
+redirect:
+  discriminant: false
+techStack:
+  - typescript
+  - react-query
+  - zustand
+  - jest
+  - cosmos-kit
+  - telescope
+  - cosmjs
