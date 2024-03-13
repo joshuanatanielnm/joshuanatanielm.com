@@ -10,7 +10,7 @@ draft: false
 redirect:
   discriminant: true
   value:
-    url: https://elogram.xyz/
+    url: https://elogram.xyz
 techStack:
   - typescript
   - react-query

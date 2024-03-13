@@ -6,6 +6,8 @@ import {
   experienceSchema,
   explorationSchema,
   projectSchema,
+  tagSchema,
+  technologySchema,
 } from "./schema";
 
 export default config({
@@ -16,6 +18,8 @@ export default config({
     articles: articleSchema,
     explorations: explorationSchema,
     experiences: experienceSchema,
+    technologies: technologySchema,
+    tags: tagSchema,
   },
   singletons: {
     about: aboutSchema,

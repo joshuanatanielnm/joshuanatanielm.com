@@ -8,7 +8,9 @@ startDate: '2023-10-01'
 endDate: '2023-10-31'
 draft: false
 redirect:
-  discriminant: false
+  discriminant: true
+  value:
+    url: https://skip.money
 techStack:
   - typescript
   - react-query

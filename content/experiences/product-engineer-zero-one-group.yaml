@@ -10,7 +10,7 @@ draft: false
 redirect:
   discriminant: true
   value:
-    url: https://zero-one-group.com/
+    url: https://zero-one-group.com
 techStack:
   - chakra-ui
   - next-js

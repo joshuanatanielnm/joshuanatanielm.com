@@ -28,10 +28,13 @@ export const experienceSchema = collection({
     companyLogo: fields.image({
       label: "Company Logo",
       description: "The logo of the company",
+      directory: "public/images/companyLogos",
+      publicPath: "/images/companyLogos/",
     }),
-    description: fields.text({
-      label: "Description",
-      description: "The description of the position",
+    shortDescription: fields.text({
+      label: "Short Description",
+      description: "The short description of the position",
+      multiline: true,
     }),
     startDate: fields.date({
       label: "Start Date",
