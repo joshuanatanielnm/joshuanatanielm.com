@@ -43,6 +43,23 @@
       }
     },
     {
+      "name": "Sommelier Marketing Site",
+      "subtitle": "Marketing site for Sommelier",
+      "techStack": [
+        "chakra-ui",
+        "next-js",
+        "react-query"
+      ],
+      "tags": [],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://www.sommelier.finance",
+          "label": "Website"
+        }
+      }
+    },
+    {
       "name": "SurabayaJS",
       "subtitle": "SurabayaJS Community website, SurabayaJS is a user group based in Surabaya, Indonesia",
       "techStack": [
@@ -56,23 +73,6 @@
         "value": {
           "href": "https://github.com/surabayajs/surabayajs.org",
           "label": "GitHub"
-        }
-      }
-    },
-    {
-      "name": "Sommelier Marketing Site",
-      "subtitle": "Marketing site for Sommelier",
-      "techStack": [
-        "chakra-ui",
-        "next-js",
-        "react-query"
-      ],
-      "tags": [],
-      "link": {
-        "discriminant": true,
-        "value": {
-          "href": "https://www.sommelier.finance/",
-          "label": "Website"
         }
       }
     },
@@ -119,7 +119,7 @@
       "link": {
         "discriminant": true,
         "value": {
-          "href": "https://bloombergcoalcountdown.com/",
+          "href": "https://bloombergcoalcountdown.com",
           "label": "Website"
         }
       }
