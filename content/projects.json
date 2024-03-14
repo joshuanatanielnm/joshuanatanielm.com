@@ -48,7 +48,9 @@
       "techStack": [
         "chakra-ui",
         "next-js",
-        "react-query"
+        "react-query",
+        "sanity-headless-cms",
+        "zustand"
       ],
       "tags": [],
       "link": {
