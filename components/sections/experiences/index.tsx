@@ -11,7 +11,13 @@ export async function ExperienceSection() {
   const experiences = await getSortedExperience();
   return (
     <section className="flex flex-col gap-10 pt-12" id="experiences">
-      <h3 className="text-xl font-bold lg:hidden">Experiences</h3>
+      <div>
+        <h3 className="text-xl font-bold ">Experiences</h3>
+        <p className="pt-2 text-sm text-zinc-600">
+          I am grateful to be able to work for these great companies, gain
+          experience, and become a better engineer.
+        </p>
+      </div>
       {experiences.map((experience) => {
         const {
           companyName,

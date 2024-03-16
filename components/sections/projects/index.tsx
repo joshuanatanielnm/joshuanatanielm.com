@@ -13,6 +13,13 @@ export async function ProjectSection() {
   return (
     <section className="flex flex-col gap-10 pt-12" id="projects">
       <h3 className="text-xl font-bold lg:hidden">Projects</h3>
+      <div>
+        <h3 className="text-xl font-bold ">Projects</h3>
+        <p className="pt-2 text-sm text-zinc-600">
+          Here are some of the projects that I have worked on my previous
+          companies, personal projects, and explorations as well.
+        </p>
+      </div>
       {selectedProjects.map((project) => {
         return (
           <ProjectList
