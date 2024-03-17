@@ -1,12 +1,28 @@
+/* #__PURE__ */
+const domain =
+  process.env.APP_URL?.replace(/https?:\/\//, "").split("/")[0] ||
+  process.env.NEXT_PUBLIC_VERCEL_URL ||
+  `${process.env.HOST || "localhost"}:${process.env.PORT || 3000}`;
+
+/* #__PURE__ */
+const protocol =
+  domain.includes("localhost") ||
+  domain.match(/\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}/)
+    ? "http"
+    : "https";
+
+const url = `${protocol}://${domain}`;
+
 export const defaultMetadata = {
-  title: "Joshua Nathaniel Manuputty",
+  title: "Joshua Manuputty | Software Engineer",
   description:
-    "Software engineer based in Indonesia 🇮🇩, specializing in Frontend Development using React-based technologies.",
+    "Software engineer, specializing in Frontend Development using React-based technologies.",
   email: "joshuanmanuputty@gmail.com",
   github: {
     username: "joshuanatanielnm",
     repository: "joshuanatanielm.com-v3",
   },
+  url,
 };
 
 export const customMetadata = {

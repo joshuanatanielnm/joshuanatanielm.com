@@ -10,7 +10,7 @@ import { Link2Icon } from "@radix-ui/react-icons";
 export async function ExperienceSection() {
   const experiences = await getSortedExperience();
   return (
-    <section className="flex flex-col gap-10 pt-12" id="experiences">
+    <section className="flex flex-col gap-10 pt-12 lg:pt-0" id="experiences">
       <div>
         <h3 className="text-xl font-bold ">Experiences</h3>
         <p className="pt-2 text-sm text-zinc-600">

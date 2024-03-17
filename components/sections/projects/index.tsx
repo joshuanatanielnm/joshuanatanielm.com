@@ -12,7 +12,6 @@ export async function ProjectSection() {
     .slice(0, 3);
   return (
     <section className="flex flex-col gap-10 pt-12" id="projects">
-      <h3 className="text-xl font-bold lg:hidden">Projects</h3>
       <div>
         <h3 className="text-xl font-bold ">Projects</h3>
         <p className="pt-2 text-sm text-zinc-600">

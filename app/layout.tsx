@@ -3,13 +3,21 @@ import { Inter } from "next/font/google";
 import { cn } from "@/utils/ui";
 import "./globals.css";
 import { Footer } from "@/components/ui/footer";
+import { defaultMetadata } from "@/site.config";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Joshua Manuputty",
-  description:
-    "Frontend Developer based in 🇮🇩, With a focus on building performant and visually appealing digital products",
+  metadataBase: new URL(defaultMetadata.url),
+  title: {
+    template: `%s ⋅ ${defaultMetadata.title}`,
+    absolute: defaultMetadata.title,
+  },
+  description: defaultMetadata.description,
+  robots: {
+    follow: true,
+    index: true,
+  },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {
