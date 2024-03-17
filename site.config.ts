@@ -22,6 +22,9 @@ export const defaultMetadata = {
     username: "joshuanatanielnm",
     repository: "joshuanatanielm.com-v3",
   },
+  x: {
+    username: "@joshuanatanielm",
+  },
   url,
 };
 
