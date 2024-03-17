@@ -4,6 +4,7 @@ import { cn } from "@/utils/ui";
 import "./globals.css";
 import { Footer } from "@/components/ui/footer";
 import { defaultMetadata } from "@/site.config";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,6 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head />
+      <Analytics />
       <body className="bg-orange-50">
         <div className={cn(inter.className, "max-w-screen-lg mx-auto px-4")}>
           {children}
