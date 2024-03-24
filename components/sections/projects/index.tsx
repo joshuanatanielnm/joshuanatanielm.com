@@ -27,6 +27,7 @@ export async function ProjectSection() {
             techStack={project.techStack}
             title={project.name}
             key={project.name}
+            tags={project.tags}
           />
         );
       })}
