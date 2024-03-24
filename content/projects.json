@@ -1,6 +1,28 @@
 {
   "entries": [
     {
+      "name": "Cosmos Explorer",
+      "subtitle": "Explorer dashboard for Cosmos-based Blockchains.",
+      "techStack": [
+        "typescript",
+        "next-js",
+        "react-query",
+        "cosmjs"
+      ],
+      "tags": [
+        "personal-project",
+        "web3",
+        "cosmos"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://github.com/joshuanatanielnm/explorer",
+          "label": "GitHub URL"
+        }
+      }
+    },
+    {
       "name": "Elogram",
       "subtitle": "Social Media Application designed to keep you close to those who matter most.",
       "techStack": [
@@ -12,12 +34,16 @@
         "zustand",
         "expo"
       ],
-      "tags": [],
+      "tags": [
+        "elogram",
+        "ios",
+        "android"
+      ],
       "link": {
         "discriminant": true,
         "value": {
-          "href": "https://apps.apple.com/us/app/elogram/id6443715617",
-          "label": "Website"
+          "href": "https://elogram.xyz",
+          "label": "PreviewUrl"
         }
       }
     },
@@ -33,7 +59,12 @@
         "zustand",
         "react-query"
       ],
-      "tags": [],
+      "tags": [
+        "strangelove",
+        "web3",
+        "cosmos",
+        "ethereum"
+      ],
       "link": {
         "discriminant": true,
         "value": {
@@ -52,7 +83,10 @@
         "sanity-headless-cms",
         "zustand"
       ],
-      "tags": [],
+      "tags": [
+        "strangelove",
+        "web3"
+      ],
       "link": {
         "discriminant": true,
         "value": {
@@ -88,7 +122,11 @@
         "cosmos-kit",
         "radix-ui"
       ],
-      "tags": [],
+      "tags": [
+        "skip-protocol",
+        "web3",
+        "cosmos"
+      ],
       "link": {
         "discriminant": false
       }
@@ -103,7 +141,10 @@
         "zustand",
         "apigee-api-management"
       ],
-      "tags": [],
+      "tags": [
+        "strangelove",
+        "web3"
+      ],
       "link": {
         "discriminant": false
       }
@@ -117,7 +158,9 @@
         "map-box",
         "chakra-ui"
       ],
-      "tags": [],
+      "tags": [
+        "zero-one-group"
+      ],
       "link": {
         "discriminant": true,
         "value": {
