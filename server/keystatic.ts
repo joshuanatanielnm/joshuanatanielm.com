@@ -16,6 +16,8 @@ export const getTechnology = cache(
   getReader().collections.technologies.readOrThrow
 );
 
+export const getTag = cache(getReader().collections.tags.readOrThrow);
+
 export const getSortedExperience = cache(async () => {
   const reader = getReader();
   const experiences = await reader.collections.experiences.all();
