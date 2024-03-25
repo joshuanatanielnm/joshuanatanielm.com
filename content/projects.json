@@ -49,7 +49,7 @@
     },
     {
       "name": "Sommelier DeFi Application",
-      "subtitle": "Sommelier is a decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
+      "subtitle": "Decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
       "techStack": [
         "next-js",
         "chakra-ui",
@@ -85,7 +85,8 @@
       ],
       "tags": [
         "strangelove",
-        "web3"
+        "web3",
+        "marketing-site"
       ],
       "link": {
         "discriminant": true,
@@ -103,7 +104,10 @@
         "next-js",
         "contentful-headless-cms"
       ],
-      "tags": [],
+      "tags": [
+        "community-project",
+        "marketing-site"
+      ],
       "link": {
         "discriminant": true,
         "value": {
@@ -159,7 +163,8 @@
         "chakra-ui"
       ],
       "tags": [
-        "zero-one-group"
+        "zero-one-group",
+        "data-visualization-site"
       ],
       "link": {
         "discriminant": true,
