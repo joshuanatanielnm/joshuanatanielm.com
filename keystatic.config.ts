@@ -9,11 +9,22 @@ import {
   tagSchema,
   technologySchema,
 } from "./schema";
+import { defaultMetadata } from "./site.config";
+
+const isVercelProd = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
 
 export default config({
-  storage: {
-    kind: "local",
-  },
+  storage: isVercelProd
+    ? {
+        kind: "github",
+        repo: {
+          owner: defaultMetadata.github.username,
+          name: defaultMetadata.github.repository,
+        },
+      }
+    : {
+        kind: "local",
+      },
   collections: {
     articles: articleSchema,
     explorations: explorationSchema,
