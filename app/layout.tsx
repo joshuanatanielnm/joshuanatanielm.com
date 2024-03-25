@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cn } from "@/utils/ui";
 import "./globals.css";
-import { Footer } from "@/components/ui/footer";
 import { defaultMetadata } from "@/site.config";
 import { Analytics } from "@vercel/analytics/react";
 
@@ -34,11 +33,11 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <head />
       <Analytics />
       <body className="bg-orange-50">
-        <div className={cn(inter.className, "max-w-screen-lg mx-auto px-4")}>
+        <div className="h-3 w-full bg-gradient-to-b from-orange-500 to-yellow-50" />
+        <div
+          className={cn(inter.className, "max-w-screen-lg mx-auto px-4 pt-12")}
+        >
           {children}
-          <div className="flex lg:hidden pb-14">
-            <Footer />
-          </div>
         </div>
       </body>
     </html>
