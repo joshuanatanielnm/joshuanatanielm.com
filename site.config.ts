@@ -20,7 +20,7 @@ export const defaultMetadata = {
   email: "joshuanmanuputty@gmail.com",
   github: {
     username: "joshuanatanielnm",
-    repository: "joshuanatanielm.com-v3",
+    repository: "joshuanatanielm.com",
   },
   x: {
     username: "@joshuanatanielm",
