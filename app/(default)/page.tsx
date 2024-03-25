@@ -3,6 +3,7 @@ import Sidebar from "./sections/sidebar";
 import { ExperienceSection } from "@/components/sections/experiences";
 import { ProjectSection } from "@/components/sections/projects";
 import { AboutSection } from "@/components/sections/about";
+import { Footer } from "@/components/ui/footer";
 
 export default async function Page() {
   return (
@@ -10,10 +11,13 @@ export default async function Page() {
       <div>
         <Sidebar />
       </div>
-      <div className="flex flex-col gap-6 lg:gap-32 lg:w-7/12 text-zinc-800 pb-20 justify-end">
+      <div className="animate-slidein flex flex-col gap-6 lg:gap-28 lg:w-7/12 text-zinc-800 pb-20 justify-end">
         <AboutSection />
         <ExperienceSection />
         <ProjectSection />
+      </div>
+      <div className="flex lg:hidden pb-14">
+        <Footer />
       </div>
     </div>
   );

@@ -8,7 +8,7 @@ export async function AboutSection() {
   const aboutContent = await content();
   const renderers = getBasicRenderers();
   return (
-    <section className="flex flex-col gap-6 pt-12 text-base" id="about">
+    <section className="flex flex-col gap-6 pt-12 lg:pt-0 text-base" id="about">
       <h3 className="text-xl font-bold lg:hidden">About</h3>
       <DocumentRenderer document={aboutContent} renderers={renderers} />
     </section>

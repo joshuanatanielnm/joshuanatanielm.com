@@ -2,7 +2,6 @@ import { getProject } from "@/server/keystatic";
 import React from "react";
 import { ProjectList } from "./list";
 import Link from "next/link";
-import { customMetadata } from "@/site.config";
 import { ArrowRightIcon } from "@radix-ui/react-icons";
 
 export async function ProjectSection() {
@@ -32,10 +31,8 @@ export async function ProjectSection() {
         );
       })}
       <Link
-        href={`${customMetadata.githubUrl}?tab=repositories`}
+        href={`/projects`}
         className="flex my-auto pt-4 gap-1 text-orange-600 hover:underline group"
-        rel="noopener noreferrer"
-        target="_blank"
       >
         {"Other Projects and Explorations"}
         <ArrowRightIcon className="my-auto transition delay-75 group-hover:translate-x-2" />

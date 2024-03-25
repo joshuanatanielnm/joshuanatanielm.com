@@ -8,7 +8,7 @@ import { customMetadata } from "@/site.config";
 export default async function Sidebar() {
   const { professionalSummary } = await getAbout();
   return (
-    <div className="lg:fixed top-12 bottom-20 lg:w-80 pt-12 lg:pt-0 flex flex-col justify-between">
+    <div className="lg:fixed top-14 bottom-20 lg:w-80 pt-0 lg:pt-0 flex flex-col justify-between">
       <div className=" flex flex-col text-zinc-800">
         <h1 className="text-3xl font-bold ">Joshua Manuputty</h1>
         <h1 className="text-xl py-2 ">Frontend Developer</h1>

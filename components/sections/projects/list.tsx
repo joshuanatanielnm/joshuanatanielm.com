@@ -1,3 +1,4 @@
+import { AdaptiveLink } from "@/components/ui/adaptive-link";
 import { getTag, getTechnology } from "@/server/keystatic";
 import { Link2Icon } from "@radix-ui/react-icons";
 import Link from "next/link";
@@ -21,13 +22,6 @@ export async function ProjectList(props: ProjectListProps) {
       return await getTag(tech ?? "");
     });
 
-  const handleStringLimit = (str: string, limit: number) => {
-    if (str.length > limit) {
-      return str.substring(0, limit) + "...";
-    }
-    return str;
-  };
-
   const tagsData = tags ? await Promise.all(tags) : null;
 
   const techStackString = `Build with ${(await Promise.all(techStack)).join(
@@ -35,16 +29,11 @@ export async function ProjectList(props: ProjectListProps) {
   )}`;
 
   return (
-    <Link
-      className="flex gap-4 pr-4 transition delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group"
-      href={props.projectUrl}
-      rel="noopener noreferrer"
-      target="_blank"
-    >
+    <div className="animate-in flex gap-4 pr-4 h-full transition relative delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group">
       <div className="bg-orange-100 rounded-lg">
         <div className="h-full transition delay-100 hover:delay-100 opacity-0 group-hover:opacity-100 bg-gradient-to-b from-orange-500 to-orange-100 w-2 rounded-lg" />
       </div>
-      <div className="flex flex-col w-full py-4 gap-4">
+      <div className="flex flex-col w-full pt-4 pb-16 gap-4">
         <h3 className="font-semibold">{`${props.title}`}</h3>
         <p>{props.description}</p>
         <div className="flex flex-wrap gap-2">
@@ -60,19 +49,13 @@ export async function ProjectList(props: ProjectListProps) {
           })}
         </div>
         <p className="text-sm text-zinc-600">{techStackString}</p>
-        <div className="flex my-auto gap-1 text-orange-600 group-hover:underline">
-          <Link2Icon className="my-auto" />
-          <p className="flex md:hidden">
-            {handleStringLimit(
-              props.projectUrl.replace(/(^\w+:|^)\/\//, ""),
-              25
-            )}
-          </p>
-          <p className="hidden md:flex">
-            {props.projectUrl.replace(/(^\w+:|^)\/\//, "")}
-          </p>
-        </div>
+        {props.projectUrl && (
+          <AdaptiveLink
+            href={props.projectUrl}
+            className="flex pt-8 pb-4 gap-1 text-orange-600 group-hover:underline absolute inset-0 align-baseline pl-6"
+          />
+        )}
       </div>
-    </Link>
+    </div>
   );
 }
