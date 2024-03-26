@@ -18,7 +18,7 @@ export default async function Page() {
           return (
             <div
               key={project.name}
-              className="animate-slidein w-full lg:w-[47.9%] h-auto transition delay-100 before:transition-[opacity,inset]"
+              className="w-full lg:w-[47.9%] h-auto transition delay-100 before:transition-[opacity,inset]"
             >
               <ProjectList
                 description={project.subtitle}
