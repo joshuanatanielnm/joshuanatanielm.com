@@ -13,7 +13,7 @@ export default async function Page() {
           companies, personal projects, and explorations as well.
         </p>
       </div>
-      <div className="pt-12 flex flex-wrap gap-10 justify-between">
+      <div className="animate-slidein pt-12 flex flex-wrap gap-10 justify-between">
         {projects.map((project) => {
           return (
             <div
