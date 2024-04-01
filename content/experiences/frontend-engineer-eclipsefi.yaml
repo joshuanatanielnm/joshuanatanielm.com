@@ -1,0 +1,18 @@
+jobTitle: Frontend Engineer
+companyName: Eclipse FI
+companyLogo: /images/companyLogos/frontend-engineer-eclipsefi/companyLogo.png
+startDate: '2024-03-30'
+draft: false
+redirect:
+  discriminant: true
+  value:
+    url: https://eclipsefi.io
+techStack:
+  - typescript
+  - next-js
+  - react-query
+  - zustand
+  - jest
+  - cosmos-kit
+  - telescope
+  - cosmjs
