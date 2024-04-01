@@ -15,15 +15,20 @@ export default async function Sidebar() {
         <p className="text-md font-light text-zinc-600">
           {professionalSummary}
         </p>
-        <Link
-          href={customMetadata.emailUrl}
-          className="flex gap-4 transition delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group mt-8 "
-        >
-          <div className="bg-orange-100 rounded-lg">
-            <div className="h-full transition delay-100 hover:delay-100 opacity-0 group-hover:opacity-100 bg-gradient-to-b from-orange-500 to-orange-100 w-2 rounded-lg" />
-          </div>
-          <p className="py-6 text-sm text-zinc-600">Open for new opportunity</p>
-        </Link>
+        {process.env.NEXT_PUBLIC_IS_OPEN_TO_WORK === "true" && (
+          <Link
+            href={customMetadata.emailUrl}
+            className="flex gap-4 transition delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group mt-8 "
+          >
+            <div className="bg-orange-100 rounded-lg">
+              <div className="h-full transition delay-100 hover:delay-100 opacity-0 group-hover:opacity-100 bg-gradient-to-b from-orange-500 to-orange-100 w-2 rounded-lg" />
+            </div>
+            <p className="py-6 text-sm text-zinc-600">
+              Open for new opportunity
+            </p>
+          </Link>
+        )}
+
         <div className="flex flex-wrap mt-8 max-w-2xl gap-6 text-sm">
           {links.map((link) => (
             <Link
