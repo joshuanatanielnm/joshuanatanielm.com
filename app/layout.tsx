@@ -4,6 +4,7 @@ import { cn } from "@/utils/ui";
 import "./globals.css";
 import { defaultMetadata } from "@/site.config";
 import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head />
       <Analytics />
+      <SpeedInsights />
       <body className="bg-orange-50">
         <div className="h-3 w-full bg-gradient-to-b from-orange-500 to-yellow-50" />
         <div
