@@ -22,6 +22,11 @@ export const links = [
     Icon: EnvelopeClosedIcon,
     label: "Email",
   },
+  {
+    href: customMetadata.calUrl,
+    Icon: CalendarIcon,
+    label: "Schedule",
+  },
 ];
 
 export const homeNavLinks = [
