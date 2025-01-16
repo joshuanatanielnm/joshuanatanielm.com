@@ -21,7 +21,7 @@ export const Footer = () => {
         </Link>
       </p>
       <p>
-        Contents licensed under CC BY-NC-SA 4.0 MIT License © 2024 Joshua
+        Contents licensed under CC BY-NC-SA 4.0 MIT License © 2025 Joshua
         Manuputty
       </p>
     </div>
