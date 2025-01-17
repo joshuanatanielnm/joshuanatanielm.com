@@ -1,6 +1,79 @@
 {
   "entries": [
     {
+      "name": "Eclipse Fi Launchpad",
+      "subtitle": "Revolutionary hub for interchain token launches",
+      "techStack": [
+        "next-js",
+        "typescript",
+        "tailwind-css",
+        "vercel",
+        "cosmjs",
+        "graz",
+        "zustand"
+      ],
+      "tags": [
+        "web3",
+        "cosmos",
+        "eclipse-fi"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://www.eclipsefi.io/launchpad",
+          "label": "Website"
+        }
+      }
+    },
+    {
+      "name": "Neutron Onboarding",
+      "subtitle": "A site that helps onboard new users to the Neutron ecosystem",
+      "techStack": [
+        "next-js",
+        "graz",
+        "cosmjs",
+        "skip-widget"
+      ],
+      "tags": [
+        "web3",
+        "eclipse-fi",
+        "cosmos"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://www.eclipsefi.io/dashboard/onboarding",
+          "label": "Website"
+        }
+      }
+    },
+    {
+      "name": "Sommelier DeFi Application",
+      "subtitle": "Decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
+      "techStack": [
+        "next-js",
+        "chakra-ui",
+        "wagmi",
+        "ethers",
+        "sanity-headless-cms",
+        "zustand",
+        "react-query"
+      ],
+      "tags": [
+        "strangelove",
+        "web3",
+        "cosmos",
+        "ethereum"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://github.com/PeggyJV/sommelier-strangelove",
+          "label": "GitHub"
+        }
+      }
+    },
+    {
       "name": "Cosmos Explorer",
       "subtitle": "Explorer dashboard for Cosmos-based Blockchains.",
       "techStack": [
@@ -44,32 +117,6 @@
         "value": {
           "href": "https://elogram.xyz",
           "label": "PreviewUrl"
-        }
-      }
-    },
-    {
-      "name": "Sommelier DeFi Application",
-      "subtitle": "Decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
-      "techStack": [
-        "next-js",
-        "chakra-ui",
-        "wagmi",
-        "ethers",
-        "sanity-headless-cms",
-        "zustand",
-        "react-query"
-      ],
-      "tags": [
-        "strangelove",
-        "web3",
-        "cosmos",
-        "ethereum"
-      ],
-      "link": {
-        "discriminant": true,
-        "value": {
-          "href": "https://github.com/PeggyJV/sommelier-strangelove",
-          "label": "GitHub"
         }
       }
     },
