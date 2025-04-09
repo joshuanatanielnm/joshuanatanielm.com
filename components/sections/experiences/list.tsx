@@ -33,6 +33,10 @@ export function ExperienceList(props: ExperienceListProps) {
                 width={50}
                 height={50}
                 className="object-cover mix-blend-multiply"
+                loading="lazy"
+                placeholder="blur"
+                blurDataURL="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+P+/HgAELwJBQlXP1AAAAABJRU5ErkJggg=="
+                sizes="50px"
               />
             )}
           </div>
