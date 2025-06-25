@@ -27,6 +27,7 @@ export async function ProjectSection() {
             title={project.name}
             key={project.name}
             tags={project.tags}
+            imageUrl={project.previewUrl ?? ""}
           />
         );
       })}
