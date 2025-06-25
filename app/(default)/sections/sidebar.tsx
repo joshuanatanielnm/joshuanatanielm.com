@@ -11,7 +11,7 @@ export default async function Sidebar() {
     <div className="lg:fixed top-14 bottom-20 lg:w-80 pt-0 lg:pt-0 flex flex-col justify-between">
       <div className=" flex flex-col text-zinc-800">
         <h1 className="text-3xl font-bold ">Joshua Manuputty</h1>
-        <h1 className="text-xl py-2 ">Frontend Developer</h1>
+        <h1 className="text-xl py-2 ">Software Engineer</h1>
         <p className="text-md font-light text-zinc-600">
           {professionalSummary}
         </p>

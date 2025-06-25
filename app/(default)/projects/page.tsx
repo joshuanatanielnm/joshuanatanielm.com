@@ -26,6 +26,7 @@ export default async function Page() {
                 techStack={project.techStack}
                 title={project.name}
                 tags={project.tags}
+                imageUrl={project.previewUrl ?? ""}
               />
             </div>
           );
