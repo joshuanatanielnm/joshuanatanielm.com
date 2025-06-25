@@ -46,7 +46,7 @@ export async function ProjectList(props: ProjectListProps) {
               quality={95}
               priority={true}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="w-full h-full object-cover rounded-lg border border-orange-200"
+              className="w-full h-full object-cover rounded-lg border border-orange-200 filter sepia-[0.8] hue-rotate-[15deg] saturate-[0.7] group-hover:sepia-0 group-hover:hue-rotate-0 group-hover:saturate-100 transition-all duration-300 ease-in-out"
             />
           ) : null}
 
