@@ -2,8 +2,9 @@ jobTitle: Frontend Developer
 companyName: Skip Protocol
 companyLogo: /images/companyLogos/frontend-developer-skip/companyLogo.jpeg
 shortDescription: >-
-  Short-term contract to deliver a sync-chain dashboard MVP, including listings
-  and wallet connections.
+  Skip Protocol is a blockchain infrastructure protocol that develops software
+  to empower sovereign blockchains, validators, protocols, and users to capture
+  Maximum Extractable Value (MEV) and determine how the profits are distributed.
 startDate: '2023-10-01'
 endDate: '2023-10-31'
 draft: false

@@ -1,0 +1,19 @@
+jobTitle: Senior Frontend Developer
+companyName: Napier Finance
+companyLogo: /images/companyLogos/senior-frontend-developer-napier/companyLogo.png
+shortDescription: >-
+  Napier is the universal yield infrastructure. With Napier, developers can
+  build their own application-specific yield products and embed those into any
+  use case.
+startDate: '2025-10-19'
+draft: false
+redirect:
+  discriminant: true
+  value:
+    url: https://app.napier.finance
+techStack:
+  - wagmi
+  - zustand
+  - next-js
+  - react-query
+  - tailwind-css
