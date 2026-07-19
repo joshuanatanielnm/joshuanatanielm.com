@@ -35,7 +35,7 @@ export default async function Sidebar() {
               href={link.href}
               className="flex justify-self-center justify-items-center gap-2 hover:underline text-orange-600 group"
               key={link.label}
-              target="_blank"
+              target={link.internal ? undefined : "_blank"}
             >
               <link.Icon className="my-auto transition delay-100 group-hover:-translate-y-1" />
               {link.label}
