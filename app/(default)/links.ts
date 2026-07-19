@@ -9,7 +9,12 @@ import {
 import { customMetadata } from "@/site.config";
 
 export const links = [
-  { href: customMetadata.resumeUrl, Icon: FileIcon, label: "Resume" },
+  {
+    href: customMetadata.resumeUrl,
+    Icon: FileIcon,
+    label: "Resume",
+    internal: true,
+  },
   { href: customMetadata.twitterUrl, Icon: TwitterLogoIcon, label: "Twitter" },
   { href: customMetadata.githubUrl, Icon: GitHubLogoIcon, label: "Github" },
   {

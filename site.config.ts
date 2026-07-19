@@ -32,7 +32,7 @@ export const customMetadata = {
   githubUrl: "https://github.com/joshuanatanielnm",
   twitterUrl: "https://twitter.com/joshuanatanielm",
   emailUrl: `mailto:${defaultMetadata.email}`,
-  resumeUrl: "https://resume.io/r/fyzF2RrFm",
+  resumeUrl: "/resume",
   linkedInUrl: "https://www.linkedin.com/in/joshuanathanielm",
   calUrl: "https://cal.com/joshuanatanielm",
 };

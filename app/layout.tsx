@@ -60,10 +60,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <Analytics />
       <SpeedInsights />
-      <body className="bg-orange-50">
-        <div className="h-3 w-full bg-gradient-to-b from-orange-500 to-yellow-50" />
+      <body className="bg-orange-50 print:bg-white">
+        <div className="h-3 w-full bg-gradient-to-b from-orange-500 to-yellow-50 print:hidden" />
         <div
-          className={cn(inter.className, "max-w-screen-lg mx-auto px-4 pt-12")}
+          className={cn(
+            inter.className,
+            "max-w-screen-lg mx-auto px-4 pt-12 print:max-w-none print:p-0"
+          )}
         >
           {children}
         </div>
