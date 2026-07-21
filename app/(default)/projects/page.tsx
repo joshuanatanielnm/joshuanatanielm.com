@@ -1,36 +1,39 @@
-import { ProjectList } from "@/components/sections/projects/list";
+import type { Metadata } from "next";
+import { ProjectCard } from "@/components/sections/projects/list";
 import { getProject } from "@/server/keystatic";
+import { PageHeader } from "@/components/ui/page-header";
+import { Reveal } from "@/components/motion/reveal";
+
+export const metadata: Metadata = {
+  title: "Projects",
+  description:
+    "Products, dashboards, and experiments Joshua Manuputty has built across companies and communities.",
+};
 
 export default async function Page() {
   const projects = (await getProject()).entries;
 
   return (
-    <div>
-      <div>
-        <h3 className="text-2xl font-bold ">Projects</h3>
-        <p className="pt-2 text-md text-zinc-600 w-full md:w-3/4 lg:w-1/2">
-          Here are some of the projects that I have worked on my previous
-          companies, personal projects, and explorations as well.
-        </p>
-      </div>
-      <div className="animate-slidein pt-12 flex flex-wrap gap-10 justify-between">
-        {projects.map((project) => {
-          return (
-            <div
-              key={project.name}
-              className="w-full lg:w-[47.9%] h-auto transition delay-100 before:transition-[opacity,inset]"
-            >
-              <ProjectList
-                description={project.subtitle}
-                projectUrl={project.link.value?.href ?? ""}
-                techStack={project.techStack}
-                title={project.name}
-                tags={project.tags}
-                imageUrl={project.previewUrl ?? ""}
-              />
-            </div>
-          );
-        })}
+    <div className="mx-auto max-w-5xl px-4 py-16">
+      <PageHeader
+        title="Projects"
+        description="A fuller archive of what I've shipped: client work, open-source protocols, community sites, and personal experiments."
+      />
+
+      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        {projects.map((project, index) => (
+          <Reveal key={project.name} delay={Math.min(index * 0.04, 0.24)}>
+            <ProjectCard
+              className="h-full"
+              description={project.subtitle}
+              projectUrl={project.link.value?.href ?? ""}
+              techStack={project.techStack}
+              title={project.name}
+              tags={project.tags}
+              imageUrl={project.previewUrl ?? ""}
+            />
+          </Reveal>
+        ))}
       </div>
     </div>
   );

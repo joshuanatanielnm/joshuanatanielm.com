@@ -35,3 +35,25 @@ export const getSortedExperience = cache(async () => {
 export const getProject = cache(getReader().singletons.projects.readOrThrow);
 
 export const getAbout = cache(getReader().singletons.about.readOrThrow);
+
+export const getNow = cache(getReader().singletons.now.read);
+
+export const getBooks = cache(async () => {
+  const reader = getReader();
+  return reader.collections.books.all();
+});
+
+export const getGames = cache(async () => {
+  const reader = getReader();
+  return reader.collections.games.all();
+});
+
+export const getPhotos = cache(async () => {
+  const reader = getReader();
+  return reader.collections.photos.all();
+});
+
+export const getGear = cache(async () => {
+  const reader = getReader();
+  return reader.collections.gear.all();
+});

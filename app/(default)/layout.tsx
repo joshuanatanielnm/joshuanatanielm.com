@@ -1,14 +1,13 @@
-"use client";
-
 import { ReactNode } from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-
-const queryClient = new QueryClient();
+import { SiteNav } from "@/components/ui/site-nav";
+import { Footer } from "@/components/ui/footer";
 
 export default function Layout({ children }: { children: ReactNode }) {
   return (
-    <main>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
-    </main>
+    <div className="flex min-h-[100dvh] flex-col">
+      <SiteNav />
+      <main className="flex-1">{children}</main>
+      <Footer />
+    </div>
   );
 }

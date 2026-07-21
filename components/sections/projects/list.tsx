@@ -1,92 +1,100 @@
-import { AdaptiveLink } from "@/components/ui/adaptive-link";
 import { getTag, getTechnology } from "@/server/keystatic";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/utils/ui";
 
-interface ProjectListProps {
+interface ProjectCardProps {
   title: string;
   description: string;
   techStack: readonly (string | null)[];
   tags?: readonly (string | null)[];
   projectUrl: string;
   imageUrl?: string;
+  className?: string;
 }
 
-export async function ProjectList(props: ProjectListProps) {
-  const techStack = props.techStack.map(async (tech) => {
-    return (await getTechnology(tech ?? "")).name ?? "";
-  });
+export async function ProjectCard(props: ProjectCardProps) {
+  const techStack = await Promise.all(
+    props.techStack.map(async (tech) => (await getTechnology(tech ?? "")).name ?? "")
+  );
 
-  const tags =
-    props.tags &&
-    props.tags.map(async (tech) => {
-      return await getTag(tech ?? "");
-    });
+  const tagsData = props.tags
+    ? await Promise.all(props.tags.map((tag) => getTag(tag ?? "")))
+    : [];
 
-  const tagsData = tags ? await Promise.all(tags) : null;
-
-  const techStackString = `Build with ${(await Promise.all(techStack)).join(
-    ", "
-  )}`;
+  const hasUrl = Boolean(props.projectUrl);
 
   return (
-    <div className="animate-in flex gap-4 pr-4 h-full transition relative delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group">
-      <div className="bg-orange-100 rounded-lg">
-        <div className="h-full transition delay-100 hover:delay-100 opacity-0 group-hover:opacity-100 bg-gradient-to-b from-orange-500 to-orange-100 w-2 rounded-lg" />
+    <article
+      className={cn(
+        "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-brand/40",
+        props.className
+      )}
+    >
+      <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+        {props.imageUrl ? (
+          <Image
+            src={props.imageUrl}
+            alt={`${props.title} preview`}
+            fill
+            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center">
+            <span className="font-mono text-3xl font-semibold text-muted-foreground/40">
+              {props.title.charAt(0)}
+            </span>
+          </div>
+        )}
       </div>
 
-      <div className="w-full">
-        {/* Project Image */}
-        <div className="h-60 mt-3">
-          {props.imageUrl ? (
-            <Image
-              src={props.imageUrl}
-              alt={`${props.title} project image`}
-              width={400}
-              height={192}
-              quality={95}
-              priority={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="w-full h-full object-cover rounded-lg border border-orange-200 filter sepia-[0.8] hue-rotate-[15deg] saturate-[0.7] group-hover:sepia-0 group-hover:hue-rotate-0 group-hover:saturate-100 transition-all duration-300 ease-in-out"
+      <div className="flex flex-1 flex-col gap-3 p-5">
+        <div className="flex items-start justify-between gap-3">
+          <h3 className="font-medium leading-tight text-foreground">
+            {props.title}
+          </h3>
+          {hasUrl ? (
+            <ArrowUpRight
+              className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-brand"
+              weight="bold"
             />
           ) : null}
-
-          {/* Fallback placeholder */}
-          <div
-            className={`w-full h-full rounded-lg border border-orange-200 bg-orange-50 flex items-center justify-center ${
-              props.imageUrl ? "hidden" : ""
-            }`}
-          >
-            <div className="text-orange-300 text-xs text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-orange-200 rounded"></div>
-              <span>No Image</span>
-            </div>
-          </div>
         </div>
 
-        <div className="flex flex-col w-full pt-4 pb-16 gap-4">
-          <h3 className="font-semibold ">{`${props.title}`}</h3>
-          <p>{props.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {tagsData?.map((tag) => {
-              return (
-                <span
-                  key={tag.tagName}
-                  className="inline-block px-3 py-1 text-xs font-semibold text-orange-300 group-hover:text-orange-500 rounded-xl border border-orange-300 group-hover:border-orange-500 bg-orange-100"
-                >
-                  {tag.tagName}
-                </span>
-              );
-            })}
+        <p className="text-sm leading-relaxed text-muted-foreground">
+          {props.description}
+        </p>
+
+        {tagsData.length > 0 ? (
+          <div className="flex flex-wrap gap-1.5">
+            {tagsData.slice(0, 3).map((tag) => (
+              <Badge key={tag.tagName} variant="muted">
+                {tag.tagName}
+              </Badge>
+            ))}
           </div>
-          <p className="text-sm text-zinc-600">{techStackString}</p>
-          {props.projectUrl && (
-            <AdaptiveLink
-              href={props.projectUrl}
-              className="flex pt-8 pb-4 gap-1 text-orange-600 group-hover:underline absolute inset-0 align-baseline pl-6"
-            />
-          )}
-        </div>
+        ) : null}
+
+        <p className="mt-auto pt-2 font-mono text-xs text-muted-foreground">
+          {techStack.slice(0, 4).join(" · ")}
+          {techStack.length > 4 ? " · …" : ""}
+        </p>
       </div>
-    </div>
+
+      {hasUrl ? (
+        <Link
+          href={props.projectUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="absolute inset-0"
+          aria-label={`Open ${props.title}`}
+        >
+          <span className="sr-only">Open {props.title}</span>
+        </Link>
+      ) : null}
+    </article>
   );
 }

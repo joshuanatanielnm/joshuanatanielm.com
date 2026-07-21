@@ -1,0 +1,12 @@
+# TODO: placeholder cover image — replace coverUrl with real key art.
+title: 'The Legend of Zelda: Tears of the Kingdom'
+coverUrl: https://picsum.photos/seed/totk-art/600/800
+platform: switch
+status: playing
+rating: 5
+hours: 48
+link: https://zelda.nintendo.com/tears-of-the-kingdom/
+note: >-
+  The build system turned me into an engineer even in my downtime. I have
+  absolutely over-engineered a bridge or two.
+featured: true

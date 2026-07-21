@@ -26,7 +26,7 @@ export function ExternalLink({
       href={href}
       {...targetProps}
       {...props}
-      className="text-orange-600 hover:underline"
+      className="font-medium text-brand underline decoration-brand/30 underline-offset-2 transition-colors hover:decoration-brand"
     />
   );
 }

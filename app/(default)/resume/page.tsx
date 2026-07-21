@@ -20,7 +20,7 @@ export default function ResumePage() {
   const markdown = getResumeMarkdown();
 
   return (
-    <div className="pb-24 print:pb-0">
+    <div className="mx-auto max-w-3xl px-4 pb-24 pt-12 print:max-w-none print:p-0">
       <div className="flex justify-end mb-6 print:hidden">
         <DownloadResumeButton />
       </div>

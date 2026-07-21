@@ -1,0 +1,11 @@
+# TODO: placeholder cover image — replace coverUrl with a real cover.
+title: A Philosophy of Software Design
+author: John Ousterhout
+coverUrl: https://picsum.photos/seed/philosophy-swd/400/600
+status: reading
+rating: 4
+link: https://web.stanford.edu/~ouster/cgi-bin/aposd.php
+note: >-
+  Short, opinionated, and quietly changing how I name things and draw module
+  boundaries. Re-reading a chapter between projects.
+featured: true
