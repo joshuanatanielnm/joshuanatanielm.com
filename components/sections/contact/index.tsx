@@ -1,14 +1,49 @@
+"use client";
+
 import Link from "next/link";
+import { useRef } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { customMetadata } from "@/site.config";
 import { socialLinks } from "@/app/(default)/links";
-import { Reveal } from "@/components/motion/reveal";
+import { registerGsap, gsap, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 
 export function ContactSection() {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const reduce = useReducedMotion();
+
+  useGSAP(
+    () => {
+      registerGsap();
+      if (reduce || !cardRef.current) return;
+
+      gsap.from(cardRef.current, {
+        opacity: 0,
+        scale: 0.96,
+        y: 24,
+        duration: 1,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: cardRef.current,
+          start: "top 85%",
+          once: true,
+        },
+      });
+    },
+    { scope: cardRef, dependencies: [reduce] }
+  );
+
   return (
     <section id="contact" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16">
-      <Reveal className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-brand/10 via-card to-card px-6 py-14 sm:px-12">
-        <div className="mx-auto flex max-w-2xl flex-col items-center text-center">
+      <div
+        ref={cardRef}
+        className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-brand/10 via-card to-card px-6 py-14 sm:px-12"
+      >
+        <div
+          aria-hidden
+          className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand/15 blur-3xl"
+        />
+        <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
           <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             Let&apos;s build something together
           </h2>
@@ -44,7 +79,7 @@ export function ContactSection() {
               ))}
           </div>
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 }

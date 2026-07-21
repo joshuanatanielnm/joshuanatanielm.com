@@ -2,9 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { List } from "@phosphor-icons/react/dist/ssr";
 import { navLinks } from "@/app/(default)/links";
+import { registerGsap, ScrollTrigger, useGSAP } from "@/lib/gsap";
+import { useReducedMotion } from "@/hooks/use-reduced-motion";
 import { cn } from "@/utils/ui";
 import { ThemeToggle } from "./theme-toggle";
 import {
@@ -23,15 +25,37 @@ function isActive(pathname: string, href: string) {
 export function SiteNav() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const headerRef = useRef<HTMLElement>(null);
+  const reduce = useReducedMotion();
+
+  useGSAP(
+    () => {
+      registerGsap();
+      if (reduce || !headerRef.current) return;
+
+      const trigger = ScrollTrigger.create({
+        trigger: document.documentElement,
+        start: "top top-=8",
+        onEnter: () => headerRef.current?.classList.add("nav-scrolled"),
+        onLeaveBack: () => headerRef.current?.classList.remove("nav-scrolled"),
+      });
+
+      return () => trigger.kill();
+    },
+    { scope: headerRef, dependencies: [reduce] }
+  );
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md print:hidden">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-40 border-b border-border/70 bg-background/80 backdrop-blur-md transition-shadow duration-300 print:hidden [&.nav-scrolled]:border-border [&.nav-scrolled]:bg-background/95 [&.nav-scrolled]:shadow-[0_8px_32px_hsl(24_10%_12%/0.06)] dark:[&.nav-scrolled]:shadow-[0_8px_32px_hsl(0_0%_0%/0.25)]"
+    >
       <nav className="mx-auto flex h-16 max-w-5xl items-center justify-between gap-4 px-4">
         <Link
           href="/"
           className="group flex items-center gap-2 text-sm font-semibold tracking-tight"
         >
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand font-mono text-sm text-brand-foreground">
+          <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand font-mono text-sm text-brand-foreground transition-transform duration-300 group-hover:scale-105">
             JM
           </span>
           <span className="hidden text-foreground sm:inline">
