@@ -2,6 +2,7 @@ import { getProject } from "@/server/keystatic";
 import { ProjectCard } from "@/components/sections/projects/list";
 import { resolveProjectLabels } from "@/components/sections/projects/resolve-labels";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 import { cn } from "@/utils/ui";
 
 export async function ProjectsArchiveGrid() {
@@ -19,7 +20,7 @@ export async function ProjectsArchiveGrid() {
   );
 
   return (
-    <div className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:items-start lg:gap-6">
+    <RevealGroup className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-12 lg:items-start lg:gap-6">
       {enriched.map(({ project, techLabels, tagLabels }, index) => {
         const featured = index === 0;
 
@@ -45,7 +46,7 @@ export async function ProjectsArchiveGrid() {
           </StaggerReveal>
         );
       })}
-    </div>
+    </RevealGroup>
   );
 }
 
@@ -67,7 +68,7 @@ export async function ProjectsFeaturedGrid() {
   );
 
   return (
-    <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
+    <RevealGroup className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
       {enriched.map(({ project, techLabels, tagLabels }, index) => {
         const featured = index === 0;
 
@@ -93,6 +94,6 @@ export async function ProjectsFeaturedGrid() {
           </StaggerReveal>
         );
       })}
-    </div>
+    </RevealGroup>
   );
 }

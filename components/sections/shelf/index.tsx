@@ -9,6 +9,7 @@ import {
 import type { Icon } from "@phosphor-icons/react";
 import { getBooks, getGames, getPhotos } from "@/server/keystatic";
 import { Reveal } from "@/components/motion/reveal";
+import { RevealGroup, RevealGroupItem } from "@/components/motion/reveal-group";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/utils/ui";
 
@@ -133,8 +134,8 @@ export async function ShelfSection() {
         />
       </Reveal>
 
-      <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
-        <Reveal className="lg:col-span-7">
+      <RevealGroup className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
+        <RevealGroupItem className="lg:col-span-7">
           <ShelfTile
             href="/books"
             label="Reading"
@@ -143,8 +144,8 @@ export async function ShelfSection() {
             Icon={BookOpen}
             thumbs={bookThumbs}
           />
-        </Reveal>
-        <Reveal delay={0.06} className="lg:col-span-5">
+        </RevealGroupItem>
+        <RevealGroupItem className="lg:col-span-5">
           <ShelfTile
             href="/games"
             label="Playing"
@@ -153,8 +154,8 @@ export async function ShelfSection() {
             Icon={GameController}
             thumbs={gameThumbs}
           />
-        </Reveal>
-        <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8">
+        </RevealGroupItem>
+        <RevealGroupItem className="lg:col-span-5 lg:col-start-8">
           <ShelfTile
             href="/photos"
             label="Shooting"
@@ -163,8 +164,8 @@ export async function ShelfSection() {
             Icon={Camera}
             thumbs={photoThumbs}
           />
-        </Reveal>
-      </div>
+        </RevealGroupItem>
+      </RevealGroup>
     </section>
   );
 }

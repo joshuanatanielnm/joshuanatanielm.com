@@ -7,6 +7,7 @@ import Link from "next/link";
 import { customMetadata } from "@/site.config";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
@@ -36,7 +37,7 @@ export async function ExperienceSection() {
         />
       </Reveal>
 
-      <div className="mt-14 flex flex-col border-t border-border">
+      <RevealGroup className="mt-14 flex flex-col border-t border-border">
         {experiences.map((experience, index) => {
           const {
             companyName,
@@ -64,7 +65,7 @@ export async function ExperienceSection() {
             </StaggerReveal>
           );
         })}
-      </div>
+      </RevealGroup>
     </section>
   );
 }

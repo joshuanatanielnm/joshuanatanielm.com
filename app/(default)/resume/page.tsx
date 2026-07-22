@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { DownloadResumeButton } from "@/components/sections/resume/download-resume-button";
+import { Reveal } from "@/components/motion/reveal";
 import { defaultMetadata } from "@/site.config";
 
 export const metadata: Metadata = {
@@ -21,20 +22,22 @@ export default function ResumePage() {
 
   return (
     <div className="mx-auto max-w-3xl px-4 pb-24 pt-12 print:max-w-none print:p-0">
-      <div className="flex justify-end mb-6 print:hidden">
+      <Reveal className="flex justify-end mb-6 print:hidden">
         <DownloadResumeButton />
-      </div>
-      <article
-        className="
+      </Reveal>
+      <Reveal>
+        <article
+          className="
           resume-ats
           mx-auto max-w-3xl bg-white text-zinc-900 font-serif
           border border-zinc-200 rounded-lg shadow-sm
           px-8 py-10 sm:px-12 sm:py-14
           print:max-w-none print:border-0 print:rounded-none print:shadow-none
         "
-      >
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
-      </article>
+        >
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>{markdown}</ReactMarkdown>
+        </article>
+      </Reveal>
     </div>
   );
 }

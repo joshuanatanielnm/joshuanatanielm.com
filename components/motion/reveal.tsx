@@ -1,16 +1,21 @@
 "use client";
 
-import { ReactNode, useEffect, useState } from "react";
-import { useNavigation } from "@/components/navigation/navigation-provider";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
-import { useSuppressEntryMotion } from "@/hooks/use-suppress-entry-motion";
+import { ReactNode, useRef } from "react";
+import { gsap, registerGsap, useGSAP } from "@/lib/gsap";
+import { useRevealReady } from "@/hooks/use-reveal-ready";
+import {
+  GSAP_EASE,
+  REVEAL_DURATION,
+  REVEAL_SCROLL_START,
+  REVEAL_Y,
+} from "@/lib/motion";
 import { cn } from "@/utils/ui";
 
 type RevealProps = {
   children: ReactNode;
   delay?: number;
   className?: string;
-  /** Kept for API compatibility; CSS fade-up distance is fixed in keyframes. */
+  /** Vertical offset before reveal (px). */
   y?: number;
 };
 
@@ -18,31 +23,51 @@ export function Reveal({
   children,
   delay = 0,
   className,
+  y = REVEAL_Y,
 }: RevealProps) {
-  const reduce = useReducedMotion();
-  const { phase } = useNavigation();
-  const mountedDuringTransition = useSuppressEntryMotion();
-  const [canAnimate, setCanAnimate] = useState(!mountedDuringTransition);
+  const ref = useRef<HTMLDivElement>(null);
+  const { ready, reduce } = useRevealReady();
 
-  useEffect(() => {
-    if (!mountedDuringTransition) return;
-    if (phase === "idle") setCanAnimate(true);
-  }, [phase, mountedDuringTransition]);
+  useGSAP(
+    () => {
+      registerGsap();
+      const el = ref.current;
+      if (!el) return;
 
-  const waiting = mountedDuringTransition && !canAnimate;
-  const animate = !reduce && canAnimate && phase === "idle";
+      if (reduce) {
+        gsap.set(el, { clearProps: "all" });
+        return;
+      }
+
+      if (!ready) {
+        gsap.set(el, { autoAlpha: 0, y });
+        return;
+      }
+
+      gsap.set(el, { autoAlpha: 0, y });
+
+      gsap.to(el, {
+        autoAlpha: 1,
+        y: 0,
+        duration: REVEAL_DURATION,
+        delay,
+        ease: GSAP_EASE,
+        scrollTrigger: {
+          trigger: el,
+          start: REVEAL_SCROLL_START,
+          once: true,
+        },
+      });
+    },
+    {
+      scope: ref,
+      dependencies: [ready, reduce, delay, y],
+      revertOnUpdate: true,
+    }
+  );
 
   return (
-    <div
-      className={cn(
-        waiting && "opacity-0",
-        animate && "motion-safe:animate-fade-up",
-        className
-      )}
-      style={
-        animate ? { animationDelay: `${Math.round(delay * 1000)}ms` } : undefined
-      }
-    >
+    <div ref={ref} className={cn(className)}>
       {children}
     </div>
   );

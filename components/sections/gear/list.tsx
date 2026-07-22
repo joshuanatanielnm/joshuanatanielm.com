@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -12,7 +14,10 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { Reveal } from "@/components/motion/reveal";
-import { staggerDelay } from "@/lib/motion";
+import {
+  RevealGroup,
+  RevealGroupItem,
+} from "@/components/motion/reveal-group";
 
 export type GearItem = {
   slug: string;
@@ -58,27 +63,21 @@ export function GearList({ items }: { items: GearItem[] }) {
 
   return (
     <div className="flex flex-col gap-10">
-      {(() => {
-        let staggerIndex = 0;
+      {grouped.map(({ category, meta, entries }) => (
+        <div key={category} className="flex flex-col gap-4">
+          <Reveal>
+            <div className="flex items-center gap-2">
+              <meta.Icon className="h-4 w-4 text-brand" weight="bold" />
+              <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                {meta.label}
+              </h2>
+              <span className="h-px flex-1 bg-border" />
+            </div>
+          </Reveal>
 
-        return grouped.map(({ category, meta, entries }) => (
-          <div key={category} className="flex flex-col gap-4">
-            <Reveal delay={staggerDelay(staggerIndex++)}>
-              <div className="flex items-center gap-2">
-                <meta.Icon
-                  className="h-4 w-4 text-brand"
-                  weight="bold"
-                />
-                <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                  {meta.label}
-                </h2>
-                <span className="h-px flex-1 bg-border" />
-              </div>
-            </Reveal>
-
+          <RevealGroup>
             <ul className="grid gap-3 sm:grid-cols-2">
               {entries.map((item) => {
-                const delay = staggerDelay(staggerIndex++);
                 const content = (
                   <>
                     <div className="flex items-start justify-between gap-2">
@@ -99,7 +98,7 @@ export function GearList({ items }: { items: GearItem[] }) {
 
                 return (
                   <li key={item.slug}>
-                    <Reveal delay={delay} className="h-full">
+                    <RevealGroupItem className="h-full">
                       {item.link ? (
                         <Link
                           href={item.link}
@@ -114,14 +113,14 @@ export function GearList({ items }: { items: GearItem[] }) {
                           {content}
                         </div>
                       )}
-                    </Reveal>
+                    </RevealGroupItem>
                   </li>
                 );
               })}
             </ul>
-          </div>
-        ));
-      })()}
+          </RevealGroup>
+        </div>
+      ))}
     </div>
   );
 }

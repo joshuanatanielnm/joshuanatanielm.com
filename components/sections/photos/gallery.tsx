@@ -2,6 +2,7 @@ import Image from "next/image";
 import { MapPin } from "@phosphor-icons/react/dist/ssr";
 import { format } from "date-fns";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 
 export type GalleryPhoto = {
   slug: string;
@@ -20,7 +21,7 @@ const dimensions: Record<string, { w: number; h: number }> = {
 
 export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
   return (
-    <div className="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
+    <RevealGroup className="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
       {photos.map((photo, index) => {
         if (!photo.imageUrl) return null;
         const dim = dimensions[photo.orientation] ?? dimensions.landscape;
@@ -59,6 +60,6 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
           </StaggerReveal>
         );
       })}
-    </div>
+    </RevealGroup>
   );
 }

@@ -4,6 +4,7 @@ import { getBooks } from "@/server/keystatic";
 import { BookCard } from "@/components/sections/books/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 import { NavigationContentSkeleton } from "@/components/ui/page-skeletons";
 
 export const metadata: Metadata = {
@@ -33,7 +34,7 @@ async function BooksGrid() {
   });
 
   return (
-    <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+    <RevealGroup className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
       {sorted.map((book, index) => (
         <StaggerReveal key={book.slug} index={index}>
           <BookCard
@@ -47,7 +48,7 @@ async function BooksGrid() {
           />
         </StaggerReveal>
       ))}
-    </div>
+    </RevealGroup>
   );
 }
 

@@ -3,6 +3,7 @@ import { NavLink } from "@/components/navigation/nav-link";
 import { ArrowRight, MapPin } from "@phosphor-icons/react/dist/ssr";
 import { format } from "date-fns";
 import { Reveal } from "@/components/motion/reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
 import type { GalleryPhoto } from "@/components/sections/photos/gallery";
 import { cn } from "@/utils/ui";
@@ -43,7 +44,7 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
         </div>
       </Reveal>
 
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+      <RevealGroup className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
         {photos.map((photo, index) => {
           if (!photo.imageUrl) return null;
           const orientation = photo.orientation ?? "landscape";
@@ -97,7 +98,7 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
             </StaggerReveal>
           );
         })}
-      </div>
+      </RevealGroup>
     </section>
   );
 }

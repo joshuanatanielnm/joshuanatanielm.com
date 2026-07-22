@@ -2,11 +2,9 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { getGear, getPhotos } from "@/server/keystatic";
 import { GearList, type GearItem } from "@/components/sections/gear/list";
-import {
-  PhotoGallery,
-  type GalleryPhoto,
-} from "@/components/sections/photos/gallery";
+import { PhotoGallery, type GalleryPhoto } from "@/components/sections/photos/gallery";
 import { TopTracks } from "@/components/sections/spotify/top-tracks";
+import { Reveal } from "@/components/motion/reveal";
 import { PageHeader } from "@/components/ui/page-header";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { NavigationContentSkeleton } from "@/components/ui/page-skeletons";
@@ -36,13 +34,15 @@ async function SetupPhotos() {
   if (deskPhotos.length === 0) return null;
 
   return (
-    <section className="flex flex-col gap-6">
-      <SectionHeading
-        title="The desk"
-        description="A few corners of my workspace."
-      />
-      <PhotoGallery photos={deskPhotos} />
-    </section>
+    <Reveal>
+      <section className="flex flex-col gap-6">
+        <SectionHeading
+          title="The desk"
+          description="A few corners of my workspace."
+        />
+        <PhotoGallery photos={deskPhotos} />
+      </section>
+    </Reveal>
   );
 }
 
@@ -59,13 +59,15 @@ async function SetupGear() {
   }));
 
   return (
-    <section className="flex flex-col gap-8">
-      <SectionHeading
-        title="What I use"
-        description="Hardware and software I reach for every day. Placeholder list for now, updated as things change."
-      />
-      <GearList items={gearItems} />
-    </section>
+    <Reveal>
+      <section className="flex flex-col gap-8">
+        <SectionHeading
+          title="What I use"
+          description="Hardware and software I reach for every day. Placeholder list for now, updated as things change."
+        />
+        <GearList items={gearItems} />
+      </section>
+    </Reveal>
   );
 }
 

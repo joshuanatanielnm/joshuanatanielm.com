@@ -4,6 +4,7 @@ import { getGames } from "@/server/keystatic";
 import { GameCard } from "@/components/sections/games/card";
 import { PageHeader } from "@/components/ui/page-header";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
+import { RevealGroup } from "@/components/motion/reveal-group";
 import { NavigationContentSkeleton } from "@/components/ui/page-skeletons";
 
 export const metadata: Metadata = {
@@ -32,7 +33,7 @@ async function GamesGrid() {
   });
 
   return (
-    <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+    <RevealGroup className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
       {sorted.map((game, index) => (
         <StaggerReveal key={game.slug} index={index}>
           <GameCard
@@ -47,7 +48,7 @@ async function GamesGrid() {
           />
         </StaggerReveal>
       ))}
-    </div>
+    </RevealGroup>
   );
 }
 
