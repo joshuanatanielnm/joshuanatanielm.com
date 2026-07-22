@@ -22,15 +22,17 @@ function HeroSkeleton() {
 }
 
 async function HeroContent() {
-  const { professionalSummary } = await getAbout();
+  const about = await getAbout();
   const isOpenToWork = process.env.NEXT_PUBLIC_IS_OPEN_TO_WORK === "true";
 
   return (
     <>
       <div className="lg:col-span-7">
         <HeroIntro
-          professionalSummary={professionalSummary}
+          professionalSummary={about.professionalSummary}
           isOpenToWork={isOpenToWork}
+          currentCompanyName={about.currentCompanyName}
+          currentCompanyUrl={about.currentCompanyUrl}
         />
       </div>
       <div className="lg:col-span-5">

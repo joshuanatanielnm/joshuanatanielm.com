@@ -42,6 +42,13 @@ export const aboutSchema = singleton({
         "Summary for the homepage about section. Separate paragraphs with a blank line.",
       multiline: true,
     }),
+    currentCompanyName: fields.text({
+      label: "Current Company",
+      description: "Optional. Shown as a small badge in the hero.",
+    }),
+    currentCompanyUrl: fields.url({
+      label: "Current Company URL",
+    }),
   },
   previewUrl: `${process.env.APP_URL}/about`,
 });

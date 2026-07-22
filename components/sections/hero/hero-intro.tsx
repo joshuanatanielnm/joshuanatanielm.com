@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useRef } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { customMetadata } from "@/site.config";
-import { Reveal } from "@/components/motion/reveal";
 import {
   RevealGroup,
   RevealGroupItem,
@@ -15,11 +14,15 @@ import { useReducedMotion } from "@/hooks/use-reduced-motion";
 type HeroIntroProps = {
   professionalSummary: string;
   isOpenToWork: boolean;
+  currentCompanyName?: string | null;
+  currentCompanyUrl?: string | null;
 };
 
 export function HeroIntro({
   professionalSummary,
   isOpenToWork,
+  currentCompanyName,
+  currentCompanyUrl,
 }: HeroIntroProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const reduce = useReducedMotion();
@@ -86,9 +89,17 @@ export function HeroIntro({
                 Surabaya · ID
               </span>
             )}
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              Software Engineer
-            </span>
+            {currentCompanyName && currentCompanyUrl ? (
+              <Link
+                href={currentCompanyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand"
+              >
+                Wizard at {currentCompanyName}
+              </Link>
+            ) : null}
+
           </div>
         </RevealGroupItem>
 
