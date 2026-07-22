@@ -38,7 +38,8 @@ export const aboutSchema = singleton({
     }),
     homepageTeaser: fields.text({
       label: "Homepage Teaser",
-      description: "Short summary shown on the homepage about section.",
+      description:
+        "Summary for the homepage about section. Separate paragraphs with a blank line.",
       multiline: true,
     }),
   },
