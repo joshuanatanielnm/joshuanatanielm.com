@@ -1,27 +1,48 @@
+"use client";
+
 import Link from "next/link";
 import { socialLinks } from "@/app/(default)/links";
+import { NavLink } from "@/components/navigation/nav-link";
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-border/70 print:hidden">
-      <div className="mx-auto flex max-w-5xl flex-col gap-6 px-4 py-10 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-1 text-sm text-muted-foreground">
-          <p className="font-medium text-foreground">Joshua Manuputty</p>
-          <p>Built with Next.js and Tailwind CSS. © 2026, all rights reserved.</p>
+    <footer className="border-t border-border print:hidden">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 sm:flex-row sm:items-end sm:justify-between">
+        <div className="flex flex-col gap-2">
+          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            Joshua Manuputty
+          </p>
+          <p className="max-w-sm text-sm text-muted-foreground">
+            Software engineer · end-to-end web products.
+          </p>
+          <p className="font-mono text-xs text-muted-foreground/70">
+            © 2026
+          </p>
         </div>
-        <div className="flex flex-wrap items-center gap-2">
-          {socialLinks.map((link) => (
-            <Link
-              key={link.label}
-              href={link.href}
-              aria-label={link.label}
-              target={link.internal ? undefined : "_blank"}
-              rel={link.internal ? undefined : "noopener noreferrer"}
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border bg-card text-muted-foreground transition-colors hover:border-brand/40 hover:text-brand"
-            >
-              <link.Icon className="h-[18px] w-[18px]" />
-            </Link>
-          ))}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
+          {socialLinks.map((link) =>
+            link.internal ? (
+              <NavLink
+                key={link.label}
+                href={link.href}
+                aria-label={link.label}
+                className="text-sm text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
+              >
+                {link.label}
+              </NavLink>
+            ) : (
+              <Link
+                key={link.label}
+                href={link.href}
+                aria-label={link.label}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
+              >
+                {link.label}
+              </Link>
+            )
+          )}
         </div>
       </div>
     </footer>

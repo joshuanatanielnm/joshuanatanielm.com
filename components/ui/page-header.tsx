@@ -4,15 +4,22 @@ export function PageHeader({
   title,
   description,
   meta,
+  index,
 }: {
   title: string;
   description?: string;
   meta?: ReactNode;
+  index?: string;
 }) {
   return (
-    <div className="flex flex-col gap-4">
+    <div className="flex flex-col gap-5">
       <div className="flex flex-col gap-3">
-        <h1 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        {index ? (
+          <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            {index}
+          </span>
+        ) : null}
+        <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
           {title}
         </h1>
         {description ? (

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
+import { NavLink } from "@/components/navigation/nav-link";
 import {
   ArrowUpRight,
   BookOpen,
@@ -10,6 +10,7 @@ import type { Icon } from "@phosphor-icons/react";
 import { getBooks, getGames, getPhotos } from "@/server/keystatic";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { cn } from "@/utils/ui";
 
 type Thumb = { src: string; alt: string; portrait?: boolean };
 
@@ -20,6 +21,7 @@ function ShelfTile({
   meta,
   Icon: TileIcon,
   thumbs,
+  className,
 }: {
   href: string;
   label: string;
@@ -27,47 +29,62 @@ function ShelfTile({
   meta: string;
   Icon: Icon;
   thumbs: Thumb[];
+  className?: string;
 }) {
+  const visibleThumbs = thumbs.slice(0, 3);
+
   return (
-    <Link
+    <NavLink
       href={href}
-      className="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-brand/40"
+      className={cn(
+        "group flex min-w-0 flex-col rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
+        className
+      )}
     >
-      <div className="flex items-center justify-between px-5 pt-5">
-        <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-wider text-muted-foreground">
-          <TileIcon className="h-4 w-4 text-brand" weight="fill" />
-          {label}
-        </span>
-        <ArrowUpRight
-          className="h-4 w-4 text-muted-foreground transition-colors group-hover:text-brand"
-          weight="bold"
-        />
-      </div>
+      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+        <div className="flex items-center justify-between px-5 pt-5">
+          <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+            <TileIcon className="h-4 w-4 text-brand" weight="fill" />
+            {label}
+          </span>
+          <span className="grid h-8 w-8 place-items-center rounded-full bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
+            <ArrowUpRight className="h-4 w-4" weight="bold" />
+          </span>
+        </div>
 
-      <div className="flex flex-1 flex-col gap-1 px-5 pb-4 pt-3">
-        <h3 className="font-medium text-foreground">{title}</h3>
-        <p className="text-sm text-muted-foreground">{meta}</p>
-      </div>
+        <div className="flex flex-col gap-1 px-5 pb-4 pt-3">
+          <h3 className="text-lg font-medium tracking-tight text-foreground">
+            {title}
+          </h3>
+          <p className="text-sm text-muted-foreground">{meta}</p>
+        </div>
 
-      <div className="flex gap-2 px-5 pb-5">
-        {thumbs.map((thumb, i) => (
-          <div
-            key={i}
-            className={`relative overflow-hidden rounded-lg border border-border ${
-              thumb.portrait ? "aspect-[3/4] flex-1" : "aspect-square flex-1"
-            }`}
-          >
-            <Image
-              src={thumb.src}
-              alt={thumb.alt}
-              fill
-              sizes="120px"
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-            />
+        {visibleThumbs.length > 0 ? (
+          <div className="grid min-w-0 grid-cols-3 gap-2 px-5 pb-5">
+            {visibleThumbs.map((thumb, i) => (
+              <div
+                key={`${thumb.src}-${i}`}
+                className="relative h-28 min-w-0 overflow-hidden rounded-xl border border-border sm:h-32"
+              >
+                <Image
+                  src={thumb.src}
+                  alt={thumb.alt}
+                  fill
+                  sizes="120px"
+                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                />
+              </div>
+            ))}
           </div>
-        ))}
+        ) : (
+          <div className="px-5 pb-5">
+            <div className="rounded-xl border border-dashed border-border px-4 py-8 text-center text-xs text-muted-foreground">
+              Nothing here yet
+            </div>
+          </div>
+        )}
       </div>
-    </Link>
+    </NavLink>
   );
 }
 
@@ -81,14 +98,22 @@ export async function ShelfSection() {
   const bookThumbs: Thumb[] = books
     .filter((b) => b.entry.coverUrl)
     .slice(0, 3)
-    .map((b) => ({ src: b.entry.coverUrl!, alt: b.entry.title, portrait: true }));
+    .map((b) => ({
+      src: b.entry.coverUrl!,
+      alt: b.entry.title,
+      portrait: true,
+    }));
 
   const gameThumbs: Thumb[] = games
     .filter((g) => g.entry.coverUrl)
     .slice(0, 3)
-    .map((g) => ({ src: g.entry.coverUrl!, alt: g.entry.title, portrait: true }));
+    .map((g) => ({
+      src: g.entry.coverUrl!,
+      alt: g.entry.title,
+      portrait: true,
+    }));
 
-  const journalPhotos = photos.filter((p) => p.entry.category !== "setup");
+  const journalPhotos = photos.filter((p) => p.entry.category === "journal");
 
   const photoThumbs: Thumb[] = journalPhotos
     .filter((p) => p.entry.imageUrl)
@@ -98,41 +123,48 @@ export async function ShelfSection() {
   return (
     <section
       id="beyond"
-      className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6 sm:py-32"
     >
       <Reveal>
         <SectionHeading
+          index="04"
           title="Beyond the code"
-          description="The books, games, and places that keep me curious when I'm away from the keyboard."
+          description="Books, games, and places that keep me curious away from the keyboard."
         />
       </Reveal>
 
-      <Reveal delay={0.05} className="mt-10 grid gap-6 md:grid-cols-3">
-        <ShelfTile
-          href="/books"
-          label="Reading"
-          title="What I'm reading"
-          meta={`${books.length} books on the shelf`}
-          Icon={BookOpen}
-          thumbs={bookThumbs}
-        />
-        <ShelfTile
-          href="/games"
-          label="Playing"
-          title="Games I love"
-          meta={`${games.length} games tracked`}
-          Icon={GameController}
-          thumbs={gameThumbs}
-        />
-        <ShelfTile
-          href="/photos"
-          label="Shooting"
-          title="Through my lens"
-          meta={`${journalPhotos.length} photos and counting`}
-          Icon={Camera}
-          thumbs={photoThumbs}
-        />
-      </Reveal>
+      <div className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
+        <Reveal className="lg:col-span-7">
+          <ShelfTile
+            href="/books"
+            label="Reading"
+            title="What I'm reading"
+            meta={`${books.length} books on the shelf`}
+            Icon={BookOpen}
+            thumbs={bookThumbs}
+          />
+        </Reveal>
+        <Reveal delay={0.06} className="lg:col-span-5">
+          <ShelfTile
+            href="/games"
+            label="Playing"
+            title="Games I love"
+            meta={`${games.length} games tracked`}
+            Icon={GameController}
+            thumbs={gameThumbs}
+          />
+        </Reveal>
+        <Reveal delay={0.1} className="lg:col-span-5 lg:col-start-8">
+          <ShelfTile
+            href="/photos"
+            label="Shooting"
+            title="Through my lens"
+            meta={`${journalPhotos.length} photos and counting`}
+            Icon={Camera}
+            thumbs={photoThumbs}
+          />
+        </Reveal>
+      </div>
     </section>
   );
 }

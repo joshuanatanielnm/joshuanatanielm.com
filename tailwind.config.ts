@@ -82,6 +82,18 @@ const config = {
           from: { opacity: "0", transform: "translateY(16px)" },
           to: { opacity: "1", transform: "translateY(0)" },
         },
+        "nav-overlay-in": {
+          from: { opacity: "0", transform: "translateY(14px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
+        "nav-overlay-out": {
+          from: { opacity: "1", transform: "translateY(0)" },
+          to: { opacity: "0", transform: "translateY(-10px)" },
+        },
+        "page-enter": {
+          from: { opacity: "0", transform: "translateY(22px)" },
+          to: { opacity: "1", transform: "translateY(0)" },
+        },
         marquee: {
           from: { transform: "translateX(0)" },
           to: { transform: "translateX(-50%)" },
@@ -99,7 +111,12 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         slidein: "slidein ease 700ms",
-        "fade-up": "fade-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both",
+        "fade-up": "fade-up 0.65s cubic-bezier(0.32, 0.72, 0, 1) both",
+        "nav-overlay-in":
+          "nav-overlay-in 0.45s cubic-bezier(0.32, 0.72, 0, 1) both",
+        "nav-overlay-out":
+          "nav-overlay-out 0.7s cubic-bezier(0.32, 0.72, 0, 1) both",
+        "page-enter": "page-enter 0.85s cubic-bezier(0.32, 0.72, 0, 1) both",
         marquee: "marquee 40s linear infinite",
       },
     },

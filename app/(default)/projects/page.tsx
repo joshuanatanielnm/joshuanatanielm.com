@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import { ProjectCard } from "@/components/sections/projects/list";
-import { getProject } from "@/server/keystatic";
+import { Suspense } from "react";
+import { ProjectsArchiveGrid } from "@/components/sections/projects/grids";
 import { PageHeader } from "@/components/ui/page-header";
-import { Reveal } from "@/components/motion/reveal";
+import { NavigationContentSkeleton } from "@/components/ui/page-skeletons";
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -10,31 +10,19 @@ export const metadata: Metadata = {
     "Products, dashboards, and experiments Joshua Manuputty has built across companies and communities.",
 };
 
-export default async function Page() {
-  const projects = (await getProject()).entries;
+export const revalidate = 3600;
 
+export default function Page() {
   return (
-    <div className="mx-auto max-w-5xl px-4 py-16">
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
       <PageHeader
+        index="Archive"
         title="Projects"
         description="A fuller archive of what I've shipped: client work, open-source protocols, community sites, and personal experiments."
       />
-
-      <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {projects.map((project, index) => (
-          <Reveal key={project.name} delay={Math.min(index * 0.04, 0.24)}>
-            <ProjectCard
-              className="h-full"
-              description={project.subtitle}
-              projectUrl={project.link.value?.href ?? ""}
-              techStack={project.techStack}
-              title={project.name}
-              tags={project.tags}
-              imageUrl={project.previewUrl ?? ""}
-            />
-          </Reveal>
-        ))}
-      </div>
+      <Suspense fallback={<NavigationContentSkeleton />}>
+        <ProjectsArchiveGrid />
+      </Suspense>
     </div>
   );
 }

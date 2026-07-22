@@ -7,6 +7,7 @@ import Link from "next/link";
 import { customMetadata } from "@/site.config";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/motion/reveal";
+import { StaggerReveal } from "@/components/motion/stagger-reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 
 export async function ExperienceSection() {
@@ -14,25 +15,28 @@ export async function ExperienceSection() {
   return (
     <section
       id="experiences"
-      className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6 sm:py-32"
     >
       <Reveal>
         <SectionHeading
+          index="02"
           title="Where I've worked"
-          description="A few of the teams I've been grateful to build with, from startups and agencies to open-source protocols."
+          description="Teams I've built with — startups, agencies, and open-source protocols."
           action={
             <Link
               href={customMetadata.resumeUrl}
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand/80"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand/80"
             >
               Full résumé
-              <ArrowUpRight className="h-4 w-4" weight="bold" />
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+                <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
+              </span>
             </Link>
           }
         />
       </Reveal>
 
-      <div className="mt-10 flex flex-col divide-y divide-border border-t border-border">
+      <div className="mt-14 flex flex-col border-t border-border">
         {experiences.map((experience, index) => {
           const {
             companyName,
@@ -45,9 +49,9 @@ export async function ExperienceSection() {
           } = experience.entry;
           const formattedDate = formatDateRange({ startDate, endDate });
           return (
-            <Reveal
+            <StaggerReveal
               key={`${jobTitle}-${format(new Date(startDate), "yyyy-MM-dd")}`}
-              delay={Math.min(index * 0.04, 0.2)}
+              index={index}
             >
               <ExperienceList
                 at={companyName}
@@ -57,7 +61,7 @@ export async function ExperienceSection() {
                 title={jobTitle}
                 imageUrl={companyLogo}
               />
-            </Reveal>
+            </StaggerReveal>
           );
         })}
       </div>

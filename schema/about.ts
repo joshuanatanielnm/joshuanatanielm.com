@@ -31,6 +31,16 @@ export const aboutSchema = singleton({
         length: { min: 1 },
       },
     }),
+    pageDescription: fields.text({
+      label: "About Page Description",
+      description: "Short intro shown at the top of the /about page.",
+      multiline: true,
+    }),
+    homepageTeaser: fields.text({
+      label: "Homepage Teaser",
+      description: "Short summary shown on the homepage about section.",
+      multiline: true,
+    }),
   },
   previewUrl: `${process.env.APP_URL}/about`,
 });

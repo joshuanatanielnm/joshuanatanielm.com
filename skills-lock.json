@@ -25,6 +25,12 @@
       "skillPath": "skills/gsap-react/SKILL.md",
       "computedHash": "7d3b52822681a4158e371f895c58fb7030ecaf33f585a534b7162f9e92c5d893"
     },
+    "high-end-visual-design": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/soft-skill/SKILL.md",
+      "computedHash": "7db385e4c5370e5a7fca9704a1361b056e4504ea6a03924bb86f33a4f00b5c73"
+    },
     "react-three-fiber": {
       "source": "vercel-labs/json-render",
       "sourceType": "github",
@@ -36,6 +42,12 @@
       "sourceType": "github",
       "skillPath": "skills/shadcn/SKILL.md",
       "computedHash": "d81caa0f86aabab65b25e302d454f23a3328760386ed9078345584c0d5c8058e"
+    },
+    "stitch-design-taste": {
+      "source": "leonxlnx/taste-skill",
+      "sourceType": "github",
+      "skillPath": "skills/stitch-skill/SKILL.md",
+      "computedHash": "13322f38406cd3abf16ba45e35bdc9b18002d0153a79b4612b97aefc65d5a335"
     },
     "threejs-animation": {
       "source": "cloudai-x/threejs-skills",

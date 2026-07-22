@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { MapPin } from "@phosphor-icons/react/dist/ssr";
 import { format } from "date-fns";
-import { Reveal } from "@/components/motion/reveal";
+import { StaggerReveal } from "@/components/motion/stagger-reveal";
 
 export type GalleryPhoto = {
   slug: string;
@@ -25,11 +25,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
         if (!photo.imageUrl) return null;
         const dim = dimensions[photo.orientation] ?? dimensions.landscape;
         return (
-          <Reveal
-            key={photo.slug}
-            delay={Math.min(index * 0.04, 0.24)}
-            className="break-inside-avoid"
-          >
+          <StaggerReveal key={photo.slug} index={index} className="break-inside-avoid">
             <figure className="group overflow-hidden rounded-2xl border border-border bg-card">
               <div className="overflow-hidden">
                 <Image
@@ -60,7 +56,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
                 ) : null}
               </figcaption>
             </figure>
-          </Reveal>
+          </StaggerReveal>
         );
       })}
     </div>

@@ -1,85 +1,66 @@
 "use client";
 
 import Link from "next/link";
-import { useRef } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { customMetadata } from "@/site.config";
 import { socialLinks } from "@/app/(default)/links";
-import { registerGsap, gsap, useGSAP } from "@/lib/gsap";
-import { useReducedMotion } from "@/hooks/use-reduced-motion";
+import { Reveal } from "@/components/motion/reveal";
 
 export function ContactSection() {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const reduce = useReducedMotion();
-
-  useGSAP(
-    () => {
-      registerGsap();
-      if (reduce || !cardRef.current) return;
-
-      gsap.from(cardRef.current, {
-        opacity: 0,
-        scale: 0.96,
-        y: 24,
-        duration: 1,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: cardRef.current,
-          start: "top 85%",
-          once: true,
-        },
-      });
-    },
-    { scope: cardRef, dependencies: [reduce] }
-  );
-
   return (
-    <section id="contact" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16">
-      <div
-        ref={cardRef}
-        className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-brand/10 via-card to-card px-6 py-14 sm:px-12"
-      >
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-20 -top-20 h-56 w-56 rounded-full bg-brand/15 blur-3xl"
-        />
-        <div className="relative mx-auto flex max-w-2xl flex-col items-center text-center">
-          <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
-            Let&apos;s build something together
-          </h2>
-          <p className="mt-4 max-w-lg text-muted-foreground">
-            I&apos;m always happy to talk about frontend work, open-source, or a
-            product you&apos;re trying to get off the ground.
-          </p>
+    <section
+      id="contact"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6 sm:py-32"
+    >
+      <Reveal>
+        <div className="grid gap-12 border-t border-border pt-16 lg:grid-cols-12 lg:gap-16 lg:pt-24">
+          <div className="lg:col-span-7">
+            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+              05 — Contact
+            </p>
+            <h2 className="mt-4 text-balance text-[clamp(2.5rem,8vw,5rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-foreground">
+              Got something
+              <br />
+              to build?
+            </h2>
+            <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground">
+              I&apos;m open to product work, frontend-heavy roles, or Web3 —
+              from UI polish to shipping something end to end.
+            </p>
+          </div>
 
-          <div className="mt-8">
+          <div className="flex flex-col justify-end gap-8 lg:col-span-5">
             <Link
               href={customMetadata.emailUrl}
-              className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-medium text-brand-foreground transition-transform hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group inline-flex w-fit items-center gap-3 rounded-full bg-brand py-2 pl-6 pr-2 text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Get in touch
-              <ArrowUpRight className="h-4 w-4" weight="bold" />
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-foreground/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+                <ArrowUpRight className="h-4 w-4" weight="bold" />
+              </span>
             </Link>
-          </div>
 
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-2">
-            {socialLinks
-              .filter((link) => !link.internal)
-              .map((link) => (
-                <Link
-                  key={link.label}
-                  href={link.href}
-                  aria-label={link.label}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-border bg-card/80 text-muted-foreground transition-colors hover:border-brand/40 hover:text-brand"
-                >
-                  <link.Icon className="h-5 w-5" />
-                </Link>
-              ))}
+            <ul className="flex flex-col gap-2">
+              {socialLinks
+                .filter((link) => !link.internal)
+                .map((link) => (
+                  <li key={link.label}>
+                    <Link
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group inline-flex items-center gap-3 text-sm text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-foreground"
+                    >
+                      <link.Icon className="h-4 w-4" />
+                      {link.label}
+                      <ArrowUpRight className="h-3.5 w-3.5 opacity-0 transition-[opacity,transform] duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:opacity-100 group-focus-visible:opacity-100" />
+                    </Link>
+                  </li>
+                ))}
+            </ul>
           </div>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }

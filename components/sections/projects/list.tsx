@@ -1,100 +1,98 @@
-import { getTag, getTechnology } from "@/server/keystatic";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/utils/ui";
 
-interface ProjectCardProps {
+export interface ProjectCardProps {
   title: string;
   description: string;
-  techStack: readonly (string | null)[];
-  tags?: readonly (string | null)[];
+  techLabels: string[];
+  tagLabels?: string[];
   projectUrl: string;
   imageUrl?: string;
   className?: string;
+  featured?: boolean;
 }
 
-export async function ProjectCard(props: ProjectCardProps) {
-  const techStack = await Promise.all(
-    props.techStack.map(async (tech) => (await getTechnology(tech ?? "")).name ?? "")
-  );
-
-  const tagsData = props.tags
-    ? await Promise.all(props.tags.map((tag) => getTag(tag ?? "")))
-    : [];
-
+export function ProjectCard(props: ProjectCardProps) {
   const hasUrl = Boolean(props.projectUrl);
 
   return (
-    <article
+    <div
       className={cn(
-        "group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-brand/40",
+        "rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5",
         props.className
       )}
     >
-      <div className="relative aspect-[16/10] overflow-hidden bg-muted">
-        {props.imageUrl ? (
-          <Image
-            src={props.imageUrl}
-            alt={`${props.title} preview`}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center">
-            <span className="font-mono text-3xl font-semibold text-muted-foreground/40">
-              {props.title.charAt(0)}
-            </span>
-          </div>
-        )}
-      </div>
-
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <div className="flex items-start justify-between gap-3">
-          <h3 className="font-medium leading-tight text-foreground">
-            {props.title}
-          </h3>
-          {hasUrl ? (
-            <ArrowUpRight
-              className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-brand"
-              weight="bold"
+      <article className="group relative flex flex-col overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
+          {props.imageUrl ? (
+            <Image
+              src={props.imageUrl}
+              alt={`${props.title} preview`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
             />
-          ) : null}
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <span className="font-mono text-3xl font-semibold text-muted-foreground/40">
+                {props.title.charAt(0)}
+              </span>
+            </div>
+          )}
         </div>
 
-        <p className="text-sm leading-relaxed text-muted-foreground">
-          {props.description}
-        </p>
-
-        {tagsData.length > 0 ? (
-          <div className="flex flex-wrap gap-1.5">
-            {tagsData.slice(0, 3).map((tag) => (
-              <Badge key={tag.tagName} variant="muted">
-                {tag.tagName}
-              </Badge>
-            ))}
+        <div className="flex flex-col gap-3 p-5 sm:p-6">
+          <div className="flex items-start justify-between gap-3">
+            <h3
+              className={cn(
+                "font-medium leading-tight tracking-tight text-foreground",
+                props.featured ? "text-lg sm:text-xl" : "text-base"
+              )}
+            >
+              {props.title}
+            </h3>
+            {hasUrl ? (
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
+                <ArrowUpRight className="h-4 w-4" weight="bold" />
+              </span>
+            ) : null}
           </div>
+
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {props.description}
+          </p>
+
+          {props.tagLabels && props.tagLabels.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {props.tagLabels.slice(0, 3).map((tag) => (
+                <Badge key={tag} variant="muted">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+
+          <p className="border-t border-border/60 pt-3 font-mono text-xs text-muted-foreground">
+            {props.techLabels.slice(0, 4).join(" · ")}
+            {props.techLabels.length > 4 ? " · …" : ""}
+          </p>
+        </div>
+
+        {hasUrl ? (
+          <Link
+            href={props.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0"
+            aria-label={`Open ${props.title}`}
+          >
+            <span className="sr-only">Open {props.title}</span>
+          </Link>
         ) : null}
-
-        <p className="mt-auto pt-2 font-mono text-xs text-muted-foreground">
-          {techStack.slice(0, 4).join(" · ")}
-          {techStack.length > 4 ? " · …" : ""}
-        </p>
-      </div>
-
-      {hasUrl ? (
-        <Link
-          href={props.projectUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute inset-0"
-          aria-label={`Open ${props.title}`}
-        >
-          <span className="sr-only">Open {props.title}</span>
-        </Link>
-      ) : null}
-    </article>
+      </article>
+    </div>
   );
 }

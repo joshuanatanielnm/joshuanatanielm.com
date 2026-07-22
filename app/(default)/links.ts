@@ -22,6 +22,7 @@ export type SocialLink = {
 };
 
 export const navLinks: NavLink[] = [
+  { href: "/about", label: "About" },
   { href: "/projects", label: "Projects" },
   { href: "/books", label: "Reading" },
   { href: "/games", label: "Games" },

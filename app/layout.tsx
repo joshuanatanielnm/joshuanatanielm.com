@@ -10,7 +10,7 @@ import { Providers } from "./providers";
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#faf7f0" },
+    { media: "(prefers-color-scheme: light)", color: "#FFF7ED" },
     { media: "(prefers-color-scheme: dark)", color: "#141210" },
   ],
   width: "device-width",
@@ -49,13 +49,19 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <html
       lang="en"
       className={cn(
-        "scroll-smooth",
+        "motion-safe:scroll-smooth",
         GeistSans.variable,
         GeistMono.variable
       )}
       suppressHydrationWarning
     >
       <body className="min-h-[100dvh] bg-background font-sans text-foreground print:bg-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-brand-foreground"
+        >
+          Skip to content
+        </a>
         <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />

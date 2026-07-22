@@ -16,7 +16,7 @@ const url = `${protocol}://${domain}`;
 export const defaultMetadata = {
   title: "Joshua Manuputty | Software Engineer",
   description:
-    "Software engineer, specializing in Frontend Development using React-based technologies.",
+    "Software engineer with a frontend focus, building end-to-end products across Web3 and modern web applications.",
   email: "joshuanmanuputty@gmail.com",
   github: {
     username: "joshuanatanielnm",

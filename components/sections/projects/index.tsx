@@ -1,50 +1,45 @@
-import { getProject } from "@/server/keystatic";
-import React from "react";
-import { ProjectCard } from "./list";
-import Link from "next/link";
+import { NavLink } from "@/components/navigation/nav-link";
+import { Suspense } from "react";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ProjectsFeaturedGrid } from "@/components/sections/projects/grids";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
+import { MediaCardGridSkeleton } from "@/components/ui/page-skeletons";
 
-export async function ProjectSection() {
-  const projects = (await getProject()).entries;
-  const selectedProjects = projects
-    .filter((project) => project.link.value !== null)
-    .slice(0, 3);
-
+export function ProjectSection() {
   return (
-    <section id="projects" className="mx-auto max-w-5xl scroll-mt-20 px-4 py-16">
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6 sm:py-32"
+    >
       <Reveal>
         <SectionHeading
+          index="03"
           title="Selected projects"
-          description="Products I've shipped across companies, communities, and side experiments."
+          description="Products shipped across companies, communities, and side experiments."
           action={
-            <Link
+            <NavLink
               href="/projects"
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand transition-colors hover:text-brand/80"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand/80"
             >
               All projects
-              <ArrowRight className="h-4 w-4" weight="bold" />
-            </Link>
+              <span className="grid h-7 w-7 place-items-center rounded-full bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                <ArrowRight className="h-3.5 w-3.5" weight="bold" />
+              </span>
+            </NavLink>
           }
         />
       </Reveal>
 
-      <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {selectedProjects.map((project, index) => (
-          <Reveal key={project.name} delay={Math.min(index * 0.06, 0.2)}>
-            <ProjectCard
-              className="h-full"
-              description={project.subtitle}
-              projectUrl={project.link.value?.href ?? ""}
-              techStack={project.techStack}
-              title={project.name}
-              tags={project.tags}
-              imageUrl={project.previewUrl ?? ""}
-            />
-          </Reveal>
-        ))}
-      </div>
+      <Suspense
+        fallback={
+          <div className="mt-14">
+            <MediaCardGridSkeleton count={3} />
+          </div>
+        }
+      >
+        <ProjectsFeaturedGrid />
+      </Suspense>
     </section>
   );
 }

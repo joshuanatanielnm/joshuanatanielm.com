@@ -12,6 +12,7 @@ import {
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
 import { Reveal } from "@/components/motion/reveal";
+import { staggerDelay } from "@/lib/motion";
 
 export type GearItem = {
   slug: string;
@@ -57,22 +58,27 @@ export function GearList({ items }: { items: GearItem[] }) {
 
   return (
     <div className="flex flex-col gap-10">
-      {grouped.map(({ category, meta, entries }, groupIndex) => (
-        <Reveal key={category} delay={Math.min(groupIndex * 0.05, 0.2)}>
-          <div className="flex flex-col gap-4">
-            <div className="flex items-center gap-2">
-              <meta.Icon
-                className="h-4 w-4 text-brand"
-                weight="bold"
-              />
-              <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
-                {meta.label}
-              </h2>
-              <span className="h-px flex-1 bg-border" />
-            </div>
+      {(() => {
+        let staggerIndex = 0;
+
+        return grouped.map(({ category, meta, entries }) => (
+          <div key={category} className="flex flex-col gap-4">
+            <Reveal delay={staggerDelay(staggerIndex++)}>
+              <div className="flex items-center gap-2">
+                <meta.Icon
+                  className="h-4 w-4 text-brand"
+                  weight="bold"
+                />
+                <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+                  {meta.label}
+                </h2>
+                <span className="h-px flex-1 bg-border" />
+              </div>
+            </Reveal>
 
             <ul className="grid gap-3 sm:grid-cols-2">
               {entries.map((item) => {
+                const delay = staggerDelay(staggerIndex++);
                 const content = (
                   <>
                     <div className="flex items-start justify-between gap-2">
@@ -93,27 +99,29 @@ export function GearList({ items }: { items: GearItem[] }) {
 
                 return (
                   <li key={item.slug}>
-                    {item.link ? (
-                      <Link
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40"
-                      >
-                        {content}
-                      </Link>
-                    ) : (
-                      <div className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4">
-                        {content}
-                      </div>
-                    )}
+                    <Reveal delay={delay} className="h-full">
+                      {item.link ? (
+                        <Link
+                          href={item.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40"
+                        >
+                          {content}
+                        </Link>
+                      ) : (
+                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4">
+                          {content}
+                        </div>
+                      )}
+                    </Reveal>
                   </li>
                 );
               })}
             </ul>
           </div>
-        </Reveal>
-      ))}
+        ));
+      })()}
     </div>
   );
 }

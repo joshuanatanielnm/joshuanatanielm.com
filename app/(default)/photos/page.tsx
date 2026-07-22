@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { getPhotos } from "@/server/keystatic";
 import { PhotoGallery, type GalleryPhoto } from "@/components/sections/photos/gallery";
 import { PageHeader } from "@/components/ui/page-header";
+import { NavigationContentSkeleton } from "@/components/ui/page-skeletons";
 
 export const metadata: Metadata = {
   title: "Photos",
@@ -9,10 +11,11 @@ export const metadata: Metadata = {
     "A small photo journal by Joshua Manuputty. Places, people, and light around Indonesia and beyond.",
 };
 
-export default async function Page() {
-  const photos = await getPhotos();
+export const revalidate = 3600;
 
-  const journal = photos.filter((photo) => photo.entry.category !== "setup");
+async function PhotosGallery() {
+  const photos = await getPhotos();
+  const journal = photos.filter((photo) => photo.entry.category === "journal");
 
   const sorted = [...journal].sort((a, b) => {
     const aDate = a.entry.takenDate ?? "";
@@ -30,15 +33,22 @@ export default async function Page() {
   }));
 
   return (
-    <div className="mx-auto max-w-5xl px-4 py-16">
+    <div className="mt-12">
+      <PhotoGallery photos={gallery} />
+    </div>
+  );
+}
+
+export default function Page() {
+  return (
+    <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-24">
       <PageHeader
         title="Photos"
         description="A quiet corner of the site. Photos I've taken around Surabaya and while travelling. No filters, just moments I wanted to keep."
       />
-
-      <div className="mt-12">
-        <PhotoGallery photos={gallery} />
-      </div>
+      <Suspense fallback={<NavigationContentSkeleton />}>
+        <PhotosGallery />
+      </Suspense>
     </div>
   );
 }

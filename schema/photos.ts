@@ -36,9 +36,10 @@ export const photoSchema = collection({
     category: fields.select({
       label: "Category",
       description:
-        "Journal photos show on /photos. Setup photos show on the /setup page.",
+        "Journal photos show on /photos. Life photos show on /about. Setup photos show on /setup.",
       options: [
         { label: "Journal", value: "journal" },
+        { label: "Life", value: "life" },
         { label: "Setup", value: "setup" },
       ],
       defaultValue: "journal",

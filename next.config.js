@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  experimental: {
+    optimizePackageImports: [
+      "@phosphor-icons/react",
+      "@phosphor-icons/react/dist/ssr",
+      "lucide-react",
+      "@radix-ui/react-icons",
+    ],
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
