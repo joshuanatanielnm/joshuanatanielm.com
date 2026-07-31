@@ -7,6 +7,7 @@ import { normalizePath } from "@/lib/normalize-path";
 import { NavLink } from "@/components/navigation/nav-link";
 import { useNavigation } from "@/components/navigation/navigation-provider";
 import { cn } from "@/utils/ui";
+import { Logo } from "./logo";
 import { ThemeToggle } from "./theme-toggle";
 
 const focusRing =
@@ -103,9 +104,7 @@ export function SiteRail() {
           aria-label="Home"
           className={cn("group flex flex-col gap-4 rounded-md", focusRing)}
         >
-          <span className="grid h-10 w-10 place-items-center rounded-[4px] border-[1.5px] border-foreground font-mono text-sm font-medium text-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
-            JM
-          </span>
+          <Logo className="h-10 w-10 text-foreground" />
           <span className="max-w-[7rem] text-sm font-medium leading-snug tracking-tight text-foreground">
             Joshua
             <br />
@@ -173,13 +172,10 @@ export function SiteRail() {
           <NavLink
             href="/"
             aria-label="Home"
-            className={cn(
-              "grid h-10 w-10 place-items-center rounded-[4px] border-[1.5px] border-foreground font-mono text-sm font-medium text-foreground",
-              focusRing
-            )}
+            className={cn("group rounded-md", focusRing)}
             onClick={() => setOpen(false)}
           >
-            JM
+            <Logo className="h-10 w-10 text-foreground" />
           </NavLink>
 
           <div className="flex items-center gap-1">
