@@ -10,8 +10,8 @@ import { Providers } from "./providers";
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#FFF7ED" },
-    { media: "(prefers-color-scheme: dark)", color: "#141210" },
+    { media: "(prefers-color-scheme: light)", color: "#F0F3F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#111a1f" },
   ],
   width: "device-width",
   initialScale: 1,
@@ -35,9 +35,6 @@ export const metadata: Metadata = {
   robots: {
     follow: true,
     index: true,
-  },
-  icons: {
-    icon: "/favicon.ico",
   },
   alternates: {
     canonical: defaultMetadata.url,
