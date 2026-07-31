@@ -154,7 +154,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
           className
         )}
       >
-        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
+        <div className="absolute -right-24 -top-24 h-72 w-72 rounded-[4px] bg-brand/10 blur-3xl" />
         <div className="absolute -bottom-16 -left-16 h-64 w-64 rounded-full bg-brand/5 blur-3xl" />
       </div>
     );

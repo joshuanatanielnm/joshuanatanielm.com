@@ -38,17 +38,17 @@ function ShelfTile({
     <NavLink
       href={href}
       className={cn(
-        "group flex min-w-0 flex-col rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
+        "group flex min-w-0 flex-col rounded-lg border border-border bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
         className
       )}
     >
-      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
         <div className="flex items-center justify-between px-5 pt-5">
           <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <TileIcon className="h-4 w-4 text-brand" weight="fill" />
             {label}
           </span>
-          <span className="grid h-8 w-8 place-items-center rounded-full bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
+          <span className="grid h-8 w-8 place-items-center rounded-[4px] bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
             <ArrowUpRight className="h-4 w-4" weight="bold" />
           </span>
         </div>

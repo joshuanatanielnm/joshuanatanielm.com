@@ -101,9 +101,9 @@ export function SiteRail() {
         <NavLink
           href="/"
           aria-label="Home"
-          className={cn("group flex flex-col gap-4 rounded-xl", focusRing)}
+          className={cn("group flex flex-col gap-4 rounded-md", focusRing)}
         >
-          <span className="grid h-10 w-10 place-items-center rounded-2xl bg-brand font-mono text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105">
+          <span className="grid h-10 w-10 place-items-center rounded-[4px] border-[1.5px] border-foreground font-mono text-sm font-medium text-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:border-brand group-hover:bg-brand group-hover:text-brand-foreground">
             JM
           </span>
           <span className="max-w-[7rem] text-sm font-medium leading-snug tracking-tight text-foreground">
@@ -151,11 +151,16 @@ export function SiteRail() {
           })}
         </nav>
 
-        <div className="mt-auto flex items-center justify-between border-t border-foreground/[0.06] pt-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            Theme
+        <div className="mt-auto flex flex-col gap-3 border-t border-foreground/[0.06] pt-4">
+          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
+            DWG JNM-2026
           </span>
-          <ThemeToggle />
+          <div className="flex items-center justify-between">
+            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              Theme
+            </span>
+            <ThemeToggle />
+          </div>
         </div>
       </aside>
 
@@ -163,13 +168,13 @@ export function SiteRail() {
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-[max(1rem,env(safe-area-inset-top))] print:hidden lg:hidden">
         <div
           ref={islandRef}
-          className="mx-auto flex w-full max-w-lg items-center justify-between rounded-full border border-foreground/[0.08] bg-background/80 px-2 py-2 shadow-[0_12px_40px_hsl(240_6%_10%/0.06)] backdrop-blur-xl dark:shadow-[0_12px_40px_hsl(0_0%_0%/0.35)]"
+          className="mx-auto flex w-full max-w-lg items-center justify-between rounded-lg border border-foreground/[0.08] bg-background/80 px-2 py-2 shadow-[0_12px_40px_hsl(240_6%_10%/0.06)] backdrop-blur-xl dark:shadow-[0_12px_40px_hsl(0_0%_0%/0.35)]"
         >
           <NavLink
             href="/"
             aria-label="Home"
             className={cn(
-              "grid h-10 w-10 place-items-center rounded-full bg-brand font-mono text-sm font-medium text-brand-foreground",
+              "grid h-10 w-10 place-items-center rounded-[4px] border-[1.5px] border-foreground font-mono text-sm font-medium text-foreground",
               focusRing
             )}
             onClick={() => setOpen(false)}
@@ -187,7 +192,7 @@ export function SiteRail() {
               aria-controls={menuId}
               onClick={() => setOpen((v) => !v)}
               className={cn(
-                "relative grid h-10 w-10 place-items-center rounded-full text-foreground transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-95",
+                "relative grid h-10 w-10 place-items-center rounded-md text-foreground transition-transform duration-500 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-95",
                 focusRing
               )}
             >

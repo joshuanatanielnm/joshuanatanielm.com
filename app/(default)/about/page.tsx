@@ -53,8 +53,8 @@ async function AboutPageContent() {
     <>
       {about.cover ? (
         <Reveal className="mt-12">
-          <div className="overflow-hidden rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5">
-            <div className="relative aspect-[21/9] overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-muted">
+          <div className="overflow-hidden rounded-lg border border-border bg-foreground/[0.03] p-1.5">
+            <div className="relative aspect-[21/9] overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-muted">
               <Image
                 src={about.cover}
                 alt="Joshua Manuputty"

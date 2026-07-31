@@ -56,16 +56,16 @@ export function ProseSkeleton({ lines = 8 }: { lines?: number }) {
 
 export function CoverSkeleton() {
   return (
-    <div className="mt-12 overflow-hidden rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5">
-      <Skeleton className="aspect-[21/9] w-full rounded-[calc(2rem-0.375rem)]" />
+    <div className="mt-12 overflow-hidden rounded-lg border border-border bg-foreground/[0.03] p-1.5">
+      <Skeleton className="aspect-[21/9] w-full rounded-[calc(0.5rem-1px)]" />
     </div>
   );
 }
 
 export function MediaCardSkeleton({ featured = false }: { featured?: boolean }) {
   return (
-    <div className="rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5">
-      <div className="overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card">
+    <div className="rounded-lg border border-border bg-foreground/[0.03] p-1.5">
+      <div className="overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card">
         <Skeleton className={cn("w-full", featured ? "aspect-[16/10]" : "aspect-[16/10]")} />
         <div className="space-y-3 p-5 sm:p-6">
           <Skeleton className="h-5 w-2/3" />
@@ -212,7 +212,7 @@ export function NavigationContentSkeleton() {
       {Array.from({ length: 4 }).map((_, index) => (
         <Skeleton
           key={index}
-          className="h-44 w-full rounded-[2rem] sm:h-48"
+          className="h-44 w-full rounded-lg sm:h-48"
         />
       ))}
     </div>
@@ -269,7 +269,7 @@ export function HomePageSkeleton() {
               <Skeleton className="h-5 w-full max-w-md" />
               <Skeleton className="h-12 w-40 rounded-full" />
             </div>
-            <Skeleton className="h-[22rem] w-full rounded-[2rem] lg:col-span-5" />
+            <Skeleton className="h-[22rem] w-full rounded-lg lg:col-span-5" />
           </div>
         </PageShellSkeleton>
       </div>
