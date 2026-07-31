@@ -1,7 +1,9 @@
 /* #__PURE__ */
 const domain =
   process.env.APP_URL?.replace(/https?:\/\//, "").split("/")[0] ||
-  process.env.NEXT_PUBLIC_VERCEL_URL ||
+  (process.env.VERCEL_ENV === "production"
+    ? "joshuanatanielm.com"
+    : process.env.NEXT_PUBLIC_VERCEL_URL) ||
   `${process.env.HOST || "localhost"}:${process.env.PORT || 3000}`;
 
 /* #__PURE__ */

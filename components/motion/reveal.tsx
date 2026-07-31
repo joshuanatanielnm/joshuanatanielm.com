@@ -67,7 +67,7 @@ export function Reveal({
   );
 
   return (
-    <div ref={ref} className={cn(className)}>
+    <div ref={ref} data-reveal className={cn(className)}>
       {children}
     </div>
   );

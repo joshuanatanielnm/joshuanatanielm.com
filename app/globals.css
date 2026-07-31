@@ -173,6 +173,17 @@
   transform-origin: bottom;
   transform: scaleY(0.5);
 }
+/* Pre-hide entrance-reveal targets before hydration so content doesn't
+   paint, blink out, and animate back in. Gated on html.js (set by the
+   inline script in the root layout) so the page stays visible without JS.
+   GSAP takes over with inline styles once it mounts. */
+@media (prefers-reduced-motion: no-preference) {
+  html.js [data-reveal-item],
+  html.js [data-reveal] {
+    opacity: 0;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .nav-content-pre-enter {
     opacity: 0;

@@ -25,10 +25,18 @@ export const metadata: Metadata = {
     absolute: defaultMetadata.title,
   },
   description: defaultMetadata.description,
+  openGraph: {
+    type: "website",
+    url: defaultMetadata.url,
+    siteName: defaultMetadata.title,
+    title: defaultMetadata.title,
+    description: defaultMetadata.description,
+    locale: "en_US",
+  },
   twitter: {
     card: "summary_large_image",
     title: defaultMetadata.title,
-    site: defaultMetadata.url,
+    site: defaultMetadata.x.username,
     description: defaultMetadata.description,
     creator: defaultMetadata.x.username,
   },
@@ -53,6 +61,13 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       suppressHydrationWarning
     >
       <body className="min-h-[100dvh] bg-background font-sans text-foreground print:bg-white">
+        {/* Runs before first paint so CSS can pre-hide reveal targets only
+            when JS is available — without JS the page stays fully visible. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add("js")`,
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-brand-foreground"
