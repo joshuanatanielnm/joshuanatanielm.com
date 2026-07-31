@@ -1,0 +1,13 @@
+<svg width="100" height="100" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .ink { stroke: #1d2b33; }
+    @media (prefers-color-scheme: dark) {
+      .ink { stroke: #f0f3f4; }
+    }
+  </style>
+  <g class="ink" stroke-linecap="round" fill="none">
+    <path d="M30 28 Q47 20 65 26" stroke-width="11"/>
+    <path d="M54 24 Q60 42 53 58 Q48 70 37 71 Q27 71 28 61 Q28.5 56 35 55" stroke-width="11"/>
+  </g>
+  <circle cx="72" cy="66" r="8" fill="#2563eb"/>
+</svg>

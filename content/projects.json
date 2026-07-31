@@ -2,6 +2,52 @@
   "entries": [
     {
       "previewUrl": "/assets/projects/entries/0/previewUrl.png",
+      "name": "Napier Finance",
+      "subtitle": "Universal yield infrastructure — fix, trade, and curate yield on your terms.",
+      "techStack": [
+        "next-js",
+        "typescript",
+        "tailwind-css",
+        "wagmi",
+        "zustand",
+        "react-query"
+      ],
+      "tags": [
+        "web3",
+        "ethereum"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://app.napier.finance/",
+          "label": "App"
+        }
+      }
+    },
+    {
+      "previewUrl": "/assets/projects/entries/1/previewUrl.png",
+      "name": "Cognitica AI Chat",
+      "subtitle": "AI chat assistant powered by Cognitica — a conversational interface to ask anything.",
+      "techStack": [
+        "next-js",
+        "typescript",
+        "tailwind-css",
+        "shadcn-ui",
+        "vercel"
+      ],
+      "tags": [
+        "personal-project"
+      ],
+      "link": {
+        "discriminant": true,
+        "value": {
+          "href": "https://chat-bot-hazel-tau.vercel.app/chatbot",
+          "label": "App"
+        }
+      }
+    },
+    {
+      "previewUrl": "/assets/projects/entries/2/previewUrl.png",
       "name": "Eclipse Fi Launchpad",
       "subtitle": "Revolutionary hub for interchain token launches",
       "techStack": [
@@ -27,7 +73,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/1/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/3/previewUrl.png",
       "name": "Neutron Onboarding",
       "subtitle": "A site that helps onboard new users to the Neutron ecosystem",
       "techStack": [
@@ -50,7 +96,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/2/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/4/previewUrl.png",
       "name": "Sommelier DeFi Application",
       "subtitle": "Decentralized asset management protocol, built on the Cosmos SDK, with a bridge to high-value EVM networks.",
       "techStack": [
@@ -77,7 +123,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/3/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/5/previewUrl.png",
       "name": "Cosmos Explorer",
       "subtitle": "Explorer dashboard for Cosmos-based Blockchains.",
       "techStack": [
@@ -100,7 +146,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/4/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/6/previewUrl.png",
       "name": "Sommelier Marketing Site",
       "subtitle": "Marketing site for Sommelier",
       "techStack": [
@@ -124,7 +170,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/5/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/7/previewUrl.png",
       "name": "Bloomberg Global Coal Countdown",
       "subtitle": "Data visualization site for tracking coal around the world",
       "techStack": [
@@ -146,7 +192,7 @@
       }
     },
     {
-      "previewUrl": "/assets/projects/entries/6/previewUrl.png",
+      "previewUrl": "/assets/projects/entries/8/previewUrl.png",
       "name": "SurabayaJS",
       "subtitle": "SurabayaJS Community website, SurabayaJS is a user group based in Surabaya, Indonesia",
       "techStack": [

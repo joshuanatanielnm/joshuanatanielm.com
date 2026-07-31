@@ -1,7 +1,7 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { DownloadIcon } from "@radix-ui/react-icons";
+import { DownloadSimple } from "@phosphor-icons/react/dist/ssr";
 
 export function DownloadResumeButton() {
   const handlePrint = () => {
@@ -23,9 +23,9 @@ export function DownloadResumeButton() {
     <Button
       type="button"
       onClick={handlePrint}
-      className="print:hidden gap-2 bg-orange-500 hover:bg-orange-600"
+      className="gap-2 bg-brand text-brand-foreground hover:bg-brand/90 print:hidden"
     >
-      <DownloadIcon />
+      <DownloadSimple className="h-4 w-4" weight="bold" />
       Download PDF
     </Button>
   );

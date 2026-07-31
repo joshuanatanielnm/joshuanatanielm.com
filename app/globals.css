@@ -4,65 +4,84 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* As-Built Drawing — cool vellum drafting paper, graphite ink,
+       a single ink-blue accent. */
+    --background: 195 14% 95%;
+    --foreground: 202 28% 16%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 190 25% 99%;
+    --card-foreground: 202 28% 16%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 190 25% 99%;
+    --popover-foreground: 202 28% 16%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    --primary: 202 28% 16%;
+    --primary-foreground: 195 14% 96%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 200 16% 91%;
+    --secondary-foreground: 202 28% 16%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 200 15% 91%;
+    --muted-foreground: 202 17% 44%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 200 18% 89%;
+    --accent-foreground: 202 28% 16%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 72% 46%;
+    --destructive-foreground: 195 14% 96%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 203 15% 85%;
+    --input: 203 15% 85%;
+    --ring: 221 83% 53%;
+
+    /* Brand — ink blue. Single accent, used identically across the site. */
+    --brand: 221 83% 53%;
+    --brand-foreground: 210 40% 98%;
+    --brand-muted: 221 70% 94%;
+
+    /* Drafting grid lines (full colors, not HSL triples). */
+    --grid-minor: hsl(203 40% 40% / 0.06);
+    --grid-major: hsl(203 40% 35% / 0.1);
 
     --radius: 0.5rem;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Night drafting — deep blue-graphite sheet, brighter ink. */
+    --background: 205 30% 8%;
+    --foreground: 190 20% 92%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 205 26% 11%;
+    --card-foreground: 190 20% 92%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 205 26% 11%;
+    --popover-foreground: 190 20% 92%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 190 20% 92%;
+    --primary-foreground: 205 30% 10%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 205 20% 15%;
+    --secondary-foreground: 190 20% 92%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 205 20% 15%;
+    --muted-foreground: 203 15% 62%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 205 20% 17%;
+    --accent-foreground: 190 20% 92%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 62% 45%;
+    --destructive-foreground: 190 20% 92%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 205 18% 19%;
+    --input: 205 18% 19%;
+    --ring: 213 92% 68%;
+
+    --brand: 213 92% 68%;
+    --brand-foreground: 205 30% 8%;
+    --brand-muted: 215 45% 17%;
+
+    --grid-minor: hsl(200 40% 70% / 0.05);
+    --grid-major: hsl(200 40% 75% / 0.08);
   }
 }
 
@@ -71,7 +90,134 @@
     @apply border-border;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv01", "cv11";
+  }
+  ::selection {
+    background-color: hsl(var(--brand) / 0.22);
+  }
+}
+
+/* As-Built Drawing — drafting-paper grid. Minor cells every 24px, a
+   heavier major line every 120px, like printed graph vellum. */
+.drafting-grid {
+  background-image: linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+/* Dimension line — hairline with perpendicular end ticks, used next to
+   sheet/figure annotations. */
+.dim-line {
+  position: relative;
+  height: 1px;
+  background-color: hsl(var(--brand) / 0.4);
+}
+.dim-line::before,
+.dim-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 8px;
+  transform: translateY(-50%);
+  background-color: hsl(var(--brand) / 0.4);
+}
+.dim-line::before {
+  left: 0;
+}
+.dim-line::after {
+  right: 0;
+}
+
+/* Signature logo — on hover of the wrapping `group`, the two pen strokes
+   redraw themselves and the blue full stop pops back in. Paths use
+   pathLength=1, so dash values are normalized. */
+.logo-sig .logo-sig-dot {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .group:hover .logo-sig .logo-sig-stroke {
+    stroke-dasharray: 1;
+    animation: logo-sign 0.7s cubic-bezier(0.32, 0.72, 0, 1) both;
+  }
+  .group:hover .logo-sig .logo-sig-stroke:nth-of-type(2) {
+    animation-delay: 0.18s;
+  }
+  .group:hover .logo-sig .logo-sig-dot {
+    animation: logo-sign-dot 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) 0.75s both;
+  }
+}
+@keyframes logo-sign {
+  from {
+    stroke-dashoffset: 1;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes logo-sign-dot {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+/* Spotify now-playing equalizer bars */
+.eq-bar {
+  transform-origin: bottom;
+  transform: scaleY(0.5);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .nav-content-pre-enter {
+    opacity: 0;
+    transform: translateY(22px);
+    visibility: hidden;
+  }
+
+  .nav-content-entering {
+    visibility: visible;
+    animation: page-enter 0.85s cubic-bezier(0.32, 0.72, 0, 1) both;
+  }
+}
+
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(22px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .eq-bar {
+    animation: eq 1s ease-in-out infinite;
+  }
+  .eq-bar:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .eq-bar:nth-child(3) {
+    animation-delay: 0.4s;
+  }
+  .eq-bar:nth-child(4) {
+    animation-delay: 0.15s;
+  }
+}
+@keyframes eq {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+  }
+  50% {
+    transform: scaleY(1);
   }
 }
 

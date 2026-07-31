@@ -35,3 +35,36 @@ export const getSortedExperience = cache(async () => {
 export const getProject = cache(getReader().singletons.projects.readOrThrow);
 
 export const getAbout = cache(getReader().singletons.about.readOrThrow);
+
+export const getNow = cache(getReader().singletons.now.read);
+
+export const getBooks = cache(async () => {
+  const reader = getReader();
+  return reader.collections.books.all();
+});
+
+export const getGames = cache(async () => {
+  const reader = getReader();
+  return reader.collections.games.all();
+});
+
+export const getPhotos = cache(async () => {
+  const reader = getReader();
+  return reader.collections.photos.all();
+});
+
+export const getLifePhotos = cache(async () => {
+  const photos = await getPhotos();
+  return photos
+    .filter((photo) => photo.entry.category === "life" && photo.entry.imageUrl)
+    .sort((a, b) => {
+      const aDate = a.entry.takenDate ?? "";
+      const bDate = b.entry.takenDate ?? "";
+      return bDate.localeCompare(aDate);
+    });
+});
+
+export const getGear = cache(async () => {
+  const reader = getReader();
+  return reader.collections.gear.all();
+});

@@ -1,43 +1,45 @@
-import { getProject } from "@/server/keystatic";
-import React from "react";
-import { ProjectList } from "./list";
-import Link from "next/link";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
+import { NavLink } from "@/components/navigation/nav-link";
+import { Suspense } from "react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
+import { ProjectsFeaturedGrid } from "@/components/sections/projects/grids";
+import { Reveal } from "@/components/motion/reveal";
+import { SectionHeading } from "@/components/ui/section-heading";
+import { MediaCardGridSkeleton } from "@/components/ui/page-skeletons";
 
-export async function ProjectSection() {
-  const projects = (await getProject()).entries;
-  const selectedProjects = projects
-    .filter((project) => project.link.value !== null)
-    .slice(0, 3);
+export function ProjectSection() {
   return (
-    <section className="flex flex-col gap-10 pt-12" id="projects">
-      <div>
-        <h3 className="text-xl font-bold ">Projects</h3>
-        <p className="pt-2 text-sm text-zinc-600">
-          Here are some of the projects that I have worked on my previous
-          companies, personal projects, and explorations as well.
-        </p>
-      </div>
-      {selectedProjects.map((project) => {
-        return (
-          <ProjectList
-            description={project.subtitle}
-            projectUrl={project.link.value?.href ?? ""}
-            techStack={project.techStack}
-            title={project.name}
-            key={project.name}
-            tags={project.tags}
-            imageUrl={project.previewUrl ?? ""}
-          />
-        );
-      })}
-      <Link
-        href={`/projects`}
-        className="flex my-auto pt-4 gap-1 text-orange-600 hover:underline group"
+    <section
+      id="projects"
+      className="mx-auto max-w-6xl scroll-mt-24 px-4 py-24 sm:px-6 sm:py-32"
+    >
+      <Reveal>
+        <SectionHeading
+          index="03"
+          title="Selected projects"
+          description="Products shipped across companies, communities, and side experiments."
+          action={
+            <NavLink
+              href="/projects"
+              className="group inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand/80"
+            >
+              All projects
+              <span className="grid h-7 w-7 place-items-center rounded-[4px] bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
+                <ArrowRight className="h-3.5 w-3.5" weight="bold" />
+              </span>
+            </NavLink>
+          }
+        />
+      </Reveal>
+
+      <Suspense
+        fallback={
+          <div className="mt-14">
+            <MediaCardGridSkeleton count={3} />
+          </div>
+        }
       >
-        {"Other Projects and Explorations"}
-        <ArrowRightIcon className="my-auto transition delay-75 group-hover:translate-x-2" />
-      </Link>
+        <ProjectsFeaturedGrid />
+      </Suspense>
     </section>
   );
 }

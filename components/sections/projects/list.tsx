@@ -1,92 +1,98 @@
-import { AdaptiveLink } from "@/components/ui/adaptive-link";
-import { getTag, getTechnology } from "@/server/keystatic";
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/utils/ui";
 
-interface ProjectListProps {
+export interface ProjectCardProps {
   title: string;
   description: string;
-  techStack: readonly (string | null)[];
-  tags?: readonly (string | null)[];
+  techLabels: string[];
+  tagLabels?: string[];
   projectUrl: string;
   imageUrl?: string;
+  className?: string;
+  featured?: boolean;
 }
 
-export async function ProjectList(props: ProjectListProps) {
-  const techStack = props.techStack.map(async (tech) => {
-    return (await getTechnology(tech ?? "")).name ?? "";
-  });
-
-  const tags =
-    props.tags &&
-    props.tags.map(async (tech) => {
-      return await getTag(tech ?? "");
-    });
-
-  const tagsData = tags ? await Promise.all(tags) : null;
-
-  const techStackString = `Build with ${(await Promise.all(techStack)).join(
-    ", "
-  )}`;
+export function ProjectCard(props: ProjectCardProps) {
+  const hasUrl = Boolean(props.projectUrl);
 
   return (
-    <div className="animate-in flex gap-4 pr-4 h-full transition relative delay-100 hover:delay-100 hover:bg-orange-100 rounded-lg group">
-      <div className="bg-orange-100 rounded-lg">
-        <div className="h-full transition delay-100 hover:delay-100 opacity-0 group-hover:opacity-100 bg-gradient-to-b from-orange-500 to-orange-100 w-2 rounded-lg" />
-      </div>
-
-      <div className="w-full">
-        {/* Project Image */}
-        <div className="h-60 mt-3">
+    <div
+      className={cn(
+        "rounded-lg border border-border bg-foreground/[0.03] p-1.5",
+        props.className
+      )}
+    >
+      <article className="group relative flex flex-col overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+        <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           {props.imageUrl ? (
             <Image
               src={props.imageUrl}
-              alt={`${props.title} project image`}
-              width={400}
-              height={192}
-              quality={95}
-              priority={true}
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="w-full h-full object-cover rounded-lg border border-orange-200 filter sepia-[0.8] hue-rotate-[15deg] saturate-[0.7] group-hover:sepia-0 group-hover:hue-rotate-0 group-hover:saturate-100 transition-all duration-300 ease-in-out"
+              alt={`${props.title} preview`}
+              fill
+              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 40vw"
+              className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
             />
-          ) : null}
-
-          {/* Fallback placeholder */}
-          <div
-            className={`w-full h-full rounded-lg border border-orange-200 bg-orange-50 flex items-center justify-center ${
-              props.imageUrl ? "hidden" : ""
-            }`}
-          >
-            <div className="text-orange-300 text-xs text-center">
-              <div className="w-8 h-8 mx-auto mb-1 bg-orange-200 rounded"></div>
-              <span>No Image</span>
+          ) : (
+            <div className="flex h-full w-full items-center justify-center">
+              <span className="font-mono text-3xl font-semibold text-muted-foreground/40">
+                {props.title.charAt(0)}
+              </span>
             </div>
-          </div>
-        </div>
-
-        <div className="flex flex-col w-full pt-4 pb-16 gap-4">
-          <h3 className="font-semibold ">{`${props.title}`}</h3>
-          <p>{props.description}</p>
-          <div className="flex flex-wrap gap-2">
-            {tagsData?.map((tag) => {
-              return (
-                <span
-                  key={tag.tagName}
-                  className="inline-block px-3 py-1 text-xs font-semibold text-orange-300 group-hover:text-orange-500 rounded-xl border border-orange-300 group-hover:border-orange-500 bg-orange-100"
-                >
-                  {tag.tagName}
-                </span>
-              );
-            })}
-          </div>
-          <p className="text-sm text-zinc-600">{techStackString}</p>
-          {props.projectUrl && (
-            <AdaptiveLink
-              href={props.projectUrl}
-              className="flex pt-8 pb-4 gap-1 text-orange-600 group-hover:underline absolute inset-0 align-baseline pl-6"
-            />
           )}
         </div>
-      </div>
+
+        <div className="flex flex-col gap-3 p-5 sm:p-6">
+          <div className="flex items-start justify-between gap-3">
+            <h3
+              className={cn(
+                "font-medium leading-tight tracking-tight text-foreground",
+                props.featured ? "text-lg sm:text-xl" : "text-base"
+              )}
+            >
+              {props.title}
+            </h3>
+            {hasUrl ? (
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[4px] bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
+                <ArrowUpRight className="h-4 w-4" weight="bold" />
+              </span>
+            ) : null}
+          </div>
+
+          <p className="text-sm leading-relaxed text-muted-foreground">
+            {props.description}
+          </p>
+
+          {props.tagLabels && props.tagLabels.length > 0 ? (
+            <div className="flex flex-wrap gap-1.5">
+              {props.tagLabels.slice(0, 3).map((tag) => (
+                <Badge key={tag} variant="muted">
+                  {tag}
+                </Badge>
+              ))}
+            </div>
+          ) : null}
+
+          <p className="border-t border-border/60 pt-3 font-mono text-xs text-muted-foreground">
+            {props.techLabels.slice(0, 4).join(" · ")}
+            {props.techLabels.length > 4 ? " · …" : ""}
+          </p>
+        </div>
+
+        {hasUrl ? (
+          <Link
+            href={props.projectUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="absolute inset-0"
+            aria-label={`Open ${props.title}`}
+          >
+            <span className="sr-only">Open {props.title}</span>
+          </Link>
+        ) : null}
+      </article>
     </div>
   );
 }

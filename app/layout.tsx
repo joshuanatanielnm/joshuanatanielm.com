@@ -1,20 +1,18 @@
 import type { Metadata, Viewport } from "next";
-import { Inter } from "next/font/google";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
 import { cn } from "@/utils/ui";
 import "./globals.css";
 import { defaultMetadata } from "@/site.config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  preload: true,
-  fallback: ["system-ui", "sans-serif"],
-});
+import { Providers } from "./providers";
 
 export const viewport: Viewport = {
-  themeColor: "#fb923c",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#F0F3F4" },
+    { media: "(prefers-color-scheme: dark)", color: "#111a1f" },
+  ],
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -38,9 +36,6 @@ export const metadata: Metadata = {
     follow: true,
     index: true,
   },
-  icons: {
-    icon: "/favicon.ico",
-  },
   alternates: {
     canonical: defaultMetadata.url,
   },
@@ -48,28 +43,25 @@ export const metadata: Metadata = {
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <meta name="theme-color" content="#fb923c" />
-      </head>
-      <Analytics />
-      <SpeedInsights />
-      <body className="bg-orange-50 print:bg-white">
-        <div className="h-3 w-full bg-gradient-to-b from-orange-500 to-yellow-50 print:hidden" />
-        <div
-          className={cn(
-            inter.className,
-            "max-w-screen-lg mx-auto px-4 pt-12 print:max-w-none print:p-0"
-          )}
+    <html
+      lang="en"
+      className={cn(
+        "motion-safe:scroll-smooth",
+        GeistSans.variable,
+        GeistMono.variable
+      )}
+      suppressHydrationWarning
+    >
+      <body className="min-h-[100dvh] bg-background font-sans text-foreground print:bg-white">
+        <a
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-brand-foreground"
         >
-          {children}
-        </div>
+          Skip to content
+        </a>
+        <Providers>{children}</Providers>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
