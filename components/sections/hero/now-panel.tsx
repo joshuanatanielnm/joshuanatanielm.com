@@ -23,21 +23,21 @@ export async function NowPanel() {
     .filter((row) => Boolean(row.value));
 
   return (
-    <div className="w-full rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5 shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
-      <div className="overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.45)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.06)]">
-        <div className="flex items-center justify-between border-b border-border px-5 py-4">
+    <div className="w-full rounded-lg border border-foreground/25 bg-card shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
+      <div className="overflow-hidden rounded-[calc(0.5rem-1px)]">
+        <div className="flex items-center justify-between border-b border-foreground/25 px-5 py-4">
           <div className="flex items-center gap-2">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
             </span>
             <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              Now
+              Title block · Now
             </span>
           </div>
           {now.updatedAt ? (
-            <span className="font-mono text-[11px] text-muted-foreground">
-              {format(new Date(now.updatedAt), "MMM yyyy")}
+            <span className="font-mono text-[11px] uppercase text-muted-foreground">
+              Rev. {format(new Date(now.updatedAt), "MMM yyyy")}
             </span>
           ) : null}
         </div>

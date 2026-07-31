@@ -15,8 +15,9 @@ export function ContactSection() {
       <Reveal>
         <div className="grid gap-12 border-t border-border pt-16 lg:grid-cols-12 lg:gap-16 lg:pt-24">
           <div className="lg:col-span-7">
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
-              05 — Contact
+            <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+              SHT 05 — Contact
+              <span aria-hidden className="dim-line w-16" />
             </p>
             <h2 className="mt-4 text-balance text-[clamp(2.5rem,8vw,5rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-foreground">
               Got something
@@ -32,10 +33,10 @@ export function ContactSection() {
           <div className="flex flex-col justify-end gap-8 lg:col-span-5">
             <Link
               href={customMetadata.emailUrl}
-              className="group inline-flex w-fit items-center gap-3 rounded-full bg-brand py-2 pl-6 pr-2 text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="group inline-flex w-fit items-center gap-3 rounded-md bg-brand py-2 pl-6 pr-2 text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Get in touch
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-foreground/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+              <span className="grid h-9 w-9 place-items-center rounded-[4px] bg-brand-foreground/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
                 <ArrowUpRight className="h-4 w-4" weight="bold" />
               </span>
             </Link>

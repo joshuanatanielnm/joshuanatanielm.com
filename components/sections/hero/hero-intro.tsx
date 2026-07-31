@@ -76,7 +76,7 @@ export function HeroIntro({
             {isOpenToWork ? (
               <Link
                 href={customMetadata.emailUrl}
-                className="inline-flex w-fit items-center gap-2 rounded-full bg-brand-muted px-3 py-1 text-[10px] font-medium uppercase tracking-[0.2em] text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
+                className="inline-flex w-fit items-center gap-2 rounded-[3px] border border-brand/40 bg-brand-muted px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
               >
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
@@ -85,8 +85,8 @@ export function HeroIntro({
                 Open to work
               </Link>
             ) : (
-              <span className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-                Surabaya · ID
+              <span className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+                Site · Surabaya, ID
               </span>
             )}
             {currentCompanyName && currentCompanyUrl ? (
@@ -94,9 +94,9 @@ export function HeroIntro({
                 href={currentCompanyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-fit items-center rounded-full bg-secondary px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand"
+                className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-brand/40 hover:text-brand"
               >
-                Wizard at {currentCompanyName}
+                Firm · {currentCompanyName}
               </Link>
             ) : null}
 
@@ -104,7 +104,14 @@ export function HeroIntro({
         </RevealGroupItem>
 
         <RevealGroupItem>
-          <h1 className="mt-8 text-balance">
+          <p className="mt-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+            Fig. 1 — Software engineer, frontend focus
+            <span aria-hidden className="dim-line w-16" />
+          </p>
+        </RevealGroupItem>
+
+        <RevealGroupItem>
+          <h1 className="mt-4 text-balance">
             <span className="block text-[clamp(3.5rem,12vw,7.5rem)] font-semibold leading-[0.9] tracking-[-0.04em] text-foreground">
               Joshua
             </span>
@@ -124,10 +131,10 @@ export function HeroIntro({
           <div className="mt-10">
             <Link
               href={customMetadata.emailUrl}
-              className="hero-cta group inline-flex items-center gap-3 rounded-full bg-brand py-2 pl-6 pr-2 text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              className="hero-cta group inline-flex items-center gap-3 rounded-md bg-brand py-2 pl-6 pr-2 text-sm font-medium text-brand-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
             >
               Get in touch
-              <span className="grid h-9 w-9 place-items-center rounded-full bg-brand-foreground/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
+              <span className="grid h-9 w-9 place-items-center rounded-[4px] bg-brand-foreground/15 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:scale-105">
                 <ArrowUpRight className="h-4 w-4" weight="bold" />
               </span>
             </Link>

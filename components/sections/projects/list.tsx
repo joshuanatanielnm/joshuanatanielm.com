@@ -21,11 +21,11 @@ export function ProjectCard(props: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "rounded-[2rem] border border-border bg-foreground/[0.03] p-1.5",
+        "rounded-lg border border-border bg-foreground/[0.03] p-1.5",
         props.className
       )}
     >
-      <article className="group relative flex flex-col overflow-hidden rounded-[calc(2rem-0.375rem)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+      <article className="group relative flex flex-col overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           {props.imageUrl ? (
             <Image
@@ -55,7 +55,7 @@ export function ProjectCard(props: ProjectCardProps) {
               {props.title}
             </h3>
             {hasUrl ? (
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
+              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[4px] bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
                 <ArrowUpRight className="h-4 w-4" weight="bold" />
               </span>
             ) : null}

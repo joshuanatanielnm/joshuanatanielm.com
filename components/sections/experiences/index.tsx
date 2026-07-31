@@ -29,7 +29,7 @@ export async function ExperienceSection() {
               className="group inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand/80"
             >
               Full résumé
-              <span className="grid h-7 w-7 place-items-center rounded-full bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
+              <span className="grid h-7 w-7 place-items-center rounded-[4px] bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px">
                 <ArrowUpRight className="h-3.5 w-3.5" weight="bold" />
               </span>
             </Link>

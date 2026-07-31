@@ -16,7 +16,7 @@ export const Footer = () => {
             Software engineer · end-to-end web products.
           </p>
           <p className="font-mono text-xs text-muted-foreground/70">
-            © 2026
+            DWG JNM-2026 · REV D · © 2026
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">

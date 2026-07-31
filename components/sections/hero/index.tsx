@@ -16,7 +16,7 @@ function HeroSkeleton() {
         <Skeleton className="h-5 w-full max-w-md" />
         <Skeleton className="h-12 w-40 rounded-full" />
       </div>
-      <Skeleton className="h-[22rem] w-full rounded-[2rem] lg:col-span-5" />
+      <Skeleton className="h-[22rem] w-full rounded-lg lg:col-span-5" />
     </div>
   );
 }

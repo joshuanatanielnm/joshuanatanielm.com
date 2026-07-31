@@ -1,57 +1,76 @@
-# Design System: Joshua Manuputty Portfolio
+# Design System: Joshua Manuputty Portfolio — "As-Built Drawing"
 
 ## 1. Visual Theme & Atmosphere
-A gallery-airy Soft Structuralism interface with confident Editorial Split layouts
-and fluid spring-physics motion. Cool zinc surfaces, massive grotesk display type,
-and a single muted teal accent. Density 4 / Variance 8 / Motion 6. Feels like a
-well-lit architecture studio — clinical, personal, never templated.
+The site as a technical drawing of its author. Cool vellum drafting paper with a
+faint printed grid, graphite ink, and a single ink-blue accent. Mono type does
+the annotating — figure labels, sheet numbers, title blocks, dimension lines.
+Feels like a drafting table in a well-run studio: precise, calm, quietly warm.
+Density 4 / Variance 7 / Motion 5.
 
 ## 2. Color Palette & Roles
-- **Gallery Mist** (#F4F4F5) — Primary canvas (Zinc-100)
-- **Pure Surface** (#FAFAFA) — Elevated panels / double-bezel cores
-- **Charcoal Ink** (#18181B) — Primary text (Zinc-950)
-- **Muted Steel** (#71717A) — Secondary text, metadata
-- **Whisper Line** (rgba(24,24,27,0.08)) — Hairline structure, never harsh gray borders
-- **Teal Signal** (#0F766E) — Single accent for CTAs, active states, focus (saturation < 80%)
-- **Teal Wash** (#F0FDFA) — Soft accent fills / available badge
-- **Teal Signal Dark** (#2DD4BF) — Brighter brand on dark canvases for contrast only
-- **Banned:** Warm cream canvases, amber/terracotta accents, purple/neon glows, pure `#000000`
+All colors live as HSL triples in `app/globals.css` and are consumed through
+Tailwind tokens (`bg-background`, `text-brand`, …). Never hard-code hex in
+components (exception: the Three.js hero scene).
+
+- **Vellum** `hsl(195 14% 95%)` (≈ #F0F3F4) — page canvas (light)
+- **Graphite** `hsl(202 28% 16%)` (≈ #1D2B33) — primary text / ink lines
+- **Fade** `hsl(202 17% 44%)` (≈ #5C7482) — secondary text, metadata
+- **Ink Blue** `hsl(221 83% 53%)` (≈ #2563EB) — single accent: annotations, CTAs, active states
+- **Night sheet (dark mode)** `hsl(205 30% 8%)` canvas, brighter ink `hsl(213 92% 68%)`
+- **Grid lines** `--grid-minor` / `--grid-major` — full-color vars for the drafting grid
+- **Banned:** warm cream canvases, amber/terracotta, teal, purple/neon glows, pure `#000000`
 
 ## 3. Typography Rules
-- **Display:** Geist Sans — Track-tight, weight-driven hierarchy, oversized brand name
-- **Body:** Geist Sans — Relaxed leading, ~65ch max
-- **Mono:** Geist Mono — Indexes, timestamps, tech stacks, eyebrow labels
-- **Banned:** Inter, Roboto, Arial, generic system stacks as primary. No decorative serifs.
+- **Display:** Geist Sans — tight tracking, weight-driven hierarchy, oversized name
+- **Body:** Geist Sans — relaxed leading, ~65ch max
+- **Mono (load-bearing):** Geist Mono — annotations (`FIG. 1 —`, `SHT 02`), title
+  blocks, tech-stack badges, timestamps, drawing numbers (`DWG JNM-2026`)
+- Annotations are uppercase mono, `text-[11px]`, `tracking-[0.22em]`, in Ink Blue
+- **Banned:** Inter, Roboto, Arial, decorative serifs
 
 ## 4. Component Stylings
-* **Buttons:** Fully rounded pills. Primary = Teal Signal fill. Trailing arrow lives inside its own circular nest (button-in-button). Active scale `0.98`. No neon glows.
-* **Double-Bezel:** Major panels sit in an outer shell (`p-1.5`, hairline ring, large radius) with an inner core (inset highlight, concentric smaller radius).
-* **Cards:** Used only when elevation aids hierarchy. Prefer dividers + whitespace for lists. No equal 3-column feature grids.
-* **Section Index:** Mono `01` / `02` preceding titles — editorial, not badge clutter.
-* **Loaders:** Skeletal blocks matching layout. No circular spinners.
-* **Nav Rail (desktop):** Fixed left index, vertical brand mark, page links, theme control.
-* **Nav Island (mobile):** Floating glass pill; menu expands to full-screen blur overlay with staggered link reveal.
+* **Corners are squared.** `--radius: 0.5rem`. Chips/badges `rounded-[3px]`,
+  icon nests `rounded-[4px]`, buttons `rounded-md`, panels `rounded-lg`.
+  No pills, no `rounded-full` except literal dots/status pulses.
+* **Annotations:** section eyebrows read `SHT 0N — Title` in mono Ink Blue,
+  followed by a `.dim-line` (hairline with perpendicular end ticks).
+* **Title block:** the hero Now panel is styled as a drawing title block —
+  squared frame with a stronger `border-foreground/25` line, ruled rows,
+  `Rev. <month>` stamp.
+* **Buttons:** squared stamps. Primary = Ink Blue fill, trailing arrow in its own
+  squared nest. Active scale `0.98`. No glows.
+* **Badges:** mono, squared, hairline border — read as drawing callouts.
+* **Loaders:** skeletal blocks matching layout. No circular spinners.
+* **Nav Rail (desktop):** fixed left index; JM mark is a bordered square stamp;
+  rail footer carries the drawing number + theme control.
+* **Nav Island (mobile):** floating squared bar (`rounded-lg`); menu expands to
+  full-screen blur overlay with staggered link reveal.
 
 ## 5. Layout Principles
-- Desktop: fixed left rail (~14rem) + main column; content max-width ~72rem
-- Hero: Editorial Split — massive left brand/type, interactive Now panel right
-- Projects: Asymmetric bento (large feature + stacked companions), collapses to single column below 768px
-- Shelf: Zig-zag / staggered media — never three equal cards
-- Contact: Left-aligned editorial close — never centered gradient glow card
+- The page canvas carries a fixed drafting grid (`.drafting-grid`): 24px minor
+  cells, 120px major lines — subtle, behind all content.
+- Desktop: fixed left rail (~13rem) + main column; content max-width ~72rem
+- Hero: Editorial Split — massive name + `FIG. 1` annotation left, title-block
+  Now panel right
+- Sections are "sheets": numbered `SHT 01…05` in reading order
+- Projects: asymmetric bento (large feature + stacked companions)
+- Contact: left-aligned editorial close
 - Full-height uses `min-h-[100dvh]` only — never `h-screen`
 - Macro whitespace: section padding `py-24`–`py-32`
 
 ## 6. Motion & Interaction
 - Custom easing: `cubic-bezier(0.32, 0.72, 0, 1)` (~700ms) for UI transitions
-- Scroll entry: fade-up + slight blur resolve via IntersectionObserver / GSAP ScrollTrigger
-- Staggered list/nav reveals — never mount all at once
+- Precise, never bouncy — things settle like a pen lifting off paper
+- Scroll entry: fade-up + slight blur resolve (GSAP ScrollTrigger / IO)
+- Prefer line-draw reveals (SVG stroke, scaleX on `.dim-line`) for annotations
 - Animate only `transform` and `opacity`
-- `backdrop-blur` only on fixed/sticky chrome (rail, island, menu overlay)
+- `backdrop-blur` only on fixed/sticky chrome
 - Respect `prefers-reduced-motion`
 
 ## 7. Anti-Patterns (Banned)
 - No warm cream + amber/terracotta portfolio look
-- No sticky edge-to-edge top navbar as the primary desktop chrome
+- No pills or fully-rounded buttons — this system is squared
+- No sticky edge-to-edge top navbar as primary desktop chrome
 - No "Hi, I'm…" + gradient word highlight + dual CTA + social icon row template
 - No three equal project/feature cards
 - No centered contact cards with brand glow orbs

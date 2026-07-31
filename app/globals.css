@@ -4,75 +4,84 @@
 
 @layer base {
   :root {
-    /* Warm-neutral (stone) canvas with a single locked amber accent. */
-    --background: 40 33% 98%;
-    --foreground: 24 10% 12%;
+    /* As-Built Drawing — cool vellum drafting paper, graphite ink,
+       a single ink-blue accent. */
+    --background: 195 14% 95%;
+    --foreground: 202 28% 16%;
 
-    --card: 40 40% 99.5%;
-    --card-foreground: 24 10% 12%;
+    --card: 190 25% 99%;
+    --card-foreground: 202 28% 16%;
 
-    --popover: 40 40% 99.5%;
-    --popover-foreground: 24 10% 12%;
+    --popover: 190 25% 99%;
+    --popover-foreground: 202 28% 16%;
 
-    --primary: 24 10% 14%;
-    --primary-foreground: 40 33% 98%;
+    --primary: 202 28% 16%;
+    --primary-foreground: 195 14% 96%;
 
-    --secondary: 36 20% 94%;
-    --secondary-foreground: 24 10% 14%;
+    --secondary: 200 16% 91%;
+    --secondary-foreground: 202 28% 16%;
 
-    --muted: 36 18% 94%;
-    --muted-foreground: 28 6% 42%;
+    --muted: 200 15% 91%;
+    --muted-foreground: 202 17% 44%;
 
-    --accent: 36 22% 92%;
-    --accent-foreground: 24 10% 14%;
+    --accent: 200 18% 89%;
+    --accent-foreground: 202 28% 16%;
 
     --destructive: 0 72% 46%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive-foreground: 195 14% 96%;
 
-    --border: 30 14% 89%;
-    --input: 30 14% 89%;
-    --ring: 24 90% 52%;
+    --border: 203 15% 85%;
+    --input: 203 15% 85%;
+    --ring: 221 83% 53%;
 
-    /* Brand — warm amber. Single accent, used identically across the site. */
-    --brand: 24 90% 52%;
-    --brand-foreground: 40 40% 99%;
-    --brand-muted: 30 60% 96%;
+    /* Brand — ink blue. Single accent, used identically across the site. */
+    --brand: 221 83% 53%;
+    --brand-foreground: 210 40% 98%;
+    --brand-muted: 221 70% 94%;
 
-    --radius: 1rem;
+    /* Drafting grid lines (full colors, not HSL triples). */
+    --grid-minor: hsl(203 40% 40% / 0.06);
+    --grid-major: hsl(203 40% 35% / 0.1);
+
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 24 12% 7%;
-    --foreground: 40 20% 96%;
+    /* Night drafting — deep blue-graphite sheet, brighter ink. */
+    --background: 205 30% 8%;
+    --foreground: 190 20% 92%;
 
-    --card: 24 10% 10%;
-    --card-foreground: 40 20% 96%;
+    --card: 205 26% 11%;
+    --card-foreground: 190 20% 92%;
 
-    --popover: 24 10% 10%;
-    --popover-foreground: 40 20% 96%;
+    --popover: 205 26% 11%;
+    --popover-foreground: 190 20% 92%;
 
-    --primary: 40 20% 96%;
-    --primary-foreground: 24 10% 12%;
+    --primary: 190 20% 92%;
+    --primary-foreground: 205 30% 10%;
 
-    --secondary: 24 8% 15%;
-    --secondary-foreground: 40 20% 96%;
+    --secondary: 205 20% 15%;
+    --secondary-foreground: 190 20% 92%;
 
-    --muted: 24 8% 15%;
-    --muted-foreground: 36 10% 64%;
+    --muted: 205 20% 15%;
+    --muted-foreground: 203 15% 62%;
 
-    --accent: 24 8% 17%;
-    --accent-foreground: 40 20% 96%;
+    --accent: 205 20% 17%;
+    --accent-foreground: 190 20% 92%;
 
     --destructive: 0 62% 45%;
-    --destructive-foreground: 40 20% 96%;
+    --destructive-foreground: 190 20% 92%;
 
-    --border: 30 8% 18%;
-    --input: 30 8% 18%;
-    --ring: 24 92% 58%;
+    --border: 205 18% 19%;
+    --input: 205 18% 19%;
+    --ring: 213 92% 68%;
 
-    --brand: 24 92% 58%;
-    --brand-foreground: 24 12% 8%;
-    --brand-muted: 24 30% 16%;
+    --brand: 213 92% 68%;
+    --brand-foreground: 205 30% 8%;
+    --brand-muted: 215 45% 17%;
+
+    --grid-minor: hsl(200 40% 70% / 0.05);
+    --grid-major: hsl(200 40% 75% / 0.08);
   }
 }
 
@@ -87,6 +96,40 @@
   ::selection {
     background-color: hsl(var(--brand) / 0.22);
   }
+}
+
+/* As-Built Drawing — drafting-paper grid. Minor cells every 24px, a
+   heavier major line every 120px, like printed graph vellum. */
+.drafting-grid {
+  background-image: linear-gradient(var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-minor) 1px, transparent 1px),
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px);
+  background-size: 24px 24px, 24px 24px, 120px 120px, 120px 120px;
+}
+
+/* Dimension line — hairline with perpendicular end ticks, used next to
+   sheet/figure annotations. */
+.dim-line {
+  position: relative;
+  height: 1px;
+  background-color: hsl(var(--brand) / 0.4);
+}
+.dim-line::before,
+.dim-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 1px;
+  height: 8px;
+  transform: translateY(-50%);
+  background-color: hsl(var(--brand) / 0.4);
+}
+.dim-line::before {
+  left: 0;
+}
+.dim-line::after {
+  right: 0;
 }
 
 /* Spotify now-playing equalizer bars */

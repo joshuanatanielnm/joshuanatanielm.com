@@ -20,9 +20,9 @@ export type PointerState = {
   attract: boolean;
 };
 
-const COLOR_SLOW = new THREE.Color("#C2410C");
-const COLOR_FAST = new THREE.Color("#FDBA74");
-const COLOR_CORE = new THREE.Color("#FFF7ED");
+const COLOR_SLOW = new THREE.Color("#1D4ED8");
+const COLOR_FAST = new THREE.Color("#93C5FD");
+const COLOR_CORE = new THREE.Color("#EFF6FF");
 
 const vertexShader = /* glsl */ `
   attribute float aSeed;
