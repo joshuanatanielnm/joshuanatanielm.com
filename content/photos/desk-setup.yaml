@@ -1,8 +1,8 @@
-# TODO: placeholder image — replace imageUrl with a real photo.
 title: The desk, on a good day
-imageUrl: https://picsum.photos/seed/desk-setup/800/1100
+imageUrl: >-
+  https://res.cloudinary.com/twhnjstc/image/upload/v1785578932/51476566-5E7E-46DF-9289-11AFCC6DA3AE_ob30gv.jpg
 location: Home office
 takenDate: '2025-02-18'
 orientation: portrait
-featured: false
 category: setup
+featured: false

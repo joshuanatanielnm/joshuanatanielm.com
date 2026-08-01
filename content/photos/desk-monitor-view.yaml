@@ -1,8 +1,8 @@
-# TODO: placeholder image — replace imageUrl with a real photo.
 title: Monitor, from where I sit
-imageUrl: https://picsum.photos/seed/desk-monitor/1000/1000
+imageUrl: >-
+  https://res.cloudinary.com/twhnjstc/image/upload/v1785579307/769B5EA8-AAE1-4C64-8232-2750D35C4B7F_l8r5e7.jpg
 location: Home office
 takenDate: '2025-02-18'
 orientation: square
-featured: false
 category: setup
+featured: false

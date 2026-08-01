@@ -1,8 +1,8 @@
-# TODO: placeholder image — replace imageUrl with a real photo.
-title: Keyboard and a warm coffee
-imageUrl: https://picsum.photos/seed/desk-keyboard/1200/800
+title: Keyboard
+imageUrl: >-
+  https://res.cloudinary.com/twhnjstc/image/upload/v1785579294/E876FB1A-0F3D-4AF4-8EBC-ABC850F5155F_mfzdmo.jpg
 location: Home office
 takenDate: '2025-02-18'
 orientation: landscape
-featured: false
 category: setup
+featured: false
