@@ -55,8 +55,8 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
               index={index}
               className={cn("min-w-0", spanClass[orientation])}
             >
-              <figure className="group overflow-hidden rounded-[1.75rem] border border-border bg-foreground/[0.03] p-1.5">
-                <div className="overflow-hidden rounded-[calc(1.75rem-0.375rem)] border border-border/60 bg-card">
+              <figure className="group overflow-hidden rounded-[1.75rem] bg-foreground/[0.03] p-1.5">
+                <div className="overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-card">
                   <div
                     className={cn(
                       "relative overflow-hidden bg-muted",

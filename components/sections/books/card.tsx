@@ -30,7 +30,7 @@ export function BookCard(props: BookCardProps) {
   const hasUrl = Boolean(props.link);
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl border border-border bg-card transition-colors hover:border-brand/40">
+    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card transition-colors">
       <div className="relative aspect-[3/4] overflow-hidden bg-muted">
         {props.coverUrl ? (
           <Image

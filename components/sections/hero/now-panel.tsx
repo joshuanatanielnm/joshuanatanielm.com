@@ -4,7 +4,6 @@ import {
   Hammer,
   MapPin,
 } from "@phosphor-icons/react/dist/ssr";
-import { format } from "date-fns";
 import { getNow } from "@/server/keystatic";
 import { SpotifyNowPlaying } from "@/components/sections/spotify/now-playing";
 
@@ -23,7 +22,7 @@ export async function NowPanel() {
     .filter((row) => Boolean(row.value));
 
   return (
-    <div className="w-full rounded-lg border border-foreground/25 bg-card shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
+    <div className="w-full rounded-lg bg-card shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
       <div className="overflow-hidden rounded-[calc(0.5rem-1px)]">
         <div className="flex items-center justify-between border-b border-foreground/25 px-5 py-4">
           <div className="flex items-center gap-2">
@@ -35,11 +34,6 @@ export async function NowPanel() {
               Title block · Now
             </span>
           </div>
-          {now.updatedAt ? (
-            <span className="font-mono text-[11px] uppercase text-muted-foreground">
-              Rev. {format(new Date(now.updatedAt), "MMM yyyy")}
-            </span>
-          ) : null}
         </div>
 
         <dl className="divide-y divide-border">

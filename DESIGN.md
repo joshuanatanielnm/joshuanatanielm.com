@@ -21,29 +21,40 @@ components (exception: the Three.js hero scene).
 - **Banned:** warm cream canvases, amber/terracotta, teal, purple/neon glows, pure `#000000`
 
 ## 3. Typography Rules
-- **Display:** Geist Sans — tight tracking, weight-driven hierarchy, oversized name
-- **Body:** Geist Sans — relaxed leading, ~65ch max
+- **Display:** Roboto (self-hosted variable, `app/fonts/`) — tight tracking,
+  weight-driven hierarchy, oversized name
+- **Body:** Roboto — relaxed leading, ~65ch max
 - **Mono (load-bearing):** Geist Mono — annotations (`FIG. 1 —`, `SHT 02`), title
   blocks, tech-stack badges, timestamps, drawing numbers (`DWG JNM-2026`)
 - Annotations are uppercase mono, `text-[11px]`, `tracking-[0.22em]`, in Ink Blue
-- **Banned:** Inter, Roboto, Arial, decorative serifs
+- **Banned:** Inter, Arial, Geist Sans, Source Sans, decorative serifs
 
 ## 4. Component Stylings
 * **Corners are squared.** `--radius: 0.5rem`. Chips/badges `rounded-[3px]`,
   icon nests `rounded-[4px]`, buttons `rounded-md`, panels `rounded-lg`.
   No pills, no `rounded-full` except literal dots/status pulses.
-* **Annotations:** section eyebrows read `SHT 0N — Title` in mono Ink Blue,
-  followed by a `.dim-line` (hairline with perpendicular end ticks).
-* **Title block:** the hero Now panel is styled as a drawing title block —
-  squared frame with a stronger `border-foreground/25` line, ruled rows,
-  `Rev. <month>` stamp.
+* **Borderless surfaces.** Only buttons and badges carry a border. Cards,
+  panels, image frames, popovers and sheets are separated by fill
+  (`bg-card`, `bg-foreground/[0.03]`) and shadow — never an outline.
+  Hairline `border-t` / `border-b` / `border-r` rules used as *dividers*
+  (section rules, ruled rows, the desktop rail edge) are still allowed.
+* **No numerals in chrome.** No sheet numbers, figure numbers, drawing
+  numbers, revision stamps, nav indices or list ordinals anywhere in the UI.
+  Ordered lists render with disc markers, not numbers. Numbers appear only
+  where they are the content itself (dates, ratings, metrics).
+* **Annotations:** section eyebrows are short mono Ink Blue labels (no
+  `SHT`/`FIG` numbering), followed by a `.dim-line` (hairline with
+  perpendicular end ticks).
+* **Title block:** the hero Now panel reads as a drawing title block —
+  squared, borderless, lifted on shadow, with ruled rows inside.
 * **Buttons:** squared stamps. Primary = Ink Blue fill, trailing arrow in its own
   squared nest. Active scale `0.98`. No glows.
 * **Badges:** mono, squared, hairline border — read as drawing callouts.
 * **Loaders:** skeletal blocks matching layout. No circular spinners.
-* **Nav Rail (desktop):** fixed left index; JM mark is a bordered square stamp;
-  rail footer carries the drawing number + theme control.
-* **Nav Island (mobile):** floating squared bar (`rounded-lg`); menu expands to
+* **Nav Rail (desktop):** fixed left index, unnumbered links; rail footer
+  carries the theme control.
+* **Nav Island (mobile):** floating squared bar (`rounded-lg`, borderless);
+  menu expands to
   full-screen blur overlay with staggered link reveal.
 
 ## 5. Layout Principles
@@ -52,7 +63,7 @@ components (exception: the Three.js hero scene).
 - Desktop: fixed left rail (~13rem) + main column; content max-width ~72rem
 - Hero: Editorial Split — massive name + `FIG. 1` annotation left, title-block
   Now panel right
-- Sections are "sheets": numbered `SHT 01…05` in reading order
+- Sections read in a fixed order; they are not numbered
 - Projects: asymmetric bento (large feature + stacked companions)
 - Contact: left-aligned editorial close
 - Full-height uses `min-h-[100dvh]` only — never `h-screen`
@@ -76,4 +87,7 @@ components (exception: the Three.js hero scene).
 - No centered contact cards with brand glow orbs
 - No Inter, emojis, neon outer glows, pure black, AI copy clichés
 - No "Scroll to explore" / bouncing chevrons
+- No outlined cards or panels — borders are for buttons and badges only
+- No decorative numbering (sheet/figure/drawing numbers, nav indices,
+  ordered-list numerals)
 - No overlapping absolute content stacks on mobile

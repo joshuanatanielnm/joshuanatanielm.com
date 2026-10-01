@@ -38,11 +38,11 @@ function ShelfTile({
     <NavLink
       href={href}
       className={cn(
-        "group flex min-w-0 flex-col rounded-lg border border-border bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
+        "group flex min-w-0 flex-col rounded-lg bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
         className
       )}
     >
-      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(0.5rem-1px)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
         <div className="flex items-center justify-between px-5 pt-5">
           <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <TileIcon className="h-4 w-4 text-brand" weight="fill" />
@@ -65,7 +65,7 @@ function ShelfTile({
             {visibleThumbs.map((thumb, i) => (
               <div
                 key={`${thumb.src}-${i}`}
-                className="relative h-28 min-w-0 overflow-hidden rounded-xl border border-border sm:h-32"
+                className="relative h-28 min-w-0 overflow-hidden rounded-xl sm:h-32"
               >
                 <Image
                   src={thumb.src}
@@ -79,7 +79,7 @@ function ShelfTile({
           </div>
         ) : (
           <div className="px-5 pb-5">
-            <div className="rounded-xl border border-dashed border-border px-4 py-8 text-center text-xs text-muted-foreground">
+            <div className="rounded-xl bg-muted/40 px-4 py-8 text-center text-xs text-muted-foreground">
               Nothing here yet
             </div>
           </div>
@@ -128,7 +128,6 @@ export async function ShelfSection() {
     >
       <Reveal>
         <SectionHeading
-          index="04"
           title="Beyond the code"
           description="Books, games, and places that keep me curious away from the keyboard."
         />

@@ -14,7 +14,6 @@ export function ProjectSection() {
     >
       <Reveal>
         <SectionHeading
-          index="03"
           title="Selected projects"
           description="Products shipped across companies, communities, and side experiments."
           action={

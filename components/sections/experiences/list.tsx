@@ -33,7 +33,7 @@ export function ExperienceList(props: ExperienceListProps) {
       </p>
       <div className="flex gap-4">
         {props.imageUrl ? (
-          <div className="hidden h-12 w-12 shrink-0 overflow-hidden rounded-2xl border border-border bg-card p-0.5 sm:block">
+          <div className="hidden h-12 w-12 shrink-0 overflow-hidden rounded-2xl bg-card p-0.5 sm:block">
             <div className="h-full w-full overflow-hidden rounded-[calc(1rem-0.125rem)]">
               <Image
                 src={props.imageUrl}

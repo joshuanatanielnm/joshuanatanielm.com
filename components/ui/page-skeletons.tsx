@@ -56,7 +56,7 @@ export function ProseSkeleton({ lines = 8 }: { lines?: number }) {
 
 export function CoverSkeleton() {
   return (
-    <div className="mt-12 overflow-hidden rounded-lg border border-border bg-foreground/[0.03] p-1.5">
+    <div className="mt-12 overflow-hidden rounded-lg bg-foreground/[0.03] p-1.5">
       <Skeleton className="aspect-[21/9] w-full rounded-[calc(0.5rem-1px)]" />
     </div>
   );
@@ -64,8 +64,8 @@ export function CoverSkeleton() {
 
 export function MediaCardSkeleton({ featured = false }: { featured?: boolean }) {
   return (
-    <div className="rounded-lg border border-border bg-foreground/[0.03] p-1.5">
-      <div className="overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card">
+    <div className="rounded-lg bg-foreground/[0.03] p-1.5">
+      <div className="overflow-hidden rounded-[calc(0.5rem-1px)] bg-card">
         <Skeleton className={cn("w-full", featured ? "aspect-[16/10]" : "aspect-[16/10]")} />
         <div className="space-y-3 p-5 sm:p-6">
           <Skeleton className="h-5 w-2/3" />
@@ -112,7 +112,7 @@ export function ShelfCardGridSkeleton({ count = 8 }: { count?: number }) {
   return (
     <div className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="rounded-2xl border border-border bg-card p-3">
+        <div key={index} className="rounded-2xl bg-card p-3">
           <Skeleton className="aspect-[3/4] w-full rounded-xl" />
           <Skeleton className="mt-3 h-4 w-3/4" />
           <Skeleton className="mt-2 h-3 w-1/2 rounded-full" />
@@ -126,7 +126,7 @@ export function GallerySkeleton({ count = 6 }: { count?: number }) {
   return (
     <div className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
       {Array.from({ length: count }).map((_, index) => (
-        <div key={index} className="break-inside-avoid overflow-hidden rounded-2xl border border-border bg-card">
+        <div key={index} className="break-inside-avoid overflow-hidden rounded-2xl bg-card">
           <Skeleton
             className={cn(
               "w-full",

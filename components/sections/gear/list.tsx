@@ -104,12 +104,12 @@ export function GearList({ items }: { items: GearItem[] }) {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40"
+                          className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4 transition-colors"
                         >
                           {content}
                         </Link>
                       ) : (
-                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4">
+                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4">
                           {content}
                         </div>
                       )}
