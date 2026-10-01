@@ -16,7 +16,7 @@ export function ContactSection() {
         <div className="grid gap-12 border-t border-border pt-16 lg:grid-cols-12 lg:gap-16 lg:pt-24">
           <div className="lg:col-span-7">
             <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
-              SHT 05 — Contact
+              Contact
               <span aria-hidden className="dim-line w-16" />
             </p>
             <h2 className="mt-4 text-balance text-[clamp(2.5rem,8vw,5rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-foreground">

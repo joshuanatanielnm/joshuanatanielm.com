@@ -67,7 +67,7 @@ export function SpotifyNowPlaying({ fallbackText }: { fallbackText?: string }) {
           alt={`${track.title} album art`}
           width={40}
           height={40}
-          className="h-10 w-10 shrink-0 rounded-md border border-border object-cover"
+          className="h-10 w-10 shrink-0 rounded-md object-cover"
           unoptimized
         />
       ) : (

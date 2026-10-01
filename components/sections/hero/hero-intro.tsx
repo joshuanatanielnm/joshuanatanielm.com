@@ -105,7 +105,7 @@ export function HeroIntro({
 
         <RevealGroupItem>
           <p className="mt-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
-            Fig. 1 — Software engineer, frontend focus
+            Software engineer, frontend focus
             <span aria-hidden className="dim-line w-16" />
           </p>
         </RevealGroupItem>

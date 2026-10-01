@@ -21,11 +21,11 @@ export function ProjectCard(props: ProjectCardProps) {
   return (
     <div
       className={cn(
-        "rounded-lg border border-border bg-foreground/[0.03] p-1.5",
+        "rounded-lg bg-foreground/[0.03] p-1.5",
         props.className
       )}
     >
-      <article className="group relative flex flex-col overflow-hidden rounded-[calc(0.5rem-1px)] border border-border/60 bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
+      <article className="group relative flex flex-col overflow-hidden rounded-[calc(0.5rem-1px)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
         <div className="relative aspect-[16/10] overflow-hidden bg-muted">
           {props.imageUrl ? (
             <Image
