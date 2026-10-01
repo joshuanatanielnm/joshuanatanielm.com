@@ -68,7 +68,7 @@ export function GearList({ items }: { items: GearItem[] }) {
           <Reveal>
             <div className="flex items-center gap-2">
               <meta.Icon className="h-4 w-4 text-brand" weight="bold" />
-              <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              <h2 className="font-condensed font-medium text-xs uppercase tracking-[0.06em] text-muted-foreground">
                 {meta.label}
               </h2>
               <span className="h-px flex-1 bg-border" />

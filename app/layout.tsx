@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
-import { GeistMono } from "geist/font/mono";
 import { cn } from "@/utils/ui";
 import "./globals.css";
 import { defaultMetadata } from "@/site.config";
@@ -25,6 +24,25 @@ const roboto = localFont({
   ],
   display: "swap",
   variable: "--font-roboto",
+});
+
+// Roboto Condensed — labels, badges, metadata. Self-hosted for the same
+// reason as above.
+const robotoCondensed = localFont({
+  src: [
+    {
+      path: "./fonts/roboto-condensed-latin-wght-normal.woff2",
+      weight: "100 900",
+      style: "normal",
+    },
+    {
+      path: "./fonts/roboto-condensed-latin-wght-italic.woff2",
+      weight: "100 900",
+      style: "italic",
+    },
+  ],
+  display: "swap",
+  variable: "--font-roboto-condensed",
 });
 
 export const viewport: Viewport = {
@@ -75,7 +93,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       className={cn(
         "motion-safe:scroll-smooth",
         roboto.variable,
-        GeistMono.variable
+        robotoCondensed.variable
       )}
       suppressHydrationWarning
     >

@@ -78,7 +78,7 @@ export function SpotifyNowPlaying({ fallbackText }: { fallbackText?: string }) {
       )}
 
       <div className="flex min-w-0 flex-col gap-0.5">
-        <dt className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+        <dt className="flex items-center gap-1.5 font-condensed font-medium text-xs uppercase tracking-[0.06em] text-muted-foreground">
           {label}
           {data?.isPlaying ? <Equalizer /> : null}
         </dt>

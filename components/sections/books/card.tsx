@@ -41,7 +41,7 @@ export function BookCard(props: BookCardProps) {
             className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center p-4 text-center font-mono text-sm text-muted-foreground/50">
+          <div className="flex h-full w-full items-center justify-center p-4 text-center font-condensed text-sm text-muted-foreground/50">
             {props.title}
           </div>
         )}

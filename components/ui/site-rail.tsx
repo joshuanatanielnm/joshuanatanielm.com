@@ -149,7 +149,7 @@ export function SiteRail() {
 
         <div className="mt-auto flex flex-col gap-3 border-t border-foreground/[0.06] pt-4">
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
               Theme
             </span>
             <ThemeToggle />

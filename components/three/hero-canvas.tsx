@@ -179,7 +179,7 @@ export function HeroBackdrop({ className }: { className?: string }) {
       <p
         aria-hidden={!hintVisible}
         className={cn(
-          "pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full border border-border/60 bg-card/70 px-3.5 py-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground shadow-sm backdrop-blur-md transition-all duration-500 sm:bottom-8",
+          "pointer-events-none absolute bottom-6 left-1/2 z-10 -translate-x-1/2 rounded-full border border-border/60 bg-card/70 px-3.5 py-1.5 font-condensed font-medium text-xs uppercase tracking-[0.06em] text-muted-foreground shadow-sm backdrop-blur-md transition-all duration-500 sm:bottom-8",
           hintVisible
             ? "translate-y-0 opacity-100"
             : "translate-y-2 opacity-0"

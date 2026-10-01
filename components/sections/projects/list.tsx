@@ -37,7 +37,7 @@ export function ProjectCard(props: ProjectCardProps) {
             />
           ) : (
             <div className="flex h-full w-full items-center justify-center">
-              <span className="font-mono text-3xl font-semibold text-muted-foreground/40">
+              <span className="font-condensed text-3xl font-semibold text-muted-foreground/40">
                 {props.title.charAt(0)}
               </span>
             </div>
@@ -75,7 +75,7 @@ export function ProjectCard(props: ProjectCardProps) {
             </div>
           ) : null}
 
-          <p className="border-t border-border/60 pt-3 font-mono text-xs text-muted-foreground">
+          <p className="border-t border-border/60 pt-3 font-condensed text-xs text-muted-foreground">
             {props.techLabels.slice(0, 4).join(" · ")}
             {props.techLabels.length > 4 ? " · …" : ""}
           </p>

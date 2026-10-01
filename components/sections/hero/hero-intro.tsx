@@ -76,7 +76,7 @@ export function HeroIntro({
             {isOpenToWork ? (
               <Link
                 href={customMetadata.emailUrl}
-                className="inline-flex w-fit items-center gap-2 rounded-[3px] border border-brand/40 bg-brand-muted px-3 py-1 font-mono text-[10px] font-medium uppercase tracking-[0.2em] text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
+                className="inline-flex w-fit items-center gap-2 rounded-[3px] border border-brand/40 bg-brand-muted px-3 py-1 font-condensed text-xs font-medium uppercase tracking-[0.08em] text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
               >
                 <span className="relative flex h-1.5 w-1.5">
                   <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
@@ -85,7 +85,7 @@ export function HeroIntro({
                 Open to work
               </Link>
             ) : (
-              <span className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <span className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
                 Site · Surabaya, ID
               </span>
             )}
@@ -94,7 +94,7 @@ export function HeroIntro({
                 href={currentCompanyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-brand/40 hover:text-brand"
+                className="inline-flex w-fit items-center rounded-[3px] border border-border bg-card px-3 py-1 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:border-brand/40 hover:text-brand"
               >
                 Firm · {currentCompanyName}
               </Link>
@@ -104,7 +104,7 @@ export function HeroIntro({
         </RevealGroupItem>
 
         <RevealGroupItem>
-          <p className="mt-8 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+          <p className="mt-8 flex items-center gap-3 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-brand">
             Software engineer, frontend focus
             <span aria-hidden className="dim-line w-16" />
           </p>

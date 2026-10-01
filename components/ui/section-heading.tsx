@@ -27,7 +27,7 @@ export function SectionHeading({
     >
       <div className="flex flex-col gap-3">
         {index ? (
-          <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+          <span className="flex items-center gap-3 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-brand">
             {index}
             <span aria-hidden className="dim-line w-16" />
           </span>

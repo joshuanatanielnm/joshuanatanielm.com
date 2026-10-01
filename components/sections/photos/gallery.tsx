@@ -51,7 +51,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
                   ) : null}
                 </div>
                 {photo.takenDate ? (
-                  <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                  <span className="shrink-0 font-condensed text-xs text-muted-foreground">
                     {format(new Date(photo.takenDate), "MMM yyyy")}
                   </span>
                 ) : null}

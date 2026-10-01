@@ -9,7 +9,7 @@ export const Footer = () => {
     <footer className="border-t border-border print:hidden">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-4 py-12 sm:px-6 sm:flex-row sm:items-end sm:justify-between">
         <div className="flex flex-col gap-2">
-          <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+          <p className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
             Joshua Manuputty
           </p>
           <p className="max-w-sm text-sm text-muted-foreground">

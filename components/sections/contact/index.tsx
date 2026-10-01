@@ -15,7 +15,7 @@ export function ContactSection() {
       <Reveal>
         <div className="grid gap-12 border-t border-border pt-16 lg:grid-cols-12 lg:gap-16 lg:pt-24">
           <div className="lg:col-span-7">
-            <p className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
+            <p className="flex items-center gap-3 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-brand">
               Contact
               <span aria-hidden className="dim-line w-16" />
             </p>

@@ -30,7 +30,7 @@ export async function NowPanel() {
               <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
               Title block · Now
             </span>
           </div>
@@ -48,7 +48,7 @@ export async function NowPanel() {
             <div key={key} className="flex items-start gap-3 px-5 py-3.5">
               <Icon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
               <div className="flex flex-col gap-0.5">
-                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                <dt className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
                   {label}
                 </dt>
                 <dd className="text-sm leading-snug text-foreground">{value}</dd>

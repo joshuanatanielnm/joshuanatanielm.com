@@ -2,7 +2,7 @@
 
 ## 1. Visual Theme & Atmosphere
 The site as a technical drawing of its author. Cool vellum drafting paper with a
-faint printed grid, graphite ink, and a single ink-blue accent. Mono type does
+faint printed grid, graphite ink, and a single ink-blue accent. Condensed type does
 the annotating — figure labels, sheet numbers, title blocks, dimension lines.
 Feels like a drafting table in a well-run studio: precise, calm, quietly warm.
 Density 4 / Variance 7 / Motion 5.
@@ -24,10 +24,12 @@ components (exception: the Three.js hero scene).
 - **Display:** Roboto (self-hosted variable, `app/fonts/`) — tight tracking,
   weight-driven hierarchy, oversized name
 - **Body:** Roboto — relaxed leading, ~65ch max
-- **Mono (load-bearing):** Geist Mono — annotations (`FIG. 1 —`, `SHT 02`), title
-  blocks, tech-stack badges, timestamps, drawing numbers (`DWG JNM-2026`)
-- Annotations are uppercase mono, `text-[11px]`, `tracking-[0.22em]`, in Ink Blue
-- **Banned:** Inter, Arial, Geist Sans, Source Sans, decorative serifs
+- **Labels:** Roboto Condensed (self-hosted variable, `app/fonts/`, `font-condensed`) —
+  annotations, title blocks, tech-stack badges, timestamps, metadata
+- Annotations are uppercase condensed, `text-xs font-medium`, `tracking-[0.08em]`,
+  in Ink Blue. No monospace anywhere.
+- **Banned:** Inter, Arial, Geist Sans, Geist Mono, Source Sans, any monospace,
+  decorative serifs
 
 ## 4. Component Stylings
 * **Corners are squared.** `--radius: 0.5rem`. Chips/badges `rounded-[3px]`,
@@ -42,14 +44,14 @@ components (exception: the Three.js hero scene).
   numbers, revision stamps, nav indices or list ordinals anywhere in the UI.
   Ordered lists render with disc markers, not numbers. Numbers appear only
   where they are the content itself (dates, ratings, metrics).
-* **Annotations:** section eyebrows are short mono Ink Blue labels (no
+* **Annotations:** section eyebrows are short condensed Ink Blue labels (no
   `SHT`/`FIG` numbering), followed by a `.dim-line` (hairline with
   perpendicular end ticks).
 * **Title block:** the hero Now panel reads as a drawing title block —
   squared, borderless, lifted on shadow, with ruled rows inside.
 * **Buttons:** squared stamps. Primary = Ink Blue fill, trailing arrow in its own
   squared nest. Active scale `0.98`. No glows.
-* **Badges:** mono, squared, hairline border — read as drawing callouts.
+* **Badges:** condensed, squared, hairline border — read as drawing callouts.
 * **Loaders:** skeletal blocks matching layout. No circular spinners.
 * **Nav Rail (desktop):** fixed left index, unnumbered links; rail footer
   carries the theme control.

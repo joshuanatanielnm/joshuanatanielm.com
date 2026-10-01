@@ -20,7 +20,12 @@ const config = {
     extend: {
       fontFamily: {
         sans: ["var(--font-roboto)", "system-ui", "sans-serif"],
-        mono: ["var(--font-geist-mono)", "ui-monospace", "monospace"],
+        condensed: [
+          "var(--font-roboto-condensed)",
+          "var(--font-roboto)",
+          "system-ui",
+          "sans-serif",
+        ],
       },
       colors: {
         border: "hsl(var(--border))",

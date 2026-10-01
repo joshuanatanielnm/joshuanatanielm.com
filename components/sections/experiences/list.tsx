@@ -28,7 +28,7 @@ export function ExperienceList(props: ExperienceListProps) {
       {...(wrapperProps as any)}
       className="group grid grid-cols-1 gap-x-8 gap-y-3 border-b border-border py-8 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:grid-cols-[10rem_1fr] sm:gap-y-1"
     >
-      <p className="pt-1 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground sm:text-right">
+      <p className="pt-1 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground sm:text-right">
         {props.formattedDate}
       </p>
       <div className="flex gap-4">

@@ -44,7 +44,7 @@ function ShelfTile({
     >
       <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(0.5rem-1px)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
         <div className="flex items-center justify-between px-5 pt-5">
-          <span className="inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+          <span className="inline-flex items-center gap-2 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
             <TileIcon className="h-4 w-4 text-brand" weight="fill" />
             {label}
           </span>
