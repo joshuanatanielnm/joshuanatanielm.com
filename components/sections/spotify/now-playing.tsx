@@ -67,7 +67,7 @@ export function SpotifyNowPlaying({ fallbackText }: { fallbackText?: string }) {
           alt={`${track.title} album art`}
           width={40}
           height={40}
-          className="h-10 w-10 shrink-0 rounded-md border border-border object-cover"
+          className="h-10 w-10 shrink-0 rounded-md object-cover"
           unoptimized
         />
       ) : (
@@ -78,7 +78,7 @@ export function SpotifyNowPlaying({ fallbackText }: { fallbackText?: string }) {
       )}
 
       <div className="flex min-w-0 flex-col gap-0.5">
-        <dt className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
+        <dt className="flex items-center gap-1.5 font-condensed font-medium text-xs uppercase tracking-[0.06em] text-muted-foreground">
           {label}
           {data?.isPlaying ? <Equalizer /> : null}
         </dt>

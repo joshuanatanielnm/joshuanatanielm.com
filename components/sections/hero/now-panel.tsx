@@ -4,7 +4,6 @@ import {
   Hammer,
   MapPin,
 } from "@phosphor-icons/react/dist/ssr";
-import { format } from "date-fns";
 import { getNow } from "@/server/keystatic";
 import { SpotifyNowPlaying } from "@/components/sections/spotify/now-playing";
 
@@ -23,7 +22,7 @@ export async function NowPanel() {
     .filter((row) => Boolean(row.value));
 
   return (
-    <div className="w-full rounded-lg border border-foreground/25 bg-card shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
+    <div className="w-full rounded-lg bg-card shadow-[0_24px_80px_hsl(240_6%_10%/0.06)] dark:shadow-[0_24px_80px_hsl(0_0%_0%/0.35)]">
       <div className="overflow-hidden rounded-[calc(0.5rem-1px)]">
         <div className="flex items-center justify-between border-b border-foreground/25 px-5 py-4">
           <div className="flex items-center gap-2">
@@ -31,15 +30,10 @@ export async function NowPanel() {
               <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-brand" />
             </span>
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
               Title block · Now
             </span>
           </div>
-          {now.updatedAt ? (
-            <span className="font-mono text-[11px] uppercase text-muted-foreground">
-              Rev. {format(new Date(now.updatedAt), "MMM yyyy")}
-            </span>
-          ) : null}
         </div>
 
         <dl className="divide-y divide-border">
@@ -54,7 +48,7 @@ export async function NowPanel() {
             <div key={key} className="flex items-start gap-3 px-5 py-3.5">
               <Icon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" />
               <div className="flex flex-col gap-0.5">
-                <dt className="font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+                <dt className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
                   {label}
                 </dt>
                 <dd className="text-sm leading-snug text-foreground">{value}</dd>

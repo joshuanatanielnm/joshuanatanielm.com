@@ -27,7 +27,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
         const dim = dimensions[photo.orientation] ?? dimensions.landscape;
         return (
           <StaggerReveal key={photo.slug} index={index} className="break-inside-avoid">
-            <figure className="group overflow-hidden rounded-2xl border border-border bg-card">
+            <figure className="group overflow-hidden rounded-2xl bg-card">
               <div className="overflow-hidden">
                 <Image
                   src={photo.imageUrl}
@@ -51,7 +51,7 @@ export function PhotoGallery({ photos }: { photos: GalleryPhoto[] }) {
                   ) : null}
                 </div>
                 {photo.takenDate ? (
-                  <span className="shrink-0 font-mono text-xs text-muted-foreground">
+                  <span className="shrink-0 font-condensed text-xs text-muted-foreground">
                     {format(new Date(photo.takenDate), "MMM yyyy")}
                   </span>
                 ) : null}

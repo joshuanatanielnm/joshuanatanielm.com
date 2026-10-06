@@ -22,7 +22,7 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
       <Reveal>
         <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex max-w-2xl flex-col gap-3">
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
               Life
             </span>
             <h2 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
@@ -55,8 +55,8 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
               index={index}
               className={cn("min-w-0", spanClass[orientation])}
             >
-              <figure className="group overflow-hidden rounded-[1.75rem] border border-border bg-foreground/[0.03] p-1.5">
-                <div className="overflow-hidden rounded-[calc(1.75rem-0.375rem)] border border-border/60 bg-card">
+              <figure className="group overflow-hidden rounded-[1.75rem] bg-foreground/[0.03] p-1.5">
+                <div className="overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-card">
                   <div
                     className={cn(
                       "relative overflow-hidden bg-muted",
@@ -88,7 +88,7 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
                       ) : null}
                     </div>
                     {photo.takenDate ? (
-                      <span className="shrink-0 font-mono text-[11px] text-muted-foreground">
+                      <span className="shrink-0 font-condensed text-xs text-muted-foreground">
                         {format(new Date(photo.takenDate), "MMM yyyy")}
                       </span>
                     ) : null}

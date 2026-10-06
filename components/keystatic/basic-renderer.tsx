@@ -6,7 +6,7 @@ export function getBasicRenderers(): DocumentRendererProps["renderers"] {
   return {
     block: {
       image: ({ src, alt, title }) => (
-        <figure className="my-8 overflow-hidden rounded-2xl border border-border bg-card">
+        <figure className="my-8 overflow-hidden rounded-2xl bg-card">
           <div className="relative aspect-[16/10] w-full bg-muted">
             <Image
               src={src}

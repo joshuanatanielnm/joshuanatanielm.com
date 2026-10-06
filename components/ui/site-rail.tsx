@@ -116,7 +116,7 @@ export function SiteRail() {
           aria-label="Primary"
           className="mt-10 flex flex-col gap-1 border-t border-foreground/[0.06] pt-6"
         >
-          {navLinks.map((link, index) => {
+          {navLinks.map((link) => {
             const active =
               isActive(pathname, link.href) ||
               (isPending && targetPath === normalizePath(link.href));
@@ -133,9 +133,6 @@ export function SiteRail() {
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              <span className="font-mono text-[10px] tabular-nums text-muted-foreground/70">
-                {String(index + 1).padStart(2, "0")}
-              </span>
               <span
                 className={cn(
                   "relative",
@@ -151,11 +148,8 @@ export function SiteRail() {
         </nav>
 
         <div className="mt-auto flex flex-col gap-3 border-t border-foreground/[0.06] pt-4">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground/70">
-            DWG JNM-2026
-          </span>
           <div className="flex items-center justify-between">
-            <span className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+            <span className="font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
               Theme
             </span>
             <ThemeToggle />
@@ -167,7 +161,7 @@ export function SiteRail() {
       <header className="fixed inset-x-0 top-0 z-40 px-4 pt-[max(1rem,env(safe-area-inset-top))] print:hidden lg:hidden">
         <div
           ref={islandRef}
-          className="mx-auto flex w-full max-w-lg items-center justify-between rounded-lg border border-foreground/[0.08] bg-background/80 px-2 py-2 shadow-[0_12px_40px_hsl(240_6%_10%/0.06)] backdrop-blur-xl dark:shadow-[0_12px_40px_hsl(0_0%_0%/0.35)]"
+          className="mx-auto flex w-full max-w-lg items-center justify-between rounded-lg bg-background/80 px-2 py-2 shadow-[0_12px_40px_hsl(240_6%_10%/0.06)] backdrop-blur-xl dark:shadow-[0_12px_40px_hsl(0_0%_0%/0.35)]"
         >
           <NavLink
             href="/"
@@ -238,9 +232,6 @@ export function SiteRail() {
                     )}
                     style={{ animationDelay: `${100 + index * 50}ms` }}
                   >
-                    <span className="font-mono text-sm text-muted-foreground/60">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
                     {link.label}
                   </NavLink>
                 </li>

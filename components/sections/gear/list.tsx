@@ -68,7 +68,7 @@ export function GearList({ items }: { items: GearItem[] }) {
           <Reveal>
             <div className="flex items-center gap-2">
               <meta.Icon className="h-4 w-4 text-brand" weight="bold" />
-              <h2 className="font-mono text-xs uppercase tracking-wider text-muted-foreground">
+              <h2 className="font-condensed font-medium text-xs uppercase tracking-[0.06em] text-muted-foreground">
                 {meta.label}
               </h2>
               <span className="h-px flex-1 bg-border" />
@@ -104,12 +104,12 @@ export function GearList({ items }: { items: GearItem[] }) {
                           href={item.link}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4 transition-colors hover:border-brand/40"
+                          className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4 transition-colors"
                         >
                           {content}
                         </Link>
                       ) : (
-                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl border border-border bg-card p-4">
+                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4">
                           {content}
                         </div>
                       )}
