@@ -47,8 +47,6 @@ components (exception: the Three.js hero scene).
 * **Annotations:** section eyebrows are short condensed Ink Blue labels (no
   `SHT`/`FIG` numbering), followed by a `.dim-line` (hairline with
   perpendicular end ticks).
-* **Title block:** the hero Now panel reads as a drawing title block —
-  squared, borderless, lifted on shadow, with ruled rows inside.
 * **Buttons:** squared stamps. Primary = Ink Blue fill, trailing arrow in its own
   squared nest. Active scale `0.98`. No glows.
 * **Badges:** condensed, squared, hairline border — read as drawing callouts.
@@ -63,8 +61,9 @@ components (exception: the Three.js hero scene).
 - The page canvas carries a fixed drafting grid (`.drafting-grid`): 24px minor
   cells, 120px major lines — subtle, behind all content.
 - Desktop: fixed left rail (~13rem) + main column; content max-width ~72rem
-- Hero: Editorial Split — massive name + `FIG. 1` annotation left, title-block
-  Now panel right
+- Hero: single editorial column (max ~56rem) — eyebrow, oversized name, summary,
+  primary CTA + quiet text link, then a one-line location/firm footer. No
+  chips, no side panel.
 - Sections read in a fixed order; they are not numbered
 - Projects: asymmetric bento (large feature + stacked companions)
 - Contact: left-aligned editorial close
