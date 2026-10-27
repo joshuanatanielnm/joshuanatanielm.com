@@ -15,7 +15,7 @@ export function ProjectSection() {
       <Reveal>
         <SectionHeading
           title="Selected work"
-          description="Three things I've shipped that I'd still put my name on. The rest are in the archive."
+          description="A few things I've shipped and would still put my name on."
           action={
             <NavLink
               href="/projects"
