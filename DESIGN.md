@@ -21,16 +21,16 @@ components (exception: the Three.js hero scene).
 - **Banned:** warm cream canvases, amber/terracotta, teal, purple/neon glows, pure `#000000`
 
 ## 3. Typography Rules
-- **One family:** IBM Plex Sans (self-hosted variable, `app/fonts/`, 100–700,
-  upright + italic). Engineered and even-tempered; serious at every size.
+- **One family:** Geist Sans (self-hosted variable, `app/fonts/`, 100–900).
+  The nextjs.org / vercel.com face: neutral, precise, professional.
 - **Display:** 600–700 weight, tight tracking (`-0.03em` to `-0.045em`),
   oversized name in the hero.
 - **Body:** 400, relaxed leading, ~65ch max.
 - **Labels and metadata:** sentence case, `text-sm`, muted. No uppercase, no
   letter-spacing, no monospace, no eyebrow above a heading unless it carries
   information (an annotation with a `.dim-line`).
-- **Banned:** Inter, Roboto, Arial, Geist, Source Sans, Bricolage, Instrument Sans, any monospace,
-  decorative serifs, ALL-CAPS tracked labels.
+- **Banned:** Inter, Roboto, Arial, Source Sans, Bricolage, Instrument Sans,
+  IBM Plex, any monospace, decorative serifs, ALL-CAPS tracked labels.
 
 ## 4. Component Stylings
 * **Corners are squared.** `--radius: 0.5rem`. Chips/badges `rounded-[3px]`,

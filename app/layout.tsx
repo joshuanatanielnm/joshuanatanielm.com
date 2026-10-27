@@ -7,24 +7,15 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
 
-// IBM Plex Sans — one family for everything. Engineered, even-tempered,
-// and serious at display sizes. Self-hosted variable cut (100-700) so the
-// build never depends on a font CDN.
-const plexSans = localFont({
-  src: [
-    {
-      path: "./fonts/ibm-plex-sans-latin-wght-normal.woff2",
-      weight: "100 700",
-      style: "normal",
-    },
-    {
-      path: "./fonts/ibm-plex-sans-latin-wght-italic.woff2",
-      weight: "100 700",
-      style: "italic",
-    },
-  ],
+// Geist Sans — the typeface nextjs.org and vercel.com are set in. One
+// family for everything. Self-hosted variable cut (100-900) so the build
+// never depends on a font CDN.
+const geistSans = localFont({
+  src: "./fonts/geist-sans-variable.woff2",
+  weight: "100 900",
+  style: "normal",
   display: "swap",
-  variable: "--font-plex-sans",
+  variable: "--font-geist-sans",
 });
 
 export const viewport: Viewport = {
@@ -74,7 +65,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       lang="en"
       className={cn(
         "motion-safe:scroll-smooth",
-        plexSans.variable
+        geistSans.variable
       )}
       suppressHydrationWarning
     >
