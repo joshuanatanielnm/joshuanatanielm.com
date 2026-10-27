@@ -91,7 +91,6 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "ss01", "cv01", "cv11";
   }
   ::selection {
     background-color: hsl(var(--brand) / 0.22);
@@ -325,6 +324,14 @@
     padding-left: 1.25rem;
   }
 
+  .resume-ats > ol {
+    font-size: var(--resume-text-body);
+    line-height: 1.45;
+    @apply list-disc text-zinc-800;
+    margin-bottom: var(--resume-gap-block);
+    padding-left: 1.25rem;
+  }
+
   .resume-ats > ul > li + li {
     margin-top: var(--resume-gap-item);
   }
@@ -371,7 +378,8 @@
     -webkit-box-decoration-break: clone;
   }
 
-  .resume-ats > ul {
+  .resume-ats > ul,
+  .resume-ats > ol {
     padding-left: 0.2in;
   }
 

@@ -20,7 +20,6 @@ export async function ExperienceSection() {
     >
       <Reveal>
         <SectionHeading
-          index="02"
           title="Where I've worked"
           description="Teams I've built with — startups, agencies, and open-source protocols."
           action={

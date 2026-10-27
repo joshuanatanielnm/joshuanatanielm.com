@@ -1,7 +1,7 @@
 import { NavLink } from "@/components/navigation/nav-link";
 import { Suspense } from "react";
 import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
-import { ProjectsFeaturedGrid } from "@/components/sections/projects/grids";
+import { ProjectsFeatured } from "@/components/sections/projects/featured";
 import { Reveal } from "@/components/motion/reveal";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { MediaCardGridSkeleton } from "@/components/ui/page-skeletons";
@@ -14,18 +14,15 @@ export function ProjectSection() {
     >
       <Reveal>
         <SectionHeading
-          index="03"
-          title="Selected projects"
-          description="Products shipped across companies, communities, and side experiments."
+          title="Selected work"
+          description="A few things I've shipped and would still put my name on."
           action={
             <NavLink
               href="/projects"
-              className="group inline-flex items-center gap-2 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:text-brand/80"
+              className="group inline-flex items-center gap-1.5 text-sm font-medium text-foreground underline decoration-border underline-offset-4 transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:decoration-brand"
             >
-              All projects
-              <span className="grid h-7 w-7 place-items-center rounded-[4px] bg-brand/10 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5">
-                <ArrowRight className="h-3.5 w-3.5" weight="bold" />
-              </span>
+              Browse the archive
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5" />
             </NavLink>
           }
         />
@@ -33,12 +30,12 @@ export function ProjectSection() {
 
       <Suspense
         fallback={
-          <div className="mt-14">
+          <div className="mt-10">
             <MediaCardGridSkeleton count={3} />
           </div>
         }
       >
-        <ProjectsFeaturedGrid />
+        <ProjectsFeatured />
       </Suspense>
     </section>
   );
