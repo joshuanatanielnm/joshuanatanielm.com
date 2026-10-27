@@ -46,7 +46,7 @@ function ShelfRow({
       className="group grid grid-cols-1 gap-6 border-t border-border/70 py-8 sm:grid-cols-12 sm:gap-8 sm:py-10"
     >
       <div className="flex flex-col gap-1.5 sm:col-span-4">
-        <h3 className="inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground">
+        <h3 className="inline-flex items-center gap-2 text-lg font-semibold tracking-tight text-foreground">
           <span className="underline decoration-transparent decoration-1 underline-offset-[6px] transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:decoration-brand">
             {title}
           </span>

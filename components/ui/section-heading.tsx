@@ -32,7 +32,7 @@ export function SectionHeading({
             <span aria-hidden className="dim-line w-16" />
           </span>
         ) : null}
-        <Tag className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <Tag className="text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {title}
         </Tag>
         {description ? (
@@ -42,7 +42,7 @@ export function SectionHeading({
         ) : null}
       </div>
       {action ? (
-        <div className="shrink-0 lg:pt-7">{action}</div>
+        <div className="shrink-0 lg:pt-5">{action}</div>
       ) : null}
     </div>
   );

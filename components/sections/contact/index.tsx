@@ -19,7 +19,7 @@ export function ContactSection() {
               Contact
               <span aria-hidden className="dim-line w-16" />
             </p>
-            <h2 className="mt-4 text-balance text-[clamp(2.5rem,8vw,5rem)] font-semibold leading-[0.95] tracking-[-0.035em] text-foreground">
+            <h2 className="mt-4 text-balance text-[clamp(2rem,5vw,3.5rem)] font-semibold leading-[1] tracking-[-0.035em] text-foreground">
               Got something
               <br />
               to build?

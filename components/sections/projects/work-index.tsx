@@ -49,12 +49,12 @@ export function WorkIndex({ items }: { items: WorkItem[] }) {
                 href={item.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group block py-6 outline-none sm:py-7"
+                className="group block py-5 outline-none sm:py-6"
               >
                 <span className="flex items-baseline justify-between gap-4">
                   <span
                     className={cn(
-                      "text-[clamp(1.75rem,4.5vw,3rem)] font-semibold leading-none tracking-[-0.03em] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
+                      "text-[clamp(1.375rem,3vw,2rem)] font-semibold leading-none tracking-[-0.02em] transition-colors duration-500 ease-[cubic-bezier(0.32,0.72,0,1)]",
                       isActive ? "text-foreground" : "text-muted-foreground/60"
                     )}
                   >

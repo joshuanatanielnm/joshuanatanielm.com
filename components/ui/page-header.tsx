@@ -21,7 +21,7 @@ export function PageHeader({
               {index}
             </span>
           ) : null}
-          <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {title}
           </h1>
           {description ? (

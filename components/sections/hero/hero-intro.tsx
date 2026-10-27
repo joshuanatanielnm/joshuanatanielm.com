@@ -95,17 +95,17 @@ export function HeroIntro({
 
         <RevealGroupItem>
           <h1 className="mt-4 text-balance">
-            <span className="block text-[clamp(4rem,14vw,10rem)] font-semibold leading-[0.88] tracking-[-0.045em] text-foreground">
+            <span className="block text-[clamp(3rem,9vw,6.5rem)] font-semibold leading-[0.92] tracking-[-0.04em] text-foreground">
               Joshua
             </span>
-            <span className="mt-1 block text-[clamp(2.25rem,7vw,4.75rem)] font-medium leading-[1] tracking-[-0.03em] text-muted-foreground">
+            <span className="mt-1 block text-[clamp(1.75rem,4.5vw,3.25rem)] font-medium leading-[1.05] tracking-[-0.025em] text-muted-foreground">
               Manuputty
             </span>
           </h1>
         </RevealGroupItem>
 
         <RevealGroupItem>
-          <p className="mt-8 max-w-xl text-base leading-relaxed text-muted-foreground sm:text-lg">
+          <p className="mt-8 max-w-lg text-base leading-relaxed text-muted-foreground">
             {professionalSummary}
           </p>
         </RevealGroupItem>
@@ -132,7 +132,7 @@ export function HeroIntro({
         </RevealGroupItem>
 
         <RevealGroupItem>
-          <p className="mt-14 text-sm text-muted-foreground">
+          <p className="mt-12 text-sm text-muted-foreground">
             Based in Surabaya, Indonesia
             {currentCompanyName ? (
               <>
