@@ -21,15 +21,17 @@ components (exception: the Three.js hero scene).
 - **Banned:** warm cream canvases, amber/terracotta, teal, purple/neon glows, pure `#000000`
 
 ## 3. Typography Rules
-- **Display:** Roboto (self-hosted variable, `app/fonts/`) — tight tracking,
-  weight-driven hierarchy, oversized name
-- **Body:** Roboto — relaxed leading, ~65ch max
-- **Labels:** Roboto Condensed (self-hosted variable, `app/fonts/`, `font-condensed`) —
-  annotations, title blocks, tech-stack badges, timestamps, metadata
-- Annotations are uppercase condensed, `text-xs font-medium`, `tracking-[0.08em]`,
-  in Ink Blue. No monospace anywhere.
-- **Banned:** Inter, Arial, Geist Sans, Geist Mono, Source Sans, any monospace,
-  decorative serifs
+- **One family:** Bricolage Grotesque (self-hosted variable, `app/fonts/`,
+  optical-size + weight axes; `font-optical-sizing: auto` is on). Display sizes
+  pick up its character on their own; body stays quiet.
+- **Display:** 600–700 weight, tight tracking (`-0.03em` to `-0.045em`),
+  oversized name in the hero.
+- **Body:** 400, relaxed leading, ~65ch max.
+- **Labels and metadata:** sentence case, `text-sm`, muted. No uppercase, no
+  letter-spacing, no monospace, no eyebrow above a heading unless it carries
+  information (an annotation with a `.dim-line`).
+- **Banned:** Inter, Roboto, Arial, Geist, Source Sans, any monospace,
+  decorative serifs, ALL-CAPS tracked labels.
 
 ## 4. Component Stylings
 * **Corners are squared.** `--radius: 0.5rem`. Chips/badges `rounded-[3px]`,
@@ -44,12 +46,12 @@ components (exception: the Three.js hero scene).
   numbers, revision stamps, nav indices or list ordinals anywhere in the UI.
   Ordered lists render with disc markers, not numbers. Numbers appear only
   where they are the content itself (dates, ratings, metrics).
-* **Annotations:** section eyebrows are short condensed Ink Blue labels (no
+* **Annotations:** section eyebrows are short sentence-case Ink Blue labels (no
   `SHT`/`FIG` numbering), followed by a `.dim-line` (hairline with
   perpendicular end ticks).
 * **Buttons:** squared stamps. Primary = Ink Blue fill, trailing arrow in its own
   squared nest. Active scale `0.98`. No glows.
-* **Badges:** condensed, squared, hairline border — read as drawing callouts.
+* **Badges:** small sentence-case text, squared, hairline border — read as drawing callouts.
 * **Loaders:** skeletal blocks matching layout. No circular spinners.
 * **Nav Rail (desktop):** fixed left index, unnumbered links; rail footer
   carries the theme control.
@@ -66,6 +68,9 @@ components (exception: the Three.js hero scene).
   chips, no side panel.
 - Sections read in a fixed order; they are not numbered
 - Projects: asymmetric bento (large feature + stacked companions)
+- Off the clock (books / games / photos): a ledger, not cards — three ruled
+  rows, title + one plain sentence left, real-proportion thumbnails (2:3 cover,
+  3:4 key art, 4:3 print) sitting on a `.dim-line` shelf right
 - Contact: left-aligned editorial close
 - Full-height uses `min-h-[100dvh]` only — never `h-screen`
 - Macro whitespace: section padding `py-24`–`py-32`

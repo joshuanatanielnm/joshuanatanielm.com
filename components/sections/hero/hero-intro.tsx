@@ -75,7 +75,7 @@ export function HeroIntro({
           <RevealGroupItem>
             <Link
               href={customMetadata.emailUrl}
-              className="mb-6 inline-flex w-fit items-center gap-2 rounded-[3px] border border-brand/40 bg-brand-muted px-3 py-1 font-condensed text-xs font-medium uppercase tracking-[0.08em] text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
+              className="mb-6 inline-flex w-fit items-center gap-2 rounded-[3px] border border-brand/40 bg-brand-muted px-3 py-1 text-sm font-medium text-brand transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] hover:bg-brand/15"
             >
               <span className="relative flex h-1.5 w-1.5">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-brand opacity-60 motion-safe:animate-ping" />
@@ -87,7 +87,7 @@ export function HeroIntro({
         ) : null}
 
         <RevealGroupItem>
-          <p className="flex items-center gap-3 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-brand">
+          <p className="flex items-center gap-3 font-medium text-sm text-brand">
             Software engineer, frontend focus
             <span aria-hidden className="dim-line w-24" />
           </p>

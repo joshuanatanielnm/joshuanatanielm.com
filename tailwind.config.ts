@@ -19,13 +19,7 @@ const config = {
     },
     extend: {
       fontFamily: {
-        sans: ["var(--font-roboto)", "system-ui", "sans-serif"],
-        condensed: [
-          "var(--font-roboto-condensed)",
-          "var(--font-roboto)",
-          "system-ui",
-          "sans-serif",
-        ],
+        sans: ["var(--font-bricolage)", "system-ui", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",

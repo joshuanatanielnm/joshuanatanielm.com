@@ -1,89 +1,98 @@
 import Image from "next/image";
 import { NavLink } from "@/components/navigation/nav-link";
-import {
-  ArrowUpRight,
-  BookOpen,
-  Camera,
-  GameController,
-} from "@phosphor-icons/react/dist/ssr";
-import type { Icon } from "@phosphor-icons/react";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { getBooks, getGames, getPhotos } from "@/server/keystatic";
 import { Reveal } from "@/components/motion/reveal";
 import { RevealGroup, RevealGroupItem } from "@/components/motion/reveal-group";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { cn } from "@/utils/ui";
 
-type Thumb = { src: string; alt: string; portrait?: boolean };
+type Thumb = { src: string; alt: string };
+type Shape = "cover" | "keyart" | "print";
 
-function ShelfTile({
+const SHAPE_CLASS: Record<Shape, string> = {
+  // Real-world proportions: a paperback, a game case, a 4:3 print.
+  cover: "aspect-[2/3] w-16 sm:w-20",
+  keyart: "aspect-[3/4] w-[4.5rem] sm:w-24",
+  print: "aspect-[4/3] w-24 sm:w-32",
+};
+
+const WORDS = [
+  "no", "one", "two", "three", "four", "five", "six", "seven", "eight",
+  "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen",
+  "sixteen", "seventeen", "eighteen", "nineteen", "twenty",
+];
+const count = (n: number) => (n <= 20 ? WORDS[n] : String(n));
+
+function ShelfRow({
   href,
-  label,
   title,
-  meta,
-  Icon: TileIcon,
+  blurb,
   thumbs,
-  className,
+  shape,
+  tilt,
 }: {
   href: string;
-  label: string;
   title: string;
-  meta: string;
-  Icon: Icon;
+  blurb: string;
   thumbs: Thumb[];
-  className?: string;
+  shape: Shape;
+  /** Nudge every other thumbnail so the row reads as objects set down, not a grid. */
+  tilt?: boolean;
 }) {
-  const visibleThumbs = thumbs.slice(0, 3);
-
   return (
     <NavLink
       href={href}
-      className={cn(
-        "group flex min-w-0 flex-col rounded-lg bg-foreground/[0.03] p-1.5 transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] active:scale-[0.99]",
-        className
-      )}
+      className="group grid grid-cols-1 gap-6 border-t border-border/70 py-8 sm:grid-cols-12 sm:gap-8 sm:py-10"
     >
-      <div className="flex min-w-0 flex-col overflow-hidden rounded-[calc(0.5rem-1px)] bg-card shadow-[inset_0_1px_1px_rgba(255,255,255,0.4)] dark:shadow-[inset_0_1px_1px_rgba(255,255,255,0.05)]">
-        <div className="flex items-center justify-between px-5 pt-5">
-          <span className="inline-flex items-center gap-2 font-condensed font-medium text-xs uppercase tracking-[0.08em] text-muted-foreground">
-            <TileIcon className="h-4 w-4 text-brand" weight="fill" />
-            {label}
-          </span>
-          <span className="grid h-8 w-8 place-items-center rounded-[4px] bg-secondary text-muted-foreground transition-all duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-0.5 group-hover:-translate-y-px group-hover:bg-brand/10 group-hover:text-brand">
-            <ArrowUpRight className="h-4 w-4" weight="bold" />
-          </span>
-        </div>
-
-        <div className="flex flex-col gap-1 px-5 pb-4 pt-3">
-          <h3 className="text-lg font-medium tracking-tight text-foreground">
+      <div className="flex flex-col gap-1.5 sm:col-span-4">
+        <h3 className="inline-flex items-center gap-2 text-xl font-semibold tracking-tight text-foreground">
+          <span className="underline decoration-transparent decoration-1 underline-offset-[6px] transition-colors duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:decoration-brand">
             {title}
-          </h3>
-          <p className="text-sm text-muted-foreground">{meta}</p>
-        </div>
+          </span>
+          <ArrowRight
+            className="h-4 w-4 text-muted-foreground transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:translate-x-1 group-hover:text-brand"
+            weight="bold"
+          />
+        </h3>
+        <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">
+          {blurb}
+        </p>
+      </div>
 
-        {visibleThumbs.length > 0 ? (
-          <div className="grid min-w-0 grid-cols-3 gap-2 px-5 pb-5">
-            {visibleThumbs.map((thumb, i) => (
+      <div className="relative sm:col-span-8">
+        {thumbs.length > 0 ? (
+          <div className="flex items-end gap-3 overflow-hidden pb-3 sm:gap-4">
+            {thumbs.map((thumb, i) => (
               <div
                 key={`${thumb.src}-${i}`}
-                className="relative h-28 min-w-0 overflow-hidden rounded-xl sm:h-32"
+                className={cn(
+                  "relative shrink-0 overflow-hidden rounded-[3px] bg-muted shadow-[0_1px_0_hsl(var(--foreground)/0.08),0_8px_20px_-12px_hsl(var(--foreground)/0.35)] transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:-translate-y-1",
+                  SHAPE_CLASS[shape],
+                  tilt && i % 2 === 1 && "translate-y-1"
+                )}
+                style={{ transitionDelay: `${i * 40}ms` }}
               >
                 <Image
                   src={thumb.src}
                   alt={thumb.alt}
                   fill
-                  sizes="120px"
-                  className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-105"
+                  sizes="128px"
+                  className="object-cover"
                 />
               </div>
             ))}
           </div>
         ) : (
-          <div className="px-5 pb-5">
-            <div className="rounded-xl bg-muted/40 px-4 py-8 text-center text-xs text-muted-foreground">
-              Nothing here yet
-            </div>
-          </div>
+          <p className="pb-3 text-sm text-muted-foreground">Nothing on this shelf yet.</p>
         )}
+        {/* The shelf itself: a hairline the objects sit on, with a dimension tick at each end. */}
+        <span aria-hidden className="dim-line absolute inset-x-0 bottom-0" />
+        {/* Soft edge where the row runs off, so a long shelf implies more. */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-background to-transparent"
+        />
       </div>
     </NavLink>
   );
@@ -96,30 +105,31 @@ export async function ShelfSection() {
     getPhotos(),
   ]);
 
-  const bookThumbs: Thumb[] = books
-    .filter((b) => b.entry.coverUrl)
-    .slice(0, 3)
-    .map((b) => ({
-      src: b.entry.coverUrl!,
-      alt: b.entry.title,
-      portrait: true,
-    }));
+  const inProgressFirst = <T extends { entry: { status: string } }>(
+    items: T[],
+    active: string
+  ) => [...items].sort((a, b) => Number(b.entry.status === active) - Number(a.entry.status === active));
 
-  const gameThumbs: Thumb[] = games
+  const bookThumbs: Thumb[] = inProgressFirst(books, "reading")
+    .filter((b) => b.entry.coverUrl)
+    .slice(0, 6)
+    .map((b) => ({ src: b.entry.coverUrl!, alt: b.entry.title }));
+
+  const gameThumbs: Thumb[] = inProgressFirst(games, "playing")
     .filter((g) => g.entry.coverUrl)
-    .slice(0, 3)
-    .map((g) => ({
-      src: g.entry.coverUrl!,
-      alt: g.entry.title,
-      portrait: true,
-    }));
+    .slice(0, 5)
+    .map((g) => ({ src: g.entry.coverUrl!, alt: g.entry.title }));
 
   const journalPhotos = photos.filter((p) => p.entry.category === "journal");
 
   const photoThumbs: Thumb[] = journalPhotos
     .filter((p) => p.entry.imageUrl)
-    .slice(0, 3)
+    .slice(0, 4)
     .map((p) => ({ src: p.entry.imageUrl!, alt: p.entry.title }));
+
+  const reading = books.find((b) => b.entry.status === "reading")?.entry.title;
+  const playing = games.find((g) => g.entry.status === "playing")?.entry.title;
+  const finishedBooks = books.filter((b) => b.entry.status === "finished").length;
 
   return (
     <section
@@ -128,43 +138,52 @@ export async function ShelfSection() {
     >
       <Reveal>
         <SectionHeading
-          title="Beyond the code"
-          description="Books, games, and places that keep me curious away from the keyboard."
+          title="Off the clock"
+          description="The shelves at home, more or less: what I'm reading, playing, and pointing a camera at."
         />
       </Reveal>
 
-      <RevealGroup className="mt-14 grid grid-cols-1 gap-5 lg:grid-cols-12 lg:items-start lg:gap-6">
-        <RevealGroupItem className="lg:col-span-7">
-          <ShelfTile
+      <RevealGroup className="mt-12 border-b border-border/70">
+        <RevealGroupItem>
+          <ShelfRow
             href="/books"
-            label="Reading"
-            title="What I'm reading"
-            meta={`${books.length} books on the shelf`}
-            Icon={BookOpen}
+            title="Reading"
+            blurb={
+              reading
+                ? `${capitalize(count(finishedBooks))} finished. On the nightstand now: ${reading}.`
+                : `${capitalize(count(finishedBooks))} finished, a few more waiting.`
+            }
             thumbs={bookThumbs}
+            shape="cover"
+            tilt
           />
         </RevealGroupItem>
-        <RevealGroupItem className="lg:col-span-5">
-          <ShelfTile
+        <RevealGroupItem>
+          <ShelfRow
             href="/games"
-            label="Playing"
-            title="Games I love"
-            meta={`${games.length} games tracked`}
-            Icon={GameController}
+            title="Playing"
+            blurb={
+              playing
+                ? `${capitalize(count(games.length))} games tracked. Currently in: ${playing}.`
+                : `${capitalize(count(games.length))} games, finished or abandoned.`
+            }
             thumbs={gameThumbs}
+            shape="keyart"
           />
         </RevealGroupItem>
-        <RevealGroupItem className="lg:col-span-5 lg:col-start-8">
-          <ShelfTile
+        <RevealGroupItem>
+          <ShelfRow
             href="/photos"
-            label="Shooting"
-            title="Through my lens"
-            meta={`${journalPhotos.length} photos and counting`}
-            Icon={Camera}
+            title="Photographing"
+            blurb={`${capitalize(count(journalPhotos.length))} prints from Surabaya and wherever else I end up.`}
             thumbs={photoThumbs}
+            shape="print"
+            tilt
           />
         </RevealGroupItem>
       </RevealGroup>
     </section>
   );
 }
+
+const capitalize = (s: string) => s.charAt(0).toUpperCase() + s.slice(1);

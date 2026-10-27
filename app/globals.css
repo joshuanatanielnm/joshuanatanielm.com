@@ -91,6 +91,7 @@
   }
   body {
     @apply bg-background text-foreground antialiased;
+    font-optical-sizing: auto;
   }
   ::selection {
     background-color: hsl(var(--brand) / 0.22);
