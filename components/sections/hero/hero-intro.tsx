@@ -95,7 +95,7 @@ export function HeroIntro({
 
         <RevealGroupItem>
           <h1 className="mt-4 text-balance">
-            <span className="block text-[clamp(4rem,14vw,10rem)] font-semibold leading-[0.88] tracking-[-0.045em] text-foreground">
+            <span className="block text-[clamp(4rem,14vw,10rem)] font-semibold leading-[0.88] tracking-[-0.035em] text-foreground">
               Joshua
             </span>
             <span className="mt-1 block text-[clamp(2.25rem,7vw,4.75rem)] font-medium leading-[1] tracking-[-0.03em] text-muted-foreground">

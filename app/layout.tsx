@@ -7,24 +7,24 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
 
-// Instrument Sans — one family for everything. A clean, slightly narrow
-// grotesk that stays businesslike at display sizes. Self-hosted variable
-// cut (400-700) so the build never depends on a font CDN.
-const instrumentSans = localFont({
+// IBM Plex Sans — one family for everything. Engineered, even-tempered,
+// and serious at display sizes. Self-hosted variable cut (100-700) so the
+// build never depends on a font CDN.
+const plexSans = localFont({
   src: [
     {
-      path: "./fonts/instrument-sans-latin-wght-normal.woff2",
-      weight: "400 700",
+      path: "./fonts/ibm-plex-sans-latin-wght-normal.woff2",
+      weight: "100 700",
       style: "normal",
     },
     {
-      path: "./fonts/instrument-sans-latin-wght-italic.woff2",
-      weight: "400 700",
+      path: "./fonts/ibm-plex-sans-latin-wght-italic.woff2",
+      weight: "100 700",
       style: "italic",
     },
   ],
   display: "swap",
-  variable: "--font-instrument-sans",
+  variable: "--font-plex-sans",
 });
 
 export const viewport: Viewport = {
@@ -74,7 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       lang="en"
       className={cn(
         "motion-safe:scroll-smooth",
-        instrumentSans.variable
+        plexSans.variable
       )}
       suppressHydrationWarning
     >

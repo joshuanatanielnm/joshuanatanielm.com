@@ -21,15 +21,15 @@ components (exception: the Three.js hero scene).
 - **Banned:** warm cream canvases, amber/terracotta, teal, purple/neon glows, pure `#000000`
 
 ## 3. Typography Rules
-- **One family:** Instrument Sans (self-hosted variable, `app/fonts/`, 400–700,
-  upright + italic). Clean and slightly narrow; businesslike at every size.
+- **One family:** IBM Plex Sans (self-hosted variable, `app/fonts/`, 100–700,
+  upright + italic). Engineered and even-tempered; serious at every size.
 - **Display:** 600–700 weight, tight tracking (`-0.03em` to `-0.045em`),
   oversized name in the hero.
 - **Body:** 400, relaxed leading, ~65ch max.
 - **Labels and metadata:** sentence case, `text-sm`, muted. No uppercase, no
   letter-spacing, no monospace, no eyebrow above a heading unless it carries
   information (an annotation with a `.dim-line`).
-- **Banned:** Inter, Roboto, Arial, Geist, Source Sans, Bricolage, any monospace,
+- **Banned:** Inter, Roboto, Arial, Geist, Source Sans, Bricolage, Instrument Sans, any monospace,
   decorative serifs, ALL-CAPS tracked labels.
 
 ## 4. Component Stylings
