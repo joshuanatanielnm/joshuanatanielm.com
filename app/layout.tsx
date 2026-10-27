@@ -7,20 +7,24 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
 
-// Bricolage Grotesque — one family for everything. Variable cut with
-// optical-size + weight axes, so display sizes get the characterful
-// drawing and body sizes stay quiet. Self-hosted so the build never
-// depends on a font CDN.
-const bricolage = localFont({
+// Instrument Sans — one family for everything. A clean, slightly narrow
+// grotesk that stays businesslike at display sizes. Self-hosted variable
+// cut (400-700) so the build never depends on a font CDN.
+const instrumentSans = localFont({
   src: [
     {
-      path: "./fonts/bricolage-grotesque-latin-opsz-normal.woff2",
-      weight: "200 800",
+      path: "./fonts/instrument-sans-latin-wght-normal.woff2",
+      weight: "400 700",
       style: "normal",
+    },
+    {
+      path: "./fonts/instrument-sans-latin-wght-italic.woff2",
+      weight: "400 700",
+      style: "italic",
     },
   ],
   display: "swap",
-  variable: "--font-bricolage",
+  variable: "--font-instrument-sans",
 });
 
 export const viewport: Viewport = {
@@ -70,7 +74,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       lang="en"
       className={cn(
         "motion-safe:scroll-smooth",
-        bricolage.variable
+        instrumentSans.variable
       )}
       suppressHydrationWarning
     >
