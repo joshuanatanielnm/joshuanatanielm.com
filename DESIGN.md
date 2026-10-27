@@ -67,7 +67,9 @@ components (exception: the Three.js hero scene).
   primary CTA + quiet text link, then a one-line location/firm footer. No
   chips, no side panel.
 - Sections read in a fixed order; they are not numbered
-- Projects: asymmetric bento (large feature + stacked companions)
+- Selected work (home): a case list, not a bento — three ruled rows, screenshot
+  on a hairline-framed sheet (7 cols) left, name / one sentence / a small
+  "Built with · Live at" spec table right. Archive page keeps the card grid.
 - Off the clock (books / games / photos): a ledger, not cards — three ruled
   rows, title + one plain sentence left, real-proportion thumbnails (2:3 cover,
   3:4 key art, 4:3 print) sitting on a `.dim-line` shelf right
