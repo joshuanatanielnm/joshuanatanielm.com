@@ -16,6 +16,10 @@ const nextConfig = {
     },
   },
   images: {
+    // Serve images as-is instead of through /_next/image. The Vercel plan's
+    // image optimization quota ran out, and once it does every optimized
+    // request returns 402 and the image shows up broken.
+    unoptimized: true,
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
       {
