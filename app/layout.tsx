@@ -7,42 +7,15 @@ import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
 
-// Roboto, self-hosted variable cut (weights 100-900) so the build never
-// depends on a font CDN at compile time.
-const roboto = localFont({
-  src: [
-    {
-      path: "./fonts/roboto-latin-wght-normal.woff2",
-      weight: "100 900",
-      style: "normal",
-    },
-    {
-      path: "./fonts/roboto-latin-wght-italic.woff2",
-      weight: "100 900",
-      style: "italic",
-    },
-  ],
+// Geist Sans — the typeface nextjs.org and vercel.com are set in. One
+// family for everything. Self-hosted variable cut (100-900) so the build
+// never depends on a font CDN.
+const geistSans = localFont({
+  src: "./fonts/geist-sans-variable.woff2",
+  weight: "100 900",
+  style: "normal",
   display: "swap",
-  variable: "--font-roboto",
-});
-
-// Roboto Condensed — labels, badges, metadata. Self-hosted for the same
-// reason as above.
-const robotoCondensed = localFont({
-  src: [
-    {
-      path: "./fonts/roboto-condensed-latin-wght-normal.woff2",
-      weight: "100 900",
-      style: "normal",
-    },
-    {
-      path: "./fonts/roboto-condensed-latin-wght-italic.woff2",
-      weight: "100 900",
-      style: "italic",
-    },
-  ],
-  display: "swap",
-  variable: "--font-roboto-condensed",
+  variable: "--font-geist-sans",
 });
 
 export const viewport: Viewport = {
@@ -92,8 +65,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       lang="en"
       className={cn(
         "motion-safe:scroll-smooth",
-        roboto.variable,
-        robotoCondensed.variable
+        geistSans.variable
       )}
       suppressHydrationWarning
     >
