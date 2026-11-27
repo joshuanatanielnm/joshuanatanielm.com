@@ -26,7 +26,6 @@ export async function AboutSection() {
       <Reveal className="grid gap-10 lg:grid-cols-12 lg:gap-16">
         <div className="lg:col-span-4">
           <SectionHeading
-            index="01"
             title="A bit about me"
             action={
               <NavLink

@@ -27,12 +27,12 @@ export function SectionHeading({
     >
       <div className="flex flex-col gap-3">
         {index ? (
-          <span className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.22em] text-brand">
-            {/^\d+$/.test(index) ? `SHT ${index}` : index}
+          <span className="flex items-center gap-3 font-medium text-sm text-brand">
+            {index}
             <span aria-hidden className="dim-line w-16" />
           </span>
         ) : null}
-        <Tag className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+        <Tag className="text-balance text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
           {title}
         </Tag>
         {description ? (
@@ -42,7 +42,7 @@ export function SectionHeading({
         ) : null}
       </div>
       {action ? (
-        <div className="shrink-0 lg:pt-7">{action}</div>
+        <div className="shrink-0 lg:pt-5">{action}</div>
       ) : null}
     </div>
   );

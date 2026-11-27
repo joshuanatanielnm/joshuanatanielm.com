@@ -1,12 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { GeistSans } from "geist/font/sans";
-import { GeistMono } from "geist/font/mono";
+import localFont from "next/font/local";
 import { cn } from "@/utils/ui";
 import "./globals.css";
 import { defaultMetadata } from "@/site.config";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Providers } from "./providers";
+
+// Geist Sans — the typeface nextjs.org and vercel.com are set in. One
+// family for everything. Self-hosted variable cut (100-900) so the build
+// never depends on a font CDN.
+const geistSans = localFont({
+  src: "./fonts/geist-sans-variable.woff2",
+  weight: "100 900",
+  style: "normal",
+  display: "swap",
+  variable: "--font-geist-sans",
+});
 
 export const viewport: Viewport = {
   themeColor: [
@@ -55,8 +65,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       lang="en"
       className={cn(
         "motion-safe:scroll-smooth",
-        GeistSans.variable,
-        GeistMono.variable
+        geistSans.variable
       )}
       suppressHydrationWarning
     >

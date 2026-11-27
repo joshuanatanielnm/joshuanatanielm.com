@@ -30,7 +30,7 @@ export default function ResumePage() {
           className="
           resume-ats
           mx-auto max-w-3xl bg-white text-zinc-900 font-serif
-          border border-zinc-200 rounded-lg shadow-sm
+          rounded-lg shadow-sm
           px-8 py-10 sm:px-12 sm:py-14
           print:max-w-none print:border-0 print:rounded-none print:shadow-none
         "

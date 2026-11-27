@@ -17,11 +17,11 @@ export function PageHeader({
       <div className="flex flex-col gap-5">
         <div className="flex flex-col gap-3">
           {index ? (
-            <span className="font-mono text-[11px] uppercase tracking-[0.22em] text-muted-foreground">
+            <span className="font-medium text-sm text-muted-foreground">
               {index}
             </span>
           ) : null}
-          <h1 className="text-balance text-4xl font-semibold tracking-tight text-foreground sm:text-5xl">
+          <h1 className="text-balance text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
             {title}
           </h1>
           {description ? (
