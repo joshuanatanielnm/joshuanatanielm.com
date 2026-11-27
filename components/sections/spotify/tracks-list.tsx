@@ -18,7 +18,7 @@ export function TracksList({ tracks }: { tracks: Track[] }) {
               href={track.songUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-3 rounded-xl p-2 transition-colors hover:bg-card"
+              className="group flex items-center gap-3 rounded-[3px] p-2 transition-colors hover:bg-card"
             >
               {track.albumImageUrl ? (
                 <Image
@@ -26,11 +26,11 @@ export function TracksList({ tracks }: { tracks: Track[] }) {
                   alt={`${track.title} album art`}
                   width={44}
                   height={44}
-                  className="h-11 w-11 shrink-0 rounded-md object-cover"
+                  className="h-11 w-11 shrink-0 rounded-[2px] object-cover"
                   unoptimized
                 />
               ) : (
-                <span className="h-11 w-11 shrink-0 rounded-md bg-muted" />
+                <span className="h-11 w-11 shrink-0 rounded-[2px] bg-muted" />
               )}
               <span className="flex min-w-0 flex-col">
                 <span className="truncate text-sm font-medium text-foreground group-hover:text-brand">

@@ -43,6 +43,9 @@
     --grid-minor: hsl(203 40% 40% / 0.06);
     --grid-major: hsl(203 40% 35% / 0.1);
 
+    /* Cast-shadow ink for sheets and objects set down on the page. */
+    --shadow-ink: 202 28% 16%;
+
     --radius: 0.5rem;
   }
 
@@ -82,6 +85,8 @@
 
     --grid-minor: hsl(200 40% 70% / 0.05);
     --grid-major: hsl(200 40% 75% / 0.08);
+
+    --shadow-ink: 205 45% 3%;
   }
 }
 
@@ -129,6 +134,34 @@
 }
 .dim-line::after {
   right: 0;
+}
+
+/* Sheet card — a linked card lifts off the page like a sheet being picked
+   up, and its title gets inked underneath. Only cards that go somewhere
+   (`data-interactive`) respond. */
+.sheet-card-title > span {
+  text-decoration-line: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.sheet-card[data-interactive]:hover .sheet-card-title > span,
+.sheet-card[data-interactive]:focus-within .sheet-card-title > span {
+  text-decoration-color: hsl(var(--brand));
+}
+@media (prefers-reduced-motion: no-preference) {
+  .sheet-card[data-interactive] {
+    transition: transform 0.7s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+  @media (hover: hover) {
+    .sheet-card[data-interactive]:hover {
+      transform: translateY(-4px);
+    }
+  }
+  .sheet-card[data-interactive]:focus-within {
+    transform: translateY(-4px);
+  }
 }
 
 /* Signature logo — on hover of the wrapping `group`, the two pen strokes

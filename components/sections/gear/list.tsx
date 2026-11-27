@@ -1,8 +1,6 @@
 "use client";
 
-import Link from "next/link";
 import {
-  ArrowUpRight,
   Chair,
   Cube,
   DeviceMobile,
@@ -13,6 +11,13 @@ import {
   Terminal,
 } from "@phosphor-icons/react/dist/ssr";
 import type { Icon } from "@phosphor-icons/react";
+import {
+  Card,
+  CardBody,
+  CardLink,
+  CardSource,
+  CardTitle,
+} from "@/components/ui/card";
 import { Reveal } from "@/components/motion/reveal";
 import {
   RevealGroup,
@@ -76,47 +81,35 @@ export function GearList({ items }: { items: GearItem[] }) {
           </Reveal>
 
           <RevealGroup>
-            <ul className="grid gap-3 sm:grid-cols-2">
-              {entries.map((item) => {
-                const content = (
-                  <>
-                    <div className="flex items-start justify-between gap-2">
-                      <span className="font-medium text-foreground">
-                        {item.name}
-                      </span>
+            <ul className="grid gap-4 sm:grid-cols-2">
+              {entries.map((item) => (
+                <li key={item.slug}>
+                  <RevealGroupItem className="h-full">
+                    <Card interactive={Boolean(item.link)} className="h-full">
+                      <CardBody className="gap-1.5">
+                        <CardTitle>{item.name}</CardTitle>
+                        {item.description ? (
+                          <p className="text-sm leading-relaxed text-muted-foreground">
+                            {item.description}
+                          </p>
+                        ) : null}
+                        {item.link ? (
+                          <CardSource
+                            href={item.link}
+                            className="mt-auto pt-2 text-xs"
+                          />
+                        ) : null}
+                      </CardBody>
                       {item.link ? (
-                        <ArrowUpRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-brand" />
-                      ) : null}
-                    </div>
-                    {item.description ? (
-                      <p className="text-sm leading-relaxed text-muted-foreground">
-                        {item.description}
-                      </p>
-                    ) : null}
-                  </>
-                );
-
-                return (
-                  <li key={item.slug}>
-                    <RevealGroupItem className="h-full">
-                      {item.link ? (
-                        <Link
+                        <CardLink
                           href={item.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4 transition-colors"
-                        >
-                          {content}
-                        </Link>
-                      ) : (
-                        <div className="group flex h-full flex-col gap-1.5 rounded-2xl bg-card p-4">
-                          {content}
-                        </div>
-                      )}
-                    </RevealGroupItem>
-                  </li>
-                );
-              })}
+                          label={`More about ${item.name}`}
+                        />
+                      ) : null}
+                    </Card>
+                  </RevealGroupItem>
+                </li>
+              ))}
             </ul>
           </RevealGroup>
         </div>

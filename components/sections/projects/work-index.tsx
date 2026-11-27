@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/utils/ui";
 
@@ -14,6 +14,9 @@ export type WorkItem = {
   imageUrl?: string;
   tech: string[];
 };
+
+/** Must match the `pin` screen in tailwind.config.ts. */
+const PIN_QUERY = "(min-width: 1024px) and (min-height: 760px)";
 
 function joinNatural(items: string[]) {
   if (items.length <= 1) return items.join("");
@@ -29,12 +32,62 @@ function joinNatural(items: string[]) {
 export function WorkIndex({ items }: { items: WorkItem[] }) {
   const [active, setActive] = useState(0);
   const current = items[active];
+  const rootRef = useRef<HTMLDivElement>(null);
+  // The entry the scroll position points at while the section is pinned.
+  const scrolled = useRef(0);
+
+  // While the section is pinned (see ProjectSection), the page holds still and
+  // scrolling steps through the entries instead. Pointing still works: the
+  // last input wins, and leaving the list hands control back to the scroll.
+  useEffect(() => {
+    const track = rootRef.current?.closest<HTMLElement>("[data-work-pin]");
+    if (!track || items.length === 0) return;
+
+    const pinQuery = window.matchMedia(PIN_QUERY);
+    let frame = 0;
+
+    const update = () => {
+      frame = 0;
+      if (!pinQuery.matches) {
+        scrolled.current = 0;
+        return;
+      }
+      const rect = track.getBoundingClientRect();
+      const distance = rect.height - window.innerHeight;
+      if (distance <= 0) return;
+      const progress = Math.min(Math.max(-rect.top / distance, 0), 1);
+      const index = Math.min(
+        items.length - 1,
+        Math.floor(progress * items.length)
+      );
+      if (index !== scrolled.current) {
+        scrolled.current = index;
+        setActive(index);
+      }
+    };
+
+    const onScroll = () => {
+      if (!frame) frame = window.requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      if (frame) window.cancelAnimationFrame(frame);
+    };
+  }, [items.length]);
 
   return (
-    <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12">
+    <div
+      ref={rootRef}
+      className="grid grid-cols-1 gap-10 lg:grid-cols-12 lg:gap-12"
+    >
       <ol
         className="lg:col-span-6"
-        onMouseLeave={() => setActive(0)}
+        onMouseLeave={() => setActive(scrolled.current)}
       >
         {items.map((item, i) => {
           const isActive = i === active;

@@ -34,15 +34,16 @@ async function BooksGrid() {
   });
 
   return (
-    <RevealGroup className="mt-12 grid grid-cols-2 gap-5 sm:grid-cols-3 lg:grid-cols-4">
+    <RevealGroup className="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 lg:gap-6 xl:grid-cols-4">
       {sorted.map((book, index) => (
-        <StaggerReveal key={book.slug} index={index}>
+        <StaggerReveal key={book.slug} index={index} className="h-full">
           <BookCard
             title={book.entry.title}
             author={book.entry.author}
             coverUrl={book.entry.coverUrl}
             status={book.entry.status}
             rating={book.entry.rating}
+            finishedDate={book.entry.finishedDate}
             link={book.entry.link}
             note={book.entry.note}
           />

@@ -41,6 +41,17 @@ components (exception: the Three.js hero scene).
   (`bg-card`, `bg-foreground/[0.03]`) and shadow — never an outline.
   Hairline `border-t` / `border-b` / `border-r` rules used as *dividers*
   (section rules, ruled rows, the desktop rail edge) are still allowed.
+* **Cards are sheets** (`components/ui/card.tsx`). A squared (`rounded-[3px]`),
+  borderless `bg-card` sheet with a cast shadow (`shadow-sheet`), never a
+  rounded box with an image on top and a badge over it. Parts: `CardPlate`
+  (a recess showing the drafting grid, where an object stands on a
+  `.dim-line`), `CardObject` (cover or key art at real proportions,
+  `shadow-object`), `CardCallouts` (ruled notes beside the object: status,
+  rating, date), `CardBody`, `CardSpecs` (the title block: a ruled label /
+  value table at the foot) and `CardSource` (the link written out as a host
+  name). Photos are prints: the image inside a paper margin, captioned in
+  the foot. A linked card lifts 4px and its title is underlined in Ink Blue;
+  nothing zooms. Ratings are five ruler ticks, not stars.
 * **No numerals in chrome.** No sheet numbers, figure numbers, drawing
   numbers, revision stamps, nav indices or list ordinals anywhere in the UI.
   Ordered lists render with disc markers, not numbers. Numbers appear only
@@ -68,7 +79,11 @@ components (exception: the Three.js hero scene).
 - Sections read in a fixed order; they are not numbered
 - Selected work (home): a case list, not a bento — three ruled rows, screenshot
   on a hairline-framed sheet (7 cols) left, name / one sentence / a small
-  "Built with · Live at" spec table right. Archive page keeps the card grid.
+  "Built with · Live at" spec table right. Archive page keeps the card grid, as sheet cards with a title block.
+- Selected work pins on screens at least 1024px wide and 760px tall (the
+  `pin` screen): the section holds still for about 45vh of scroll per
+  project while the scroll steps through the index. Smaller screens scroll
+  normally.
 - Off the clock (books / games / photos): a ledger, not cards — three ruled
   rows, title + one plain sentence left, real-proportion thumbnails (2:3 cover,
   3:4 key art, 4:3 print) sitting on a `.dim-line` shelf right

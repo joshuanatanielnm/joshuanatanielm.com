@@ -1,18 +1,22 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
-import { Badge } from "@/components/ui/badge";
+import { format } from "date-fns";
+import {
+  Card,
+  CardBody,
+  CardCallouts,
+  CardLink,
+  CardObject,
+  CardPlate,
+  CardSource,
+  CardTitle,
+} from "@/components/ui/card";
 import { Rating } from "@/components/ui/rating";
 
 type BookStatus = "reading" | "finished" | "want-to-read" | (string & {});
 
-const statusMap: Record<
-  string,
-  { label: string; variant: "brand" | "default" | "muted" }
-> = {
-  reading: { label: "Reading", variant: "brand" },
-  finished: { label: "Finished", variant: "default" },
-  "want-to-read": { label: "Want to read", variant: "muted" },
+const statusLabel: Record<string, string> = {
+  reading: "Reading now",
+  finished: "Finished",
+  "want-to-read": "Want to read",
 };
 
 export interface BookCardProps {
@@ -21,67 +25,69 @@ export interface BookCardProps {
   coverUrl?: string | null;
   status: BookStatus;
   rating?: number | null;
+  finishedDate?: string | null;
   link?: string | null;
   note?: string;
 }
 
 export function BookCard(props: BookCardProps) {
-  const status = statusMap[props.status] ?? statusMap.finished;
-  const hasUrl = Boolean(props.link);
+  const inProgress = props.status === "reading";
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card transition-colors">
-      <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-        {props.coverUrl ? (
-          <Image
-            src={props.coverUrl}
-            alt={`${props.title} cover`}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 260px"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center p-4 text-center text-sm text-muted-foreground/50">
-            {props.title}
-          </div>
-        )}
-        <div className="absolute left-3 top-3">
-          <Badge variant={status.variant}>{status.label}</Badge>
-        </div>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-sm font-medium leading-tight text-foreground">
-            {props.title}
-          </h3>
-          {hasUrl ? (
-            <ArrowUpRight
-              className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-brand"
-              weight="bold"
-            />
+    <Card as="article" interactive={Boolean(props.link)} className="h-full">
+      <CardPlate>
+        <CardObject
+          shape="cover"
+          src={props.coverUrl}
+          alt={`${props.title} cover`}
+          label={props.title}
+        />
+        <CardCallouts>
+          <li
+            className={
+              inProgress
+                ? "flex items-center gap-1.5 font-medium text-foreground"
+                : undefined
+            }
+          >
+            {inProgress ? (
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand" />
+            ) : null}
+            {statusLabel[props.status] ?? statusLabel.finished}
+          </li>
+          {typeof props.rating === "number" ? (
+            <li>
+              <Rating value={props.rating} />
+            </li>
           ) : null}
+          {props.finishedDate ? (
+            <li>
+              <time dateTime={props.finishedDate}>
+                {format(new Date(props.finishedDate), "MMM yyyy")}
+              </time>
+            </li>
+          ) : null}
+        </CardCallouts>
+      </CardPlate>
+
+      <CardBody>
+        <div>
+          <CardTitle>{props.title}</CardTitle>
+          <p className="mt-0.5 text-sm text-muted-foreground">{props.author}</p>
         </div>
-        <p className="text-xs text-muted-foreground">{props.author}</p>
-        {typeof props.rating === "number" ? (
-          <Rating value={props.rating} />
-        ) : null}
         {props.note ? (
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             {props.note}
           </p>
         ) : null}
-      </div>
+        {props.link ? (
+          <CardSource href={props.link} className="mt-auto pt-2 text-xs" />
+        ) : null}
+      </CardBody>
 
-      {hasUrl ? (
-        <Link
-          href={props.link as string}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute inset-0"
-          aria-label={`More about ${props.title}`}
-        />
+      {props.link ? (
+        <CardLink href={props.link} label={`More about ${props.title}`} />
       ) : null}
-    </article>
+    </Card>
   );
 }

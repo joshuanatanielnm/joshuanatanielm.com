@@ -18,6 +18,11 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        // Wide and tall enough to pin a full-viewport section while its
+        // items are scrolled through (see Selected work on the home page).
+        pin: { raw: "(min-width: 1024px) and (min-height: 760px)" },
+      },
       fontFamily: {
         sans: ["var(--font-geist-sans)", "system-ui", "sans-serif"],
       },
@@ -60,6 +65,14 @@ const config = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+      },
+      boxShadow: {
+        // A sheet of paper resting on the drafting table.
+        sheet:
+          "0 1px 0 hsl(var(--shadow-ink) / 0.07), 0 16px 28px -20px hsl(var(--shadow-ink) / 0.45)",
+        // A small object (book, game case, print) set down on a sheet.
+        object:
+          "0 1px 0 hsl(var(--shadow-ink) / 0.1), 0 10px 18px -10px hsl(var(--shadow-ink) / 0.5)",
       },
       borderRadius: {
         lg: "var(--radius)",

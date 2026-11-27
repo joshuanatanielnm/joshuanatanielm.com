@@ -1,11 +1,14 @@
 import Image from "next/image";
 import { NavLink } from "@/components/navigation/nav-link";
-import { ArrowRight, MapPin } from "@phosphor-icons/react/dist/ssr";
-import { format } from "date-fns";
+import { ArrowRight } from "@phosphor-icons/react/dist/ssr";
 import { Reveal } from "@/components/motion/reveal";
 import { RevealGroup } from "@/components/motion/reveal-group";
 import { StaggerReveal } from "@/components/motion/stagger-reveal";
-import type { GalleryPhoto } from "@/components/sections/photos/gallery";
+import { Card } from "@/components/ui/card";
+import {
+  PrintCaption,
+  type GalleryPhoto,
+} from "@/components/sections/photos/gallery";
 import { cn } from "@/utils/ui";
 
 const spanClass: Record<string, string> = {
@@ -55,46 +58,27 @@ export function LifeGallery({ photos }: { photos: GalleryPhoto[] }) {
               index={index}
               className={cn("min-w-0", spanClass[orientation])}
             >
-              <figure className="group overflow-hidden rounded-[1.75rem] bg-foreground/[0.03] p-1.5">
-                <div className="overflow-hidden rounded-[calc(1.75rem-0.375rem)] bg-card">
-                  <div
-                    className={cn(
-                      "relative overflow-hidden bg-muted",
-                      orientation === "portrait"
-                        ? "aspect-[3/4]"
-                        : orientation === "square"
-                          ? "aspect-square"
-                          : "aspect-[4/3]"
-                    )}
-                  >
-                    <Image
-                      src={photo.imageUrl}
-                      alt={photo.title}
-                      fill
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                      className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.32,0.72,0,1)] group-hover:scale-[1.03]"
-                    />
-                  </div>
-                  <figcaption className="flex items-start justify-between gap-3 px-4 py-3">
-                    <div className="min-w-0">
-                      <p className="truncate text-sm font-medium text-foreground">
-                        {photo.title}
-                      </p>
-                      {photo.location ? (
-                        <p className="mt-1 inline-flex items-center gap-1 truncate text-xs text-muted-foreground">
-                          <MapPin className="h-3 w-3 shrink-0" />
-                          {photo.location}
-                        </p>
-                      ) : null}
-                    </div>
-                    {photo.takenDate ? (
-                      <span className="shrink-0 text-xs text-muted-foreground">
-                        {format(new Date(photo.takenDate), "MMM yyyy")}
-                      </span>
-                    ) : null}
-                  </figcaption>
+              <Card as="figure" className="p-2 pb-0">
+                <div
+                  className={cn(
+                    "relative overflow-hidden rounded-[1px] bg-muted",
+                    orientation === "portrait"
+                      ? "aspect-[3/4]"
+                      : orientation === "square"
+                        ? "aspect-square"
+                        : "aspect-[4/3]"
+                  )}
+                >
+                  <Image
+                    src={photo.imageUrl}
+                    alt={photo.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                    className="object-cover"
+                  />
                 </div>
-              </figure>
+                <PrintCaption photo={photo} />
+              </Card>
             </StaggerReveal>
           );
         })}

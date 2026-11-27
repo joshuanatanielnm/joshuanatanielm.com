@@ -1,6 +1,6 @@
-import { Star } from "@phosphor-icons/react/dist/ssr";
 import { cn } from "@/utils/ui";
 
+/** A five-step scale read like a ruler: inked ticks for the score. */
 export function Rating({
   value,
   className,
@@ -10,21 +10,20 @@ export function Rating({
 }) {
   const clamped = Math.max(0, Math.min(5, value));
   return (
-    <div
-      className={cn("flex items-center gap-0.5", className)}
+    <span
+      className={cn("inline-flex items-center gap-[3px]", className)}
       role="img"
       aria-label={`Rated ${clamped} out of 5`}
     >
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star
+        <span
           key={i}
           className={cn(
-            "h-3.5 w-3.5",
-            i < clamped ? "text-brand" : "text-border"
+            "h-2.5 w-[3px] rounded-[1px]",
+            i < clamped ? "bg-brand" : "bg-foreground/15"
           )}
-          weight={i < clamped ? "fill" : "regular"}
         />
       ))}
-    </div>
+    </span>
   );
 }

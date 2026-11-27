@@ -1,17 +1,20 @@
-import Image from "next/image";
-import Link from "next/link";
-import { ArrowUpRight, Clock } from "@phosphor-icons/react/dist/ssr";
-import { Badge } from "@/components/ui/badge";
+import {
+  Card,
+  CardBody,
+  CardCallouts,
+  CardLink,
+  CardObject,
+  CardPlate,
+  CardSource,
+  CardTitle,
+} from "@/components/ui/card";
 import { Rating } from "@/components/ui/rating";
 
-const statusMap: Record<
-  string,
-  { label: string; variant: "brand" | "default" | "muted" }
-> = {
-  playing: { label: "Playing", variant: "brand" },
-  finished: { label: "Finished", variant: "default" },
-  backlog: { label: "Backlog", variant: "muted" },
-  wishlist: { label: "Wishlist", variant: "muted" },
+const statusLabel: Record<string, string> = {
+  playing: "Playing now",
+  finished: "Finished",
+  backlog: "Backlog",
+  wishlist: "Wishlist",
 };
 
 const platformMap: Record<string, string> = {
@@ -34,73 +37,60 @@ export interface GameCardProps {
 }
 
 export function GameCard(props: GameCardProps) {
-  const status = statusMap[props.status] ?? statusMap.finished;
   const platform = platformMap[props.platform] ?? props.platform;
-  const hasUrl = Boolean(props.link);
+  const inProgress = props.status === "playing";
 
   return (
-    <article className="group relative flex flex-col overflow-hidden rounded-2xl bg-card transition-colors">
-      <div className="relative aspect-[3/4] overflow-hidden bg-muted">
-        {props.coverUrl ? (
-          <Image
-            src={props.coverUrl}
-            alt={`${props.title} art`}
-            fill
-            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 300px"
-            className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
-          />
-        ) : (
-          <div className="flex h-full w-full items-center justify-center p-4 text-center text-sm text-muted-foreground/50">
-            {props.title}
-          </div>
-        )}
-        <div className="absolute left-3 top-3">
-          <Badge variant={status.variant}>{status.label}</Badge>
-        </div>
-      </div>
-
-      <div className="flex flex-1 flex-col gap-2 p-4">
-        <div className="flex items-start justify-between gap-2">
-          <h3 className="text-sm font-medium leading-tight text-foreground">
-            {props.title}
-          </h3>
-          {hasUrl ? (
-            <ArrowUpRight
-              className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-brand"
-              weight="bold"
-            />
+    <Card as="article" interactive={Boolean(props.link)} className="h-full">
+      <CardPlate>
+        <CardObject
+          shape="keyart"
+          src={props.coverUrl}
+          alt={`${props.title} art`}
+          label={props.title}
+        />
+        <CardCallouts>
+          <li
+            className={
+              inProgress
+                ? "flex items-center gap-1.5 font-medium text-foreground"
+                : undefined
+            }
+          >
+            {inProgress ? (
+              <span aria-hidden className="h-1.5 w-1.5 rounded-full bg-brand" />
+            ) : null}
+            {statusLabel[props.status] ?? statusLabel.finished}
+          </li>
+          {typeof props.rating === "number" ? (
+            <li>
+              <Rating value={props.rating} />
+            </li>
           ) : null}
-        </div>
-
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
-          <span>{platform}</span>
+          <li>{platform}</li>
           {typeof props.hours === "number" ? (
-            <span className="inline-flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" />
-              {props.hours}h
-            </span>
+            <li>
+              {props.hours} {props.hours === 1 ? "hour" : "hours"}
+            </li>
           ) : null}
-        </div>
+        </CardCallouts>
+      </CardPlate>
 
-        {typeof props.rating === "number" ? (
-          <Rating value={props.rating} />
-        ) : null}
+      <CardBody>
+        <CardTitle>{props.title}</CardTitle>
         {props.note ? (
-          <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+          <p className="text-sm leading-relaxed text-muted-foreground">
             {props.note}
           </p>
         ) : null}
-      </div>
+        {props.link ? (
+          <CardSource href={props.link} className="mt-auto pt-2 text-xs" />
+        ) : null}
+      </CardBody>
 
-      {hasUrl ? (
-        <Link
-          href={props.link as string}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="absolute inset-0"
-          aria-label={`More about ${props.title}`}
-        />
+      {props.link ? (
+        <CardLink href={props.link} label={`More about ${props.title}`} />
       ) : null}
-    </article>
+    </Card>
   );
 }

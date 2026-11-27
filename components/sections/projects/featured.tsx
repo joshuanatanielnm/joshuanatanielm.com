@@ -3,6 +3,9 @@ import { resolveProjectLabels } from "@/components/sections/projects/resolve-lab
 import { Reveal } from "@/components/motion/reveal";
 import { WorkIndex, type WorkItem } from "@/components/sections/projects/work-index";
 
+/** How many projects the home page shows; also sizes the pinned scroll track. */
+export const FEATURED_COUNT = 4;
+
 function hostOf(url: string) {
   try {
     return new URL(url).hostname.replace(/^www\./, "");
@@ -15,7 +18,7 @@ export async function ProjectsFeatured() {
   const projects = (await getProject()).entries;
   const selected = projects
     .filter((project) => project.link.value !== null)
-    .slice(0, 4);
+    .slice(0, FEATURED_COUNT);
 
   const items: WorkItem[] = await Promise.all(
     selected.map(async (project) => {
